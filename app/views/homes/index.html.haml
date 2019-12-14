@@ -2,7 +2,7 @@
   .header__bar
     .header__bar__upper
       %h1.header__bar__upper__left
-        %a{:href => "#"} mercari
+        %a{href: "#"} mercari
       .header__bar__upper__right
         %form.search_container{:action => "/", :method => "post"}
           %input.search_container__text{:type => "text", :placeholder => "何かお探しですか？"}
@@ -10,9 +10,9 @@
     .header__bar__bottom
       %ul.header__bar__bottom__left
         %i.fas.fa-list-ul
-        %a{:href => "#"}カテゴリーから探す
+        %a{href: "#"}カテゴリーから探す
         %i.fas.fa-tags
-        %a{:href => "#"}ブランドから探す
+        %a{href:"#"}ブランドから探す
       .header__bar__bottom__right
         = link_to "新規会員登録", "#" , class: "btn btn-login"  
         = link_to "ログイン", "#", class: "btn btn-default"

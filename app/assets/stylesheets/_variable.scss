@@ -1,0 +1,25 @@
+//色の定義
+
+$red: #EA352d;
+$white: #ffffff;
+$accent: #0099E8;
+$black: black;
+$gray: rgb(245, 245, 245);
+$dark: #999;
+
+
+//mixin
+
+@mixin boxBase($margin: 30px auto, $padding: 10px) {
+  margin: $margin;
+  padding: $padding;
+}
+
+@mixin basePadding($padding: 10px) {
+padding: $padding;
+}
+
+@mixin baseMargin($margin: 10px auto) {
+margin: $margin;
+}
+
