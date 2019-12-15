@@ -21,14 +21,8 @@ Things you may want to cover:
 |name|string|null: false, unipue: true, index: true, limit: 40|
 |password|string|null: false, limit: 128|
 |email|string|null: false, unique: true, limit: 256|
-|user_address|references|null: false, foreign_key: true|
-|user_real_name|references|null: false, foreign_key: true|
 |birthday|date|null: false|
 |is_identificated|boolean|null: false, default: false|
-|user_address|references|null: false, foreign_key: true|
-|user_real_name|references|null: false, foreign_key: true|
-|user_delivery|references|null: false, foreign_key: true|
-|user_payment|references|null: false, foreign_key: true|
 |profile|text||
 ### Associations
 
@@ -42,6 +36,7 @@ Things you may want to cover:
 |block|string|null: false, limit: 50|
 |building_name|string|limit: 50|
 |phone|integer|limit: 5|
+|user|references|null: false, foreign_key: true|
 ### Associations
 
 
@@ -52,6 +47,7 @@ Things you may want to cover:
 |first_name|string|null: false, limit: 40|
 |last_name_kana|string|null: false, limit: 40|
 |first_name_kana|string|null: false, limit: 40|
+|user|references|null: false, foreign_key: true|
 ### Associations
 
 ## user_deliveries table
@@ -67,6 +63,7 @@ Things you may want to cover:
 |block|string|null: false, limit: 50|
 |building_name|string|limit: 50|
 |phone|integer|limit: 5|
+|user|references|null: false, foreign_key: true|
 ### Associations
 
 ## user_payments table
@@ -74,6 +71,7 @@ Things you may want to cover:
 |------|----|-------|
 |customer_id|string|null: false|
 |card_id|string|null: false|
+|user|references|null: false, foreign_key: true|
 ### Associations
 
 ## items table
