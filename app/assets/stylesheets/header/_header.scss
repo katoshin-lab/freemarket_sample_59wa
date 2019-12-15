@@ -1,0 +1,70 @@
+
+//ヘッダー
+
+.header {
+  min-width: 968px;
+  @include basePadding(8px);
+  border-bottom: 1px solid #d8d8d8;
+  background-color: white;
+  height: 100px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  &__upper {
+    @include baseMargin(0 auto);
+    @include basePadding(0 0 10px 0);
+    width: 80%;
+    display: flex;   
+    &--logo {
+      @include basePadding(0 20px 0 0);
+      width: 134px;
+      height: 30px;
+      font-size: 25px;
+      font-family: 'タイトル';
+    }
+  }
+  &__bottom {
+    @include baseMargin(0 auto);
+    @include basePadding(10px 40px 0 0);
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    &--left {
+      i {
+        cursor: pointer;
+        font-size: 1.1rem;
+        color: $red;
+      }
+      a { 
+        @include basePadding(10px 10px);
+        font-size: 13px;
+        font-weight: bold;
+        &:hover {
+          color: $accent;
+        }
+      }
+    }
+    &--right {
+      .btn {
+        font-size: 14px;
+        @include basePadding(8px 15px);
+        @include baseMargin(5px);
+      }
+      .btn-default {
+        color: $accent;
+        background-color: white;
+        border: 1px solid $accent;
+        border-radius: 3px;
+        &:hover {
+          background-color: $accent;
+          color: white;
+        }
+      }
+      .btn-login {
+        background-color: $red;
+        border-radius: 3px;
+        color: white;
+      }
+    } 
+  }
+}
+
+
