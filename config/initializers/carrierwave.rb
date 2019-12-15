@@ -1,9 +1,7 @@
-if Rails.env.test? || Rails.env.development?
-  CarrierWave.configure do |config|
+CarrierWave.configure do |config|
+  if Rails.env.test? || Rails.env.development?
     config.storage = :file
-  end
-elsif Rails.env.production?
-  CarrierWave.comfigure do |config|
+  elsif Rails.env.production?
     config.storage = :fog
     config.fog_provider = 'fog/aws'
     config.fog_credentials = {
