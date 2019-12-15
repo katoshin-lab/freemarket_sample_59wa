@@ -29,7 +29,9 @@ set :keep_releases, 5
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
-    invoke 'unicorn:restart'
+    # invoke 'unicorn:restart'  # サービスを止めずに更新が可能、環境変数等は変更されない
+    invoke 'unicorn:stop'
+    invoke 'unicorn:start'      # 環境変数の修正が反映される、更新中はサービスが停止する
   end
 end
 
