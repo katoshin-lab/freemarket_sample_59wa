@@ -19,13 +19,21 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, unipue: true, index: true, limit: 40|
-|password|string|null: false, limit: 128|
 |email|string|null: false, unique: true, limit: 256|
+|password|string|null: false, limit: 128|
 |birthday|date|null: false|
 |is_identificated|boolean|null: false, default: false|
 |profile|text||
 ### Associations
-
+- has_one :user_address
+- has_one :user_real_name
+- has_one :user_delivery
+- has_many :user_payments
+- has_many :likes
+- has_many :reports
+- has_many :items
+- has_many :dealing_items
+- has_many :bought_items
 
 ## user_addresses table
 |Column|Type|Options|
@@ -38,7 +46,8 @@ Things you may want to cover:
 |phone|integer|limit: 5|
 |user|references|null: false, foreign_key: true|
 ### Associations
-
+has_one :prefecture
+belongs_to :user
 
 ## user_real_names table
 |Column|Type|Options|
@@ -49,6 +58,7 @@ Things you may want to cover:
 |first_name_kana|string|null: false, limit: 40|
 |user|references|null: false, foreign_key: true|
 ### Associations
+belongs_to :user
 
 ## user_deliveries table
 |Column|Type|Options|
@@ -65,6 +75,8 @@ Things you may want to cover:
 |phone|integer|limit: 5|
 |user|references|null: false, foreign_key: true|
 ### Associations
+- belongs_to :user
+- has_one :prefecture
 
 ## user_payments table
 |Column|Type|Options|
@@ -73,6 +85,7 @@ Things you may want to cover:
 |card_id|string|null: false|
 |user|references|null: false, foreign_key: true|
 ### Associations
+- belongs_to :user
 
 ## items table
 |Column|Type|Options|
