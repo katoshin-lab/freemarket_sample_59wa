@@ -46,8 +46,8 @@ Things you may want to cover:
 |phone|integer|limit: 5|
 |user|references|null: false, foreign_key: true|
 ### Associations
-has_one :prefecture
-belongs_to :user
+- has_one :prefecture
+- belongs_to :user
 
 ## user_real_names table
 |Column|Type|Options|
@@ -57,8 +57,8 @@ belongs_to :user
 |last_name_kana|string|null: false, limit: 40|
 |first_name_kana|string|null: false, limit: 40|
 |user|references|null: false, foreign_key: true|
-### Associations
-belongs_to :user
+### Association
+- belongs_to :user
 
 ## user_deliveries table
 |Column|Type|Options|
@@ -84,7 +84,7 @@ belongs_to :user
 |customer_id|string|null: false|
 |card_id|string|null: false|
 |user|references|null: false, foreign_key: true|
-### Associations
+### Association
 - belongs_to :user
 
 ## items table
@@ -104,7 +104,28 @@ belongs_to :user
 |category|references|foreign_key: true|
 |subcategory|references|foreign_key: true|
 |sub_subcategory|references|foreign_key: true|
+|item_status|references|foreign_key: true|
 ### Associations
+- belongs_to :user
+- has_many :likes
+- has_many :reports
+- has_one :other_image
+- has_one :brand
+- has_one :shipping_method
+- has_one :shipping_period
+- has_one :prefecture
+- has_one :category
+- has_one :subcategory
+- has_one :sub_subcategory
+- has_one :item_status
+- has_many :dealing_comments
+
+## item_statuses
+|Column|Type|Options|
+|------|----|-------|
+|status|string|null: false, limit: 20|
+### Association
+- has_many :items
 
 ## other_images table
 |Column|Type|Options|
@@ -119,34 +140,18 @@ belongs_to :user
 |image8|string||
 |image9|string||
 |item|references|foreign_key: true|
-### Associations
-
-## on_sale_items table
-|Column|Type|Options|
-|------|----|-------|
-|item|references|null: false, foreign_key: true|
-### Associations
-
-## dealing_items table
-|Column|Type|Options|
-|------|----|-------|
-|item|references|null: false, foreign_key: true|
-|buyer|references|null: false, foreign_key: {to_table: users}|
-### Associations
+### Association
+- belings_to :item
 
 ## dealing_comments table
 |Column|Type|Options|
 |------|----|-------|
-|dealing_item|references|null: false, foreign_key: true|
+|buyer|references|null: false, foreign_key: {to_table: user}|
+|item|references|null: false, foreign_key: true|
 |text|text|null: false|
 ### Associations
-
-## bought_items table
-|Column|Type|Options|
-|------|----|-------|
-|item|references|null: false, foreign_key: true|
-|buyer|references|null: false, foreign_key: {to_table: users}|
-### Associations
+- belongs_to :user
+- belongs_to :item
 
 ## likes table
 |Column|Type|Options|
@@ -154,37 +159,37 @@ belongs_to :user
 |user|references|null: false, foreign_key: true|
 |item|references|null: false, foreign_key: true|
 ### Associations
-
-## likes table
-|Column|Type|Options|
-|------|----|-------|
-|user|references|null: false, foreign_key: true|
-|item|references|null: false, foreign_key: true|
-### Associations
+- belongs_to :user
+- belongs_to :item
 
 ## shipping_periods table
 |Column|Type|Options|
 |------|----|-------|
 |period|string|limit: 20|
-### Associations
+### Association
+- has_many :items
 
 ## shipping_methods table
 |Column|Type|Options|
 |------|----|-------|
 |method|string|limit: 30|
-### Associations
+### Association
+- has_many :items
 
 ## brands table
 |Column|Type|Options|
 |------|----|-------|
 |name|string|limit: 40|
-### Associations
+### Association
+- has_many :items
 
 ## categories table
 |Column|Type|Options|
 |------|----|-------|
 |name|string|limit: 40|
 ### Associations
+- has_many :items
+- has_many :subcategories
 
 ## subcategories table
 |Column|Type|Options|
@@ -192,6 +197,9 @@ belongs_to :user
 |name|string|limit: 40|
 |category|references|foreign_key: true|
 ### Associations
+- has_many :items
+- beliongs_to :category
+- has_many :sub_subcategories
 
 ## sub_subcategories table
 |Column|Type|Options|
@@ -199,11 +207,17 @@ belongs_to :user
 |name|string|limit: 40|
 |sub_category|references|foreign_key: true|
 ### Associations
+- has_many :items
+- beliongs_to :subcategory
 
 ## prefectures table
 |Column|Type|Options|
 |------|----|-------|
 |name|string|limit: 8|
+### Associations
+- has_many :user_addresses
+- has_many :user_deliveries
+- has_many :items
 
 * Database initialization
 
