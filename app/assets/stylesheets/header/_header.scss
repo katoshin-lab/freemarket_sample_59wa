@@ -2,26 +2,26 @@
 //ヘッダー
 
 .header {
+  padding: (8px);
   min-width: 968px;
-  @include basePadding(8px);
   border-bottom: 1px solid #d8d8d8;
   background-color: white;
   height: 100px;
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
   &__upper {
-    @include baseMargin(0 auto);
-    @include basePadding(0 0 10px 0);
+    margin: (0 auto);
+    padding: (0 0 10px 0);
     width: 70%;
     display: flex;   
     &--logo {
-      @include basePadding(0 20px 0 0);
+      margin-right: (45px);
       width: 134px;
-      height: 30px;
+      height: 36px;
     }
   }
   &__bottom {
-    @include baseMargin(0 auto);
-    @include basePadding(10px 0 0 0);
+    margin: (0 auto);
+    padding: (5px 0 0 0);
     width: 70%;
     display: flex;
     justify-content: space-between;
@@ -32,7 +32,7 @@
         color: $red;
       }
       a { 
-        @include basePadding(10px 10px);
+        padding: (10px 10px);
         font-size: 13px;
         font-weight: bold;
         &:hover {
@@ -43,13 +43,13 @@
     &--right {
       .btn {
         font-size: 14px;
-        @include basePadding(8px 15px);
-        @include baseMargin(5px);
+        padding: (8px 15px);
+        margin: (5px);
       }
       .btn-default {
+        @include border ($accent);
         color: $accent;
         background-color: white;
-        border: 1px solid $accent;
         border-radius: 3px;
         &:hover {
           background-color: $accent;

@@ -2,19 +2,21 @@
 //検索ボックス
 
 .search_container {
-  @include basePadding(3px 8px);
+  @include border($dark);
+  padding: (3px 8px);
   box-sizing: border-box;
   position: relative;
-  border: 1px solid $dark;
   display: block;
   border-radius: 3px;
   height: 40px;
-  width: 59.5vw;
+  width: 56.4vw;
+  border-color: rgb(204, 204, 204);
+  font-size: 16px;
   justify-content: space-between;
   overflow: hidden;
   background-color: $gray;
   &:hover {
-    border: 1px solid $accent;
+    @include border($accent);
   }
   &__text {
     background-color: $gray;

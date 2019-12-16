@@ -10,18 +10,10 @@ $dark: #999;
 
 //mixin
 
-@mixin boxBase($margin: 30px auto, $padding: 10px) {
-  margin: $margin;
-  padding: $padding;
+@mixin border($accent) {
+  border: 1px solid $accent;
 }
 
-@mixin basePadding($padding: 10px) {
-padding: $padding;
-}
-
-@mixin baseMargin($margin: 10px auto) {
-margin: $margin;
-}
 
 
 
