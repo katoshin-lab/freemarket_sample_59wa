@@ -11,20 +11,18 @@
   &__upper {
     @include baseMargin(0 auto);
     @include basePadding(0 0 10px 0);
-    width: 80%;
+    width: 70%;
     display: flex;   
     &--logo {
       @include basePadding(0 20px 0 0);
       width: 134px;
       height: 30px;
-      font-size: 25px;
-      font-family: 'タイトル';
     }
   }
   &__bottom {
     @include baseMargin(0 auto);
-    @include basePadding(10px 40px 0 0);
-    width: 80%;
+    @include basePadding(10px 0 0 0);
+    width: 70%;
     display: flex;
     justify-content: space-between;
     &--left {
