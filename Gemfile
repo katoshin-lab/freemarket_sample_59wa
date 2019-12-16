@@ -42,6 +42,11 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'pry-rails'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'rails-controller-testing'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -62,3 +67,10 @@ gem 'font-awesome-sass'
 group :production do
   gem 'unicorn', '5.4.1'
 end
+
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'devise'
+gem 'haml-rails'
+gem 'font-awesome-sass'
+gem 'fog-aws'
