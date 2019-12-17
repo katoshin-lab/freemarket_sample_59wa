@@ -104,7 +104,6 @@ GEM
     faker (2.8.1)
       i18n (>= 1.6, < 1.8)
     ffi (1.11.3)
-
     fog-aws (3.5.2)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
@@ -272,7 +271,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    temple (0.8.2)
     sshkit (1.20.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
