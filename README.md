@@ -96,7 +96,7 @@ Things you may want to cover:
 |price|integer|null: false|
 |seller|references|null: false, foreign_key: {to_table: users}|
 |is_seller_shipping|boolean|null: false, default: true|
-|shipping_origin|references|null: false, foreign_key: {to_table: prefecture}|
+|prefecture|references|null: false, foreign_key: true|
 |shipping_period|references|null: false, foreign_key: true|
 |shipping_method|references|null: false, foreign_key: true|
 |brand|references|foreign_key: true|
@@ -107,10 +107,9 @@ Things you may want to cover:
 - has_many :images
 - has_many :likes
 - has_many :reports
-- has_one :brand
-- has_one :shipping_method
-- has_one :shipping_period
-- has_one :prefecture
+- belongs_to :brand
+- belongs_to :shipping_method
+- belongs_to :shipping_period
 - belongs_to :category
 - has_many :dealing_comments
 - belongs_to_active_hash :prefecture
