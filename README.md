@@ -155,7 +155,7 @@ Things you may want to cover:
 |image|string|null: false|
 |item|references|foreign_key: true|
 ### Association
-belings_to :item
+belongs_to :item
 
 ## brands table
 |Column|Type|Options|
