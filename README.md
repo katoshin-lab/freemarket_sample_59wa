@@ -92,7 +92,7 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false, limit: 80|
 |detail|text|null: false|
-|main_image|string|null: false|
+|image|string|null: false|
 |condition|string|null: false, limit: 20|
 |price|integer|null: false|
 |seller|references|null: false, foreign_key: {to_table: users}|
@@ -109,7 +109,6 @@ Things you may want to cover:
 - belongs_to :user
 - has_many :likes
 - has_many :reports
-- has_one :other_image
 - has_one :brand
 - has_one :shipping_method
 - has_one :shipping_period
@@ -118,22 +117,6 @@ Things you may want to cover:
 - has_one :subcategory
 - has_one :sub_subcategory
 - has_many :dealing_comments
-
-## other_images table
-|Column|Type|Options|
-|------|----|-------|
-|image1|string||
-|image2|string||
-|image3|string||
-|image4|string||
-|image5|string||
-|image6|string||
-|image7|string||
-|image8|string||
-|image9|string||
-|item|references|foreign_key: true|
-### Association
-- belings_to :item
 
 ## dealing_comments table
 |Column|Type|Options|
