@@ -101,9 +101,7 @@ Things you may want to cover:
 |shipping_period|references|null: false, foreign_key: true|
 |shipping_method|references|null: false, foreign_key: true|
 |brand|references|foreign_key: true|
-|category|references|foreign_key: true|
-|subcategory|references|foreign_key: true|
-|sub_subcategory|references|foreign_key: true|
+|category|references|null: false, foreign_key: true|
 |item_status|integer|null: false, limit: 1|
 ### Associations
 - belongs_to :user
@@ -113,9 +111,7 @@ Things you may want to cover:
 - has_one :shipping_method
 - has_one :shipping_period
 - has_one :prefecture
-- has_one :category
-- has_one :subcategory
-- has_one :sub_subcategory
+- belongs_to :category
 - has_many :dealing_comments
 
 ## dealing_comments table
@@ -162,28 +158,10 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|string|limit: 40|
+|ancestry|string|index: true|
 ### Associations
 - has_many :items
-- has_many :subcategories
-
-## subcategories table
-|Column|Type|Options|
-|------|----|-------|
-|name|string|limit: 40|
-|category|references|foreign_key: true|
-### Associations
-- has_many :items
-- beliongs_to :category
-- has_many :sub_subcategories
-
-## sub_subcategories table
-|Column|Type|Options|
-|------|----|-------|
-|name|string|limit: 40|
-|sub_category|references|foreign_key: true|
-### Associations
-- has_many :items
-- beliongs_to :subcategory
+- has_ancestry
 
 ## prefectures table
 |Column|Type|Options|
