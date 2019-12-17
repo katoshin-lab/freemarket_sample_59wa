@@ -92,7 +92,6 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false, limit: 80|
 |detail|text|null: false|
-|main_image|string|null: false|
 |condition|string|null: false, limit: 20|
 |price|integer|null: false|
 |seller|references|null: false, foreign_key: {to_table: users}|
@@ -153,7 +152,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|item|references|foreign_key: true|
+|item|references|null: false, foreign_key: true|
 ### Association
 belongs_to :item
 
