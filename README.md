@@ -92,7 +92,7 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false, limit: 80|
 |detail|text|null: false|
-|image|string|null: false|
+|main_image|string|null: false|
 |condition|string|null: false, limit: 20|
 |price|integer|null: false|
 |seller|references|null: false, foreign_key: {to_table: users}|
@@ -105,6 +105,7 @@ Things you may want to cover:
 |item_status|integer|null: false, limit: 1|
 ### Associations
 - belongs_to :user
+- has_many :images
 - has_many :likes
 - has_many :reports
 - has_one :brand
@@ -147,6 +148,14 @@ Things you may want to cover:
 |method|string|limit: 30|
 ### Association
 - has_many :items
+
+## images table
+|Column|Type|Options|
+|------|----|-------|
+|image|string|null: false|
+|item|references|foreign_key: true|
+### Association
+belings_to :item
 
 ## brands table
 |Column|Type|Options|
