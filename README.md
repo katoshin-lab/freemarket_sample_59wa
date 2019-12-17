@@ -46,7 +46,7 @@ Things you may want to cover:
 |phone|integer|limit: 5|
 |user|references|null: false, foreign_key: true|
 ### Associations
-- has_one :prefecture
+- belongs_to_active_hash :prefecture
 - belongs_to :user
 
 ## user_real_names table
@@ -76,7 +76,7 @@ Things you may want to cover:
 |user|references|null: false, foreign_key: true|
 ### Associations
 - belongs_to :user
-- has_one :prefecture
+- belongs_to_active_hash :prefecture
 
 ## user_payments table
 |Column|Type|Options|
@@ -97,7 +97,7 @@ Things you may want to cover:
 |price|integer|null: false|
 |seller|references|null: false, foreign_key: {to_table: users}|
 |is_seller_shipping|boolean|null: false, default: true|
-|shipping_origin|references|null: false, foreign_key: {to_table: prefectures}|
+|shipping_origin|references|null: false, foreign_key: {to_table: prefecture}|
 |shipping_period|references|null: false, foreign_key: true|
 |shipping_method|references|null: false, foreign_key: true|
 |brand|references|foreign_key: true|
@@ -113,6 +113,7 @@ Things you may want to cover:
 - has_one :prefecture
 - belongs_to :category
 - has_many :dealing_comments
+- belongs_to_active_hash :prefecture
 
 ## dealing_comments table
 |Column|Type|Options|
@@ -162,15 +163,6 @@ Things you may want to cover:
 ### Associations
 - has_many :items
 - has_ancestry
-
-## prefectures table
-|Column|Type|Options|
-|------|----|-------|
-|name|string|limit: 8|
-### Associations
-- has_many :user_addresses
-- has_many :user_deliveries
-- has_many :items
 
 * Database initialization
 
