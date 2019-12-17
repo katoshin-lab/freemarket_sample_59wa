@@ -104,7 +104,7 @@ Things you may want to cover:
 |category|references|foreign_key: true|
 |subcategory|references|foreign_key: true|
 |sub_subcategory|references|foreign_key: true|
-|item_status|references|foreign_key: true|
+|item_status|integer|null: false, limit: 1|
 ### Associations
 - belongs_to :user
 - has_many :likes
@@ -117,15 +117,7 @@ Things you may want to cover:
 - has_one :category
 - has_one :subcategory
 - has_one :sub_subcategory
-- has_one :item_status
 - has_many :dealing_comments
-
-## item_statuses
-|Column|Type|Options|
-|------|----|-------|
-|status|string|null: false, limit: 20|
-### Association
-- has_many :items
 
 ## other_images table
 |Column|Type|Options|
