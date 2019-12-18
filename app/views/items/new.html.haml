@@ -73,12 +73,12 @@
           = form.select :is_seller_shipping, [["送料込み(出品者負担)", true], ["着払い(購入者負担)", false]], prompt: "---"
 
         .sell__label--follow
-          = form.label :shipping_methods, "配送の方法"
+          = form.label :shipping_method, "配送の方法"
           .sell__required
             必須
         .sell__select_form
           %i.fas.fa-chevron-down
-          = form.select :shipping_methods, [["未定", 1], ["らくらくメルカリ便", 2], ["ゆうメール", 3], ["レターパック", 4], ["普通郵便(定形、定形外)", 5], ["クロネコヤマト", 6], ["ゆうパック", 7], ["クリックポスト", 8], ["ゆうパケット", 9]], prompt: "---"
+          = form.collection_select :shipping_method, @shipping_methods, :id, :shipping_method, prompt: "---"
 
         .sell__label--follow
           = form.label :shipping_origin, "発送元の地域"
@@ -86,15 +86,15 @@
             必須
         .sell__select_form
           %i.fas.fa-chevron-down
-          = form.collection_select :shipping_origin, Prefecture.all, :id, :name, prompt: "---"
+          = form.collection_select :shipping_origin, @prefectures, :id, :name, prompt: "---"
 
         .sell__label--follow
-          発送までの日数
+          = form.label :shipping_period, "発送までの日数"
           .sell__required
             必須
         .sell__select_form
           %i.fas.fa-chevron-down
-          = form.select :shipping_period, [["1~2日で発送", 1], ["2~3日で発送", 2], ["4~7日で発送", 3]], prompt: "---"
+          = form.collection_select :shipping_period, @shipping_periods, :id, :period, prompt: "---"
 
     .sell__content
       .sell__left_box
