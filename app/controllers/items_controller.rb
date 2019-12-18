@@ -4,5 +4,8 @@ class ItemsController < ApplicationController
 
   def new
     @item = ""
+    @prefectures = Prefecture.all
+    @shipping_methods = ShippingMethod.all
+    @shipping_periods = ShippingPeriod.all
   end
 end
