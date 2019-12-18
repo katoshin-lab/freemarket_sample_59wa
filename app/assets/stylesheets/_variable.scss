@@ -1,0 +1,15 @@
+//色の定義
+
+$red: #EA352d;
+$white: #ffffff;
+$accent: #0099E8;
+$black: black;
+$gray: rgb(245, 245, 245);
+$dark: #999;
+
+
+//mixin
+
+@mixin border($accent) {
+  border: 1px solid $accent;
+}

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+  root 'homes#index'
   resources :items, only: [:index, :new]
-  root to: 'items#index'
 
   resources :signups, only: [:new]
 end
