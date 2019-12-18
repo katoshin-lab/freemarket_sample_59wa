@@ -1,5 +1,5 @@
 
-.header {
+.signup-header {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,13 +91,12 @@
 }
 
 //ナビゲーション部分
-.footer {
+.signup-footer {
   position: relative;
   width: 400px;
   height: calc(100vh - 478px);
   margin: 0 auto;
   font-size: 12px;
-
   &__navbar {
     display: flex;
     position: absolute;
