@@ -3,6 +3,4 @@ Rails.application.routes.draw do
 
   resources :signups;
 
-  get "/tests/" => "tests#index"
-  root to: 'tests#index'
 end
