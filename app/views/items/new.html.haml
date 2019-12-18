@@ -40,10 +40,13 @@
           .sell__required
             必須
         .sell__select_form
+          %i.fas.fa-chevron-down
           = form.select :category, [["レディース", 1], ["メンズ", 2], ["ベビー・キッズ", 3], ["インテリア・住まい・小物", 4], ["本・音楽・ゲーム", 5], ["おもちゃ・ホビー・グッズ", 6], ["コスメ・香水・美容", 7]], prompt: "---"
         .sell__select_form
+          %i.fas.fa-chevron-down
           = form.select :subcategory, [["トップス", 1], ["ジャケット/アウター", 2]], prompt: "---"
         .sell__select_form
+          %i.fas.fa-chevron-down
           = form.select :sub_subcategory, [["その他", 1]], prompt: "---"
 
         .sell__label--follow
@@ -51,6 +54,7 @@
           .sell__required
             必須
         .sell__select_form
+          %i.fas.fa-chevron-down
           = form.select :condition, [["新品、未使用"], ["未使用に近い"], ["目立った傷や汚れなし"], ["やや傷や汚れあり"], ["傷や汚れあり"], ["全体的に状態が悪い"]], prompt: "---"
         
     .sell__content
@@ -65,6 +69,7 @@
           .sell__required
             必須
         .sell__select_form
+          %i.fas.fa-chevron-down
           = form.select :is_seller_shipping, [["送料込み(出品者負担)", true], ["着払い(購入者負担)", false]], prompt: "---"
 
         .sell__label--follow
@@ -72,6 +77,7 @@
           .sell__required
             必須
         .sell__select_form
+          %i.fas.fa-chevron-down
           = form.select :shipping_methods, [["未定", 1], ["らくらくメルカリ便", 2], ["ゆうメール", 3], ["レターパック", 4], ["普通郵便(定形、定形外)", 5], ["クロネコヤマト", 6], ["ゆうパック", 7], ["クリックポスト", 8], ["ゆうパケット", 9]], prompt: "---"
 
         .sell__label--follow
@@ -79,16 +85,16 @@
           .sell__required
             必須
         .sell__select_form
+          %i.fas.fa-chevron-down
           = form.collection_select :shipping_origin, Prefecture.all, :id, :name, prompt: "---"
 
         .sell__label--follow
           発送までの日数
           .sell__required
             必須
-        %i.icon-arrow-bottom
         .sell__select_form
+          %i.fas.fa-chevron-down
           = form.select :shipping_period, [["1~2日で発送", 1], ["2~3日で発送", 2], ["4~7日で発送", 3]], prompt: "---"
-          -# = form.collection_select :shipping_period, ShippingPeriod.all, :id, :period, prompt: "---"
 
     .sell__content
       .sell__left_box

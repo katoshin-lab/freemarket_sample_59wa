@@ -160,6 +160,7 @@ $link: #0099e8;
     }
   }
   &__select_form {
+    position: relative;
     select {
       @include form_default;
       cursor: pointer;
@@ -172,6 +173,18 @@ $link: #0099e8;
         display: none;
       }
     }
+    .fa-chevron-down {
+      position: absolute;
+      right: 16px;
+      top: 57%;
+      z-index: 1;
+      color: #777;
+      font-size: 16px;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+      pointer-events: none;
+  }
+
     // #subcategory {
     //   display: none;
     // }
