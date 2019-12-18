@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
   root 'homes#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-  get "/tests/" => "tests#index"
-  root to: 'tests#index'
+  resources :items, only: [:index, :new]
 end
