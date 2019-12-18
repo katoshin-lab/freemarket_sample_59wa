@@ -144,6 +144,12 @@
       = form.submit "出品する", class: "sell__button--submit"
       .sell__button--cansel
         もどる
-
-  .footer
--# = render partial: "footer"
+  .sell__footer 
+    .sell__footer--link
+      = link_to "プライバシーポリシー", root_path
+      = link_to "フリーマーケット利用規約", root_path
+      = link_to "特定商取引に関する表記", root_path
+    .sell__footer--img
+      = link_to image_tag("logo_gray.svg", size: "90x90", class: "img"), "https://www.mercari.com/jp/"
+    .sell__footer--text
+      © Freemarket, Inc. 
