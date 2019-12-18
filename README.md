@@ -143,7 +143,7 @@ Things you may want to cover:
 ## shipping_methods table
 |Column|Type|Options|
 |------|----|-------|
-|method|string|limit: 30|
+|shipping_method|string|limit: 30|
 ### Association
 - has_many :items
 
