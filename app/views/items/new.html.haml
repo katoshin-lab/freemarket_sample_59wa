@@ -35,21 +35,21 @@
       .sell__left_box
         商品の詳細
       .sell__right_box
-        .sell__label
-          = form.label :category, "カテゴリー"
-          .sell__required
-            必須
-        .sell__select_form
-          %i.fas.fa-chevron-down
-          = form.select :category, [["レディース", 1], ["メンズ", 2], ["ベビー・キッズ", 3], ["インテリア・住まい・小物", 4], ["本・音楽・ゲーム", 5], ["おもちゃ・ホビー・グッズ", 6], ["コスメ・香水・美容", 7]], prompt: "---"
-        .sell__select_form
-          %i.fas.fa-chevron-down
-          = form.select :subcategory, [["トップス", 1], ["ジャケット/アウター", 2]], prompt: "---"
-        .sell__select_form
-          %i.fas.fa-chevron-down
-          = form.select :sub_subcategory, [["その他", 1]], prompt: "---"
+        -# .sell__label
+        -#   = form.label :category, "カテゴリー"
+        -#   .sell__required
+        -#     必須
+        -# .sell__select_form
+        -#   %i.fas.fa-chevron-down
+        -#   = form.select :category, [["レディース", 1], ["メンズ", 2], ["ベビー・キッズ", 3], ["インテリア・住まい・小物", 4], ["本・音楽・ゲーム", 5], ["おもちゃ・ホビー・グッズ", 6], ["コスメ・香水・美容", 7]], prompt: "---"
+        -# .sell__select_form
+        -#   %i.fas.fa-chevron-down
+        -#   = form.select :subcategory, [["トップス", 1], ["ジャケット/アウター", 2]], prompt: "---"
+        -# .sell__select_form
+        -#   %i.fas.fa-chevron-down
+        -#   = form.select :sub_subcategory, [["その他", 1]], prompt: "---"
 
-        .sell__label--follow
+        .sell__label
           = form.label :condition, "商品の状態"
           .sell__required
             必須
