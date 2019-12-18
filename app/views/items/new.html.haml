@@ -1,0 +1,143 @@
+.sell
+  .sell__header
+    = link_to image_tag("fmarket_logo_red.svg"), root_path
+
+  = form_for @item do |form|
+    .sell__title
+      商品の情報を入力
+    .sell__content
+      .sell__image_label
+        出品画像
+        .sell__required
+          必須
+        .sell__text
+          最大10枚までアップロードできます
+        .sell__upload#image-area
+          ドラッグアンドドロップ
+          またはクリックしてファイルをアップロード
+
+    .sell__content
+      .sell__label
+        = form.label :name, "商品名"
+        .sell__required
+          必須
+        .sell__text_field
+          = form.text_field :name, placeholder: "商品名（必須、40文字まで）"
+
+      .sell__label--follow
+        = form.label :detail, "商品の説明"
+        .sell__required
+          必須
+        .sell__text_area
+          = form.text_area :detail, placeholder: "商品の説明（必須、1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+
+    .sell__content
+      .sell__left_box
+        商品の詳細
+      .sell__right_box
+
+        .sell__label
+          = form.label :condition, "商品の状態"
+          .sell__required
+            必須
+        .sell__select_form
+          %i.fas.fa-chevron-down
+          = form.select :condition, [["新品、未使用"], ["未使用に近い"], ["目立った傷や汚れなし"], ["やや傷や汚れあり"], ["傷や汚れあり"], ["全体的に状態が悪い"]], prompt: "---"
+        
+    .sell__content
+      .sell__left_box
+        配送について
+        .sell__info
+          = link_to root_path do
+            ?
+      .sell__right_box
+        .sell__label
+          = form.label :is_seller_shipping, "発送料の負担"
+          .sell__required
+            必須
+        .sell__select_form
+          %i.fas.fa-chevron-down
+          = form.select :is_seller_shipping, [["送料込み(出品者負担)", true], ["着払い(購入者負担)", false]], prompt: "---"
+
+        .sell__label--follow
+          = form.label :shipping_method, "配送の方法"
+          .sell__required
+            必須
+        .sell__select_form
+          %i.fas.fa-chevron-down
+          = form.collection_select :shipping_method, @shipping_methods, :id, :shipping_method, prompt: "---"
+
+        .sell__label--follow
+          = form.label :shipping_origin, "発送元の地域"
+          .sell__required
+            必須
+        .sell__select_form
+          %i.fas.fa-chevron-down
+          = form.collection_select :shipping_origin, @prefectures, :id, :name, prompt: "---"
+
+        .sell__label--follow
+          = form.label :shipping_period, "発送までの日数"
+          .sell__required
+            必須
+        .sell__select_form
+          %i.fas.fa-chevron-down
+          = form.collection_select :shipping_period, @shipping_periods, :id, :period, prompt: "---"
+
+    .sell__content
+      .sell__left_box
+        販売価格(300~9,999,999)
+        .sell__info
+          = link_to root_path do
+            ?
+      .sell__right_box
+        .sell__label--price
+          価格
+          .sell__required
+            必須
+        .sell__text_field--price
+          = form.text_field :price, placeholder: "例）10000"
+        .sell__yen_mark
+          ¥
+      .sell__right_box--follow
+        .sell__label--charge
+          販売手数料(10%)
+        .sell__charge
+          ¥1,000
+      .sell__right_box--follow
+        .sell__label--gain
+          販売利益
+        .sell__gain
+          ¥9,000
+    .sell__content
+      .sell__attention
+        %span><
+          = link_to "禁止されている出品", root_path, target: "_blank"
+        、
+        %span><
+          = link_to "行為", root_path, target: "_blank"
+        を必ずご確認ください。
+      .sell__attention
+        %span><
+          またブランド品でシリアルナンバー等がある場合はご記載ください。
+        %span><
+          = link_to "偽ブランドの販売", root_path, target: "_blank"
+        %span><
+          は犯罪であり処罰される可能性があります。
+      .sell__attention
+        また、出品をもちまして
+        %span><
+          = link_to "加盟店規約", root_path, target: "_blank"
+        に同意したことになります。
+      = form.submit "出品する", class: "sell__button--submit"
+      .sell__button--cansel
+        もどる
+  .sell__footer 
+    .sell__footer--link
+      = link_to "プライバシーポリシー", root_path
+      = link_to "フリーマーケット利用規約", root_path
+      = link_to "特定商取引に関する表記", root_path
+    .sell__footer--img
+      = link_to image_tag("logo_gray.svg", size: "90x90", class: "img"), "https://www.mercari.com/jp/"
+    .sell__footer--text
+      © Freemarket, Inc. 
+      
