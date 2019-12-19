@@ -35,8 +35,21 @@
       .sell__left_box
         商品の詳細
       .sell__right_box
-
         .sell__label
+          = form.label :category, "カテゴリー"
+          .sell__required
+            必須
+        .sell__select_form
+          %i.fas.fa-chevron-down
+          = form.collection_select :category, @categories, :id, :name, prompt: "---"
+        -# .sell__select_form
+        -#   %i.fas.fa-chevron-down
+        -#   = form.collection_select :subcategory, @subcategories, :id, :name, prompt: "---"
+        -# .sell__select_form
+        -#   %i.fas.fa-chevron-down
+        -#   = form.collection_select :sub_subcategory, @sub_subcategories, :id, :name, prompt: "---"
+
+        .sell__label--follow
           = form.label :condition, "商品の状態"
           .sell__required
             必須
@@ -101,13 +114,13 @@
       .sell__right_box--follow
         .sell__label--charge
           販売手数料(10%)
-        .sell__charge
-          ¥1,000
+        .sell__charge#charge
+          \-
       .sell__right_box--follow
         .sell__label--gain
           販売利益
-        .sell__gain
-          ¥9,000
+        .sell__gain#gain
+          \-
     .sell__content
       .sell__attention
         %span><
@@ -140,4 +153,3 @@
       = link_to image_tag("logo_gray.svg", size: "90x90", class: "img"), "https://www.mercari.com/jp/"
     .sell__footer--text
       © Freemarket, Inc. 
-      
