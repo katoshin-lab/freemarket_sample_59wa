@@ -72,13 +72,14 @@
           %i.fas.fa-chevron-down
           = form.select :is_seller_shipping, [["送料込み(出品者負担)", true], ["着払い(購入者負担)", false]], prompt: "---"
 
-        .sell__label--follow
-          = form.label :shipping_method, "配送の方法"
-          .sell__required
-            必須
-        .sell__select_form
-          %i.fas.fa-chevron-down
-          = form.collection_select :shipping_method, @shipping_methods, :id, :shipping_method, prompt: "---"
+        .sell__hidden#method
+          .sell__label--follow
+            = form.label :shipping_method, "配送の方法"
+            .sell__required
+              必須
+          .sell__select_form
+            %i.fas.fa-chevron-down
+            = form.select :shipping_method, {}, prompt: "---"
 
         .sell__label--follow
           = form.label :shipping_origin, "発送元の地域"
