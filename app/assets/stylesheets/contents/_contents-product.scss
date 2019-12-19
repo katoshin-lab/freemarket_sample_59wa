@@ -1,0 +1,42 @@
+//商品一覧の全体
+
+.contents-product {
+  padding: (30px 0 20px 0);
+  max-width: 1020px;
+  margin: (0 auto);
+  width: 75%;
+  position: relative;
+  &__title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    h5 {
+      padding: (10px);
+      font-weight: bold;
+      font-size: 24px;
+    }
+    &--detail {
+      padding: (5px 16px 5px 5px);
+      margin: (0 0 16px 0);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      color: $accent;
+      font-weight: bold;
+      color: $accent;
+    }
+    a {
+      padding: (0 5px 0 0);
+      color: $accent;
+    }
+  }
+  &__items {
+    padding: 10px;
+    &--list {
+    margin: (-10px);
+    min-width: 768px;
+    display: flex;
+    flex-wrap: wrap;
+   }
+  }
+}
