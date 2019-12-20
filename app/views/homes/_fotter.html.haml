@@ -1,0 +1,75 @@
+%fotter.fotter
+  .fotter__nav
+    .fotter__nav--left
+      %h6
+        メルカリについて
+      %ul.contact-details
+        %li.contact-details__text
+          = link_to "会社概要(運営会社)", "#" , class: "contact-details__text--link"
+        %li.contact-details__text
+          = link_to "採用情報", "#" , class: "contact-details__text--link"
+        %li.contact-details__text
+          = link_to "プレリリース", "#" , class: "contact-details__text--link"
+        %li.contact-details__text
+          = link_to "公式ブログ", "#" , class: "contact-details__text--link"
+        %li.contact-details__text
+          = link_to "メルカリロゴデザインガイドライン", "#" , class: "contact-details__text--link"           
+        %i.fab.fa-twitter
+        %i.fab.fa-facebook-square
+    .fotter__nav--left
+      %h6
+        ヘルプ&ガイド
+      %ul.contact-details
+        %li.contact-details__text
+          = link_to "メルカリガイド", "#" , class: "contact-details__text--link"
+        %li.contact-details__text
+          = link_to "らくらくメルカリ便", "#" , class: "contact-details__text--link" 
+        %li.contact-details__text
+          = link_to "ゆうゆうメルカリ便", "#" , class: "contact-details__text--link"
+        %li.contact-details__text
+          = link_to "大型メルカリ便", "#" , class: "contact-details__text--link"
+        %li.contact-details__text
+          = link_to "車体取引ガイド", "#" , class: "contact-details__text--link"
+        %li.contact-details__text
+          = link_to "メルカリあんしん・あんぜん宣言！", "#" , class: "contact-details__text--link"
+        %li.contact-details__text
+          = link_to "偽ブランド品撲滅への取り組み", "#" , class: "contact-details__text--link"    
+        %li.contact-details__text
+          = link_to "メルカリボックス", "#" , class: "contact-details__text--link"                  
+    .fotter__nav--right
+      %h6
+        プライバシーと利用規約
+      %ul.contact-details
+        %li.contact-details__text
+          = link_to "プライバシーポリシー", "#" , class: "contact-details__text--link"
+        %li.contact-details__text
+          = link_to "メルカリ利用規約", "#" , class: "contact-details__text--link" 
+        %li.contact-details__text
+          = link_to "安心スマホサポート制度に関する利用規約", "#" , class: "contact-details__text--link"
+        %li.contact-details__text
+          = link_to "コンプライアンスポリシー", "#" , class: "contact-details__text--link"
+    .fotter__nav--right
+      %h6
+        　
+      %ul.contact-details
+        %li.contact-details__text
+          = link_to "個人データの安全管理に係る基本方針", "#" , class: "contact-details__text--link"
+        %li.contact-details__text
+          = link_to "特定商取引に関する表記", "#" , class: "contact-details__text--link" 
+        %li.contact-details__text
+          = link_to "資金決済法に基づく表示", "#" , class: "contact-details__text--link"
+        %li.contact-details__text
+          = link_to "法令順守と犯罪抑止のために", "#" , class: "contact-details__text--link"
+    .fotter__nav--right
+      %h6
+        国
+      %ul.contact-details
+        %li.contact-details__text
+          = link_to "日本", "#" ,  class: "contact-details__text--link" 
+        %li.contact-details__text
+          = link_to "united state", "#" ,  class: "contact-details__text--link" 
+  .fotter__logo 
+    = link_to image_tag("logo_white.svg", class: "fotter__logo--image"), "/"
+    = link_to "Fmarket", root_path , class: "fotter__logo--text"
+    .fotter__logo--bottom
+      @Fmarket,lnc.

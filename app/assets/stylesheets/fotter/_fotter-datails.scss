@@ -1,0 +1,22 @@
+//補足を細かくした情報
+
+.contact-details {
+  &__text {
+    margin-top: 16px;
+    line-height: 1.4rem;
+    &--link {
+      color: $lightgray;
+      font-size: 12px;
+      opacity: 0.7;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  i {
+    display: inline-block;
+    margin: (30px 20px 0 0);
+    width: 30px;
+    font-size: 30px;
+  }
+}
