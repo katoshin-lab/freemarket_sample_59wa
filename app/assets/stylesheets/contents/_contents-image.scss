@@ -39,11 +39,19 @@
     font-size: 50px;
   }
   &__title {
-    margin: (0px auto);
-    padding: (20px 100px 0 100px);
-    max-width: 1068px;
+    -webkit-box-align: center;
+    align-items: center;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 0 0 0;
     font-size: 60px;
-    width: 100%; 
+    color: #333333;
+    &--text {
+      width: 500px;
+      height: 340px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     p {
       padding-top: 20px;
       font-size: 18px;
