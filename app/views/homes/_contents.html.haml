@@ -1,0 +1,43 @@
+.contents
+  .contents-image
+    %i.contents-image__left.fas.fa-chevron-left
+    %i.contents-image__right.fas.fa-chevron-right
+    .contents-image__title
+      .contents-image__title--text
+        %h3
+          フリーマケット
+          %br 　サイト
+        %p 
+          フリーマケットサイトです。ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+  .contents-category
+    %h4
+      人気のカテゴリー
+    %ul.contents-category__box
+      %li レディース
+      %li メンズ
+      %li 家電・スマホ・カメラ
+      %li おもちゃ・ホビー・グッズ 
+  .contents-product
+    .contents-product__title
+      %h5 全商品一覧
+      .contents-product__title--detail
+        = link_to "もっと見る", root_path, class: "show" 
+        %i.icon.fas.fa-chevron-right
+    .contents-product__items
+      %ul.contents-product__items--list
+        %li.box-list
+          = link_to root_path do
+            .box-list__upper
+              = image_tag "test3.jpg"
+              .box-list__upper--price
+                %span ¥3,000
+              .box-list__bottom 
+                %span ああああああああああああああああああああああああああああああああああああああああ
+  .contents-bottom-image
+    %p.contents-bottom-image__text
+= link_to "/" do
+  .btn-exhibit
+    .btn-exhibit__box
+      %p.btn-exhibit--text
+        出品
+      %i.fas.fa-camera

@@ -1,0 +1,60 @@
+
+//ボディ部分
+.wrapper {
+  background-color: $gray;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.contents {
+  min-width: 1020px;
+  height: 100%;
+  background-color: $gray;
+}
+
+//ボディのトップ画像
+
+.contents-image {
+  width: 100%;
+  height: 390px;
+  background: url("shopping.jpg");
+  background-size: contain;
+  position: relative;
+  background-color: white;
+  &__left {
+    margin: (0 0 0 60px);
+    color: white;
+    position: absolute;
+    cursor: pointer;
+    top: 40%;
+    font-size: 50px;
+  }
+  &__right {
+    margin: (0 60px 0 0);
+    position: absolute;
+    cursor: pointer;
+    color: white;
+    top: 40%;
+    right: 0;
+    font-size: 50px;
+  }
+  &__title {
+    -webkit-box-align: center;
+    align-items: center;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 0 0 0;
+    font-size: 60px;
+    color: #333333;
+    &--text {
+      width: 500px;
+      height: 340px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    p {
+      padding-top: 20px;
+      font-size: 18px;
+    }
+  }
+}
