@@ -12,6 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   POST /resource
   def create
     super
+    redirect_to sms_authentication_signups_path
   end
 
   # GET /resource/edit
