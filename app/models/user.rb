@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   has_one :user_address
-  has_one :user_real_name
+  has_one :user_identification
   has_one :user_delivery
   has_many :user_payments
   has_many :likes
