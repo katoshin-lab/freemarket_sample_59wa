@@ -1,4 +1,4 @@
-= render partial: "shared/header"
+= render partial: "devise/shared/header"
 .login
   .login__panel
     .login__panel--no-content
@@ -14,7 +14,7 @@
     
       .login__panel--form--inner
         .login__panel--form--inner--group
-          = form_for @signup do |f|
+          = form_for  do |f|
             = f.email_field :email, placeholder: "メールアドレス", class: "login-input-mail"
             = f.password_field :password, placeholder: "パスワード", class: "login-input-pass"
             .g-recaptcha{"data-callback" => "onsubmit", "data-sitekey" => "6LfCy8gUAAAAAMHf44uPoYHjfLUKFWIs6UWyGRJN"}
@@ -23,4 +23,4 @@
           -# = link_to "ログイン", "http://localhost:3000/signups/new", class: "btn-login"
           -# = link_to "パスワードをお忘れの方", "", class: "btn-forgot"
           
-= render partial: "shared/footer"
+= render partial: "devise/shared/footer"
