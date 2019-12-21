@@ -49,13 +49,14 @@ Things you may want to cover:
 - belongs_to_active_hash :prefecture
 - belongs_to :user
 
-## user_real_names table
+## user_identifications table
 |Column|Type|Options|
 |------|----|-------|
 |last_name|string|null: false, limit: 40|
 |first_name|string|null: false, limit: 40|
 |last_name_kana|string|null: false, limit: 40|
 |first_name_kana|string|null: false, limit: 40|
+|mobile_phone_number|integer|null: false, limit: 5|
 |user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
