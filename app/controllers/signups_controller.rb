@@ -1,13 +1,8 @@
 class SignupsController < ApplicationController
-
-  def new
-    @user = User.new
-  end
-
   def sms_authentication
   end
 
-  def sms_confirmation
+  def sms_post
+    @user_identification = User_identification.new
   end
-  
 end
