@@ -1,0 +1,26 @@
+= render partial: "shared/header"
+.login
+  .login__panel
+    .login__panel--no-content
+      %p アカウントをお持ちでない方はこちら
+      = link_to "新規会員登録", "http://localhost:3000/signups/new", class: "blue"
+    .login__panel--form
+      .login__panel--form--btn-sns-facebook 
+        %i.fab.fa-facebook-square.fa-2x
+        Facebookでログイン
+      .login__panel--form--btn-google
+        %i.fab.fa-google.fa-lg
+        Googleでログイン
+    
+      .login__panel--form--inner
+        .login__panel--form--inner--group
+          = form_for @signup do |f|
+            = f.email_field :email, placeholder: "メールアドレス", class: "login-input-mail"
+            = f.password_field :password, placeholder: "パスワード", class: "login-input-pass"
+            .g-recaptcha{"data-callback" => "onsubmit", "data-sitekey" => "6LfCy8gUAAAAAMHf44uPoYHjfLUKFWIs6UWyGRJN"}
+          -# %input.login-input-mail{name: "", placeholder: "メールアドレス", type: "email", value: ""}
+          -# %input.login-input-pass{name: "", placeholder: "パスワード", type: "password", value: ""}
+          -# = link_to "ログイン", "http://localhost:3000/signups/new", class: "btn-login"
+          -# = link_to "パスワードをお忘れの方", "", class: "btn-forgot"
+          
+= render partial: "shared/footer"
