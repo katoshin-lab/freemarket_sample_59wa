@@ -105,18 +105,66 @@ $link: #0099e8;
     font-weight: normal;
   }
 
-  &__upload {
-    width: 100%;
-    height: 80px;
-    margin-top: 20px;
-    padding: 40px 0;
+  &__image_container {
+    width: 116px;
+    height: 160px;
+    box-sizing: border-box;
+    margin: 20px 8px 0 0;
+    padding: 0;
     background-color: $gray;
-    border: dashed 1px $darkgray;
+    border: #eee 1px solid;
+    float: left;
+  }
+  &__image {
+    width: 114px;
+    height: 114px;
     text-align: center;
-    font-family: monospace;
-    white-space: pre;
-    font-weight: normal;
+    img {
+      display: inline;
+      max-width: 116px;
+      max-height: 116px;
+      margin: auto
+    }
+  }
+  &__image_btn {
+    width: 57px;
+    height: 44px;
+    box-sizing: border-box;
+    cursor: pointer;
     font-size: 14px;
+    text-align: center;
+    line-height: 44px;
+    a {
+      color: $link;
+    }
+    &--edit {
+      @extend .sell__image_btn;
+      float: left;
+      border-right: #eee 1px solid;
+
+    }
+    &--delete {
+      @extend .sell__image_btn;
+      float: right;
+    }
+  }
+
+  &__upload {
+    &--drop_box {
+      width: calc(100% - 128px);
+      height: 160px;
+      margin-top: 20px;
+      padding: 40px 0;
+      background-color: $gray;
+      border: dashed 1px $darkgray;
+      text-align: center;
+      font-family: monospace;
+      white-space: pre;
+      font-weight: normal;
+      font-size: 14px;
+      float: right;
+      box-sizing: border-box;
+    }
   }
   &__text_field {
     input {

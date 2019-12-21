@@ -12,7 +12,14 @@
           必須
         .sell__text
           最大10枚までアップロードできます
-        .sell__upload#image-area
+        .sell__image_container
+          .sell__image
+            = image_tag ("sample.jpg")
+          .sell__image_btn--edit
+            = link_to '編集', root_path
+          .sell__image_btn--delete
+            = link_to '削除'
+        .sell__upload--drop_box#image-area
           ドラッグアンドドロップ
           またはクリックしてファイルをアップロード
 
@@ -42,12 +49,6 @@
         .sell__select_form
           %i.fas.fa-chevron-down
           = form.collection_select :category, @categories, :id, :name, prompt: "---"
-        -# .sell__select_form
-        -#   %i.fas.fa-chevron-down
-        -#   = form.collection_select :subcategory, @subcategories, :id, :name, prompt: "---"
-        -# .sell__select_form
-        -#   %i.fas.fa-chevron-down
-        -#   = form.collection_select :sub_subcategory, @sub_subcategories, :id, :name, prompt: "---"
 
         .sell__label--follow
           = form.label :condition, "商品の状態"
@@ -153,4 +154,4 @@
     .sell__footer--img
       = link_to image_tag("logo_gray.svg", size: "90x90", class: "img"), "https://www.mercari.com/jp/"
     .sell__footer--text
-      © Freemarket, Inc. 
+      © Freemarket, Inc.
