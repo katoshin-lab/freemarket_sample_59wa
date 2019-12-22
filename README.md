@@ -22,11 +22,14 @@ Things you may want to cover:
 |email|string|null: false, unique: true, limit: 256|
 |password|string|null: false, limit: 128|
 |birthday|date|null: false|
-|is_identificated|boolean|null: false, default: false|
+|last_name|string|null: false, limit: 40|
+|first_name|string|null: false, limit: 40|
+|last_name_kana|string|null: false, limit: 40|
+|first_name_kana|string|null: false, limit: 40|
+|mobile_phone_number|integer|null: false, limit: 5|
 |profile|text||
 ### Associations
 - has_one :user_address
-- has_one :user_real_name
 - has_one :user_delivery
 - has_many :user_payments
 - has_many :likes
@@ -47,18 +50,6 @@ Things you may want to cover:
 |user|references|null: false, foreign_key: true|
 ### Associations
 - belongs_to_active_hash :prefecture
-- belongs_to :user
-
-## user_identifications table
-|Column|Type|Options|
-|------|----|-------|
-|last_name|string|null: false, limit: 40|
-|first_name|string|null: false, limit: 40|
-|last_name_kana|string|null: false, limit: 40|
-|first_name_kana|string|null: false, limit: 40|
-|mobile_phone_number|integer|null: false, limit: 5|
-|user|references|null: false, foreign_key: true|
-### Association
 - belongs_to :user
 
 ## user_deliveries table
