@@ -4,8 +4,6 @@
   align-items: center;
   justify-content: center;
   height: 128px;
-  font-size: 35px;
-  color: #333;
 }
 
 //新規登録・SNS登録部分
@@ -101,7 +99,7 @@
     display: flex;
     position: absolute;
     top: 170px;
-    left: 10px;
+    right: -15px;
     white-space: nowrap;
 
     @mixin nav {
