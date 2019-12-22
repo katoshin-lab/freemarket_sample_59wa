@@ -10,24 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_21_033457) do
-
-  create_table "user_identifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "last_name", limit: 40, null: false
-    t.string "first_name", limit: 40, null: false
-    t.string "last_name_kana", limit: 40, null: false
-    t.string "first_name_kana", limit: 40, null: false
-    t.bigint "mobile_phone_number", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_identifications_on_user_id"
-  end
+ActiveRecord::Schema.define(version: 2019_12_18_094656) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 40, null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "last_name", limit: 40, null: false
+    t.string "first_name", limit: 40, null: false
+    t.string "last_name_kana", limit: 40, null: false
+    t.string "first_name_kana", limit: 40, null: false
+    t.bigint "mobile_phone_number", default: 0, null: false
     t.date "birthday", null: false
     t.text "profile"
     t.string "reset_password_token"
