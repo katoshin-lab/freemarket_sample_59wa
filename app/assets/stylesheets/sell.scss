@@ -109,7 +109,7 @@ $link: #0099e8;
     width: 116px;
     height: 160px;
     box-sizing: border-box;
-    margin: 20px 8px 0 0;
+    margin: 20px 12px 0 0;
     padding: 0;
     background-color: $gray;
     border: #eee 1px solid;
@@ -119,10 +119,12 @@ $link: #0099e8;
     width: 114px;
     height: 114px;
     text-align: center;
+    line-height: 114px;
     img {
       display: inline;
-      max-width: 116px;
-      max-height: 116px;
+      vertical-align: middle;
+      max-width: 114px;
+      max-height: 114px;
       margin: auto
     }
   }
@@ -151,19 +153,22 @@ $link: #0099e8;
 
   &__upload {
     &--drop_box {
-      width: calc(100% - 128px);
+      width: calc(100% - 384px);
       height: 160px;
       margin-top: 20px;
-      padding: 40px 0;
+      padding: 10px;
       background-color: $gray;
       border: dashed 1px $darkgray;
-      text-align: center;
-      font-family: monospace;
-      white-space: pre;
-      font-weight: normal;
-      font-size: 14px;
       float: right;
       box-sizing: border-box;
+      display: flex;
+      align-items: center;
+    }
+    &--text {
+      text-align: center;
+      font-weight: normal;
+      font-size: 14px;
+      flex: 1;
     }
   }
   &__text_field {
