@@ -12,23 +12,8 @@
           必須
         .sell__text
           最大10枚までアップロードできます
-        .sell__image_container
-          .sell__image
-            = image_tag ("sample.jpg")
-          .sell__image_btn--edit
-            = link_to '編集', root_path
-          .sell__image_btn--delete
-            = link_to '削除'
-        .sell__image_container
-          .sell__image
-            = image_tag ("sample.jpg")
-          .sell__image_btn--edit
-            = link_to '編集', root_path
-          .sell__image_btn--delete
-            = link_to '削除'
-        .sell__image_container
-          .sell__image
-            = image_tag ("sample.jpg")
+        .sell__image_box
+          .sell__image#image1
           .sell__image_btn--edit
             = link_to '編集', root_path
           .sell__image_btn--delete
@@ -38,6 +23,7 @@
             ドラッグアンドドロップ
             %br
             またはクリックしてファイルをアップロード
+          = form.file_field :upload_image, id: "upload_image", multiple: true
 
     .sell__content
       .sell__label

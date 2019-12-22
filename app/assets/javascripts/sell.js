@@ -1,5 +1,20 @@
 $(function() {
 
+  $('#upload_image').on('change', $(this), function(e) {
+    file = e.target.files[0]
+    reader = new FileReader();
+
+    reader.onload = (function(file) {
+      return function(e) {
+        $("#image1").append($('<img>').attr({
+          src: e.target.result,
+          title: file.name
+        }));
+      };
+    })(file);
+    reader.readAsDataURL(file);
+  });
+
 
   $('#is_seller_shipping').on('change', function() {
     var seller_shipping = $('#is_seller_shipping option:selected').val()
