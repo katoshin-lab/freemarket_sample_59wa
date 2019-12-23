@@ -8,6 +8,9 @@
   padding: 16px;
   color: #333;
   border-bottom: 1px solid #eee;
+  &:hover {
+    background: #eee;
+  }
    &__image {
     position: relative;
     overflow: hidden;

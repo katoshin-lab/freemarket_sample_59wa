@@ -15,7 +15,7 @@
     &__icon {
       padding: 20px;
       height: 200px;
-      background: #eee;
+      background: pink;
       position: relative;
       text-align: center;
   a {
@@ -26,9 +26,12 @@
       right: 0;
       transform: translate(0, -50%);
       color: #333;
+      &:hover {
+        color: gray;
+        text-decoration: underline;
+      }
     i {
         font-size: 3em;
-        color: #888;
         overflow: hidden;
         width: 60px;
         height: 60px;
