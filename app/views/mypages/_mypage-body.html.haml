@@ -10,4 +10,14 @@
           %span 0 
           出品数
           %span 0
+    .mypage-tabs
+    %ul.mypage-tabs__box
+      %li.mypage-tabs__box--text
+        %h3.mypage-tabs-title
+          = link_to "#" ,class: "mypage-tabs-title__right" do
+            お知らせ
+      %li.mypage-tabs__box--text
+        %h3.mypage-tabs-title
+          = link_to "#" , class: "mypage-tabs-title__left" do
+            やることリスト
   = render partial: 'mypages/mypage-list'
