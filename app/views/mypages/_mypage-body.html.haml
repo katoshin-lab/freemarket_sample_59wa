@@ -48,4 +48,18 @@
         %li.mypage-tabs__info--list
           = link_to "#"  do
             一覧を見る
+    .mypage-item
+      %h2.mypage-item__title
+        購入した商品 
+      %ul.mypage-tabs__box
+        %li.mypage-tabs__box--text
+          %h3.mypage-tabs-title
+            = link_to "#" ,class: "mypage-tabs-title__right" do
+              取引中
+        %li.mypage-tabs__box--text
+          %h3.mypage-tabs-title
+            = link_to "#" , class: "mypage-tabs-title__left" do
+              過去の取引
+      .mypage-item__box
+        購入した商品はありません
   = render partial: 'mypages/mypage-list'
