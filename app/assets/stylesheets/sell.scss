@@ -109,27 +109,28 @@ $link: #0099e8;
     width: 116px;
     height: 160px;
     box-sizing: border-box;
-    margin: 20px 12px 0 0;
+    margin-top: 20px;
+    margin-left: 10px;
     padding: 0;
     background-color: $gray;
     border: #eee 1px solid;
     float: left;
-  }
-  &__image {
-    width: 114px;
-    height: 114px;
-    text-align: center;
-    line-height: 114px;
-    img {
-      display: inline;
-      vertical-align: middle;
-      max-width: 114px;
-      max-height: 114px;
-      margin: auto
+    margin-left: 10px;
+    &:first-child, &:nth-child(6) {
+      @extend .sell__image_box;
+      margin-left: 0;
     }
   }
+  &__image {
+    text-align: center;
+    line-height: 114px;
+    vertical-align: middle;
+    max-width: 114px;
+    max-height: 114px;
+    margin: auto
+  }
   &__image_btn {
-    width: 57px;
+    width: 114px;
     height: 44px;
     box-sizing: border-box;
     cursor: pointer;
@@ -137,24 +138,16 @@ $link: #0099e8;
     font-weight: normal;
     text-align: center;
     line-height: 44px;
-    a {
-      color: $link;
-    }
-    &--edit {
-      @extend .sell__image_btn;
-      float: left;
-      border-right: #eee 1px solid;
-
-    }
+    color: $link;
     &--delete {
       @extend .sell__image_btn;
-      float: right;
+      border-left: #eee 1px solid;
     }
   }
 
   &__upload {
     &--drop_box {
-      width: calc(100% - 128px);
+      width: 620px;
       height: 160px;
       margin-top: 20px;
       padding: 10px;
@@ -178,7 +171,6 @@ $link: #0099e8;
         z-index: 1;
         cursor: pointer;
       }
-
     }
     &--text {
       text-align: center;
@@ -342,7 +334,12 @@ text-align: center;
   &__hidden {
     display: none;
   }
+  &__number {
+    display: none;
+  }
 }
+
+
 
 
 

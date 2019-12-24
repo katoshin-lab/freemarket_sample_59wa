@@ -12,18 +12,18 @@
           必須
         .sell__text
           最大10枚までアップロードできます
-        .sell__image_box
-          .sell__image#image1
-          .sell__image_btn--edit
-            = link_to '編集', root_path
-          .sell__image_btn--delete
-            = link_to '削除'
-        .sell__upload--drop_box#image-area
+        .sell__image_container#container
+
+        .sell__upload--drop_box#dropbox
           .sell__upload--text
             ドラッグアンドドロップ
             %br
             またはクリックしてファイルをアップロード
-          = form.file_field :upload_image, id: "upload_image", multiple: true
+          = form.file_field :image, id: :image1, multiple: true, class: :file_field
+        .sell__number#number
+          0
+        .sell__number#total
+          0
 
     .sell__content
       .sell__label
