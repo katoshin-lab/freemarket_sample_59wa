@@ -4,15 +4,15 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
       ## Database authenticatable
-      t.string :name,                  null: false, unique: true, index: true, limit: 40
+      t.string :name,                  null: false, unique: true, index: true, default: "", limit: 40
       t.string :email,                 null: false, unique: true, default: ""
       t.string :encrypted_password,    null: false, default: ""
-      t.string :last_name,             null: false, limit: 40
-      t.string :first_name,            null: false, limit: 40
-      t.string :last_name_kana,        null: false, limit: 40
-      t.string :first_name_kana,       null: false, limit: 40
-      t.integer :mobile_phone_number,  null: false, limit: 5, default: 0
-      t.date :birthday,                null: false
+      t.string :last_name,             null: false, default: "", limit: 40
+      t.string :first_name,            null: false, default: "", limit: 40
+      t.string :last_name_kana,        null: false, default: "", limit: 40
+      t.string :first_name_kana,       null: false, default: "", limit: 40
+      t.integer :mobile_phone_number,  null: false, default: 0, limit: 5
+      t.date :birthday
       t.text :profile
 
       ## Recoverable
@@ -33,7 +33,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string   :confirmation_token
       t.datetime :confirmed_at
       t.datetime :confirmation_sent_at
-      # t.string   :unconfirmed_email # Only if using reconfirmable
+      t.string   :unconfirmed_email # Only if using reconfirmable
 
       ## Lockable
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
