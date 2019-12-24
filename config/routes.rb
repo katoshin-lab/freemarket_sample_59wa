@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     confirmations: "users/confirmations",
     sessions:      "users/sessions"
   }
+  devise_scope :user do
+    get 'signups/sms_authentication' => 'signups#sms_authentication'
+  end
   resources :signups do
     collection do
       get :sms_authentication

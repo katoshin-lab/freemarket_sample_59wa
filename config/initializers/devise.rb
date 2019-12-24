@@ -18,7 +18,13 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'hatao0000000@gmail.com'
+
+  Devise::Models::Confirmable.module_eval do
+    def active_for_authentication?
+      super # コメントアウト && (!confirmation_required? || confirmed? || confirmation_period_valid?)
+    end
+  end
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
