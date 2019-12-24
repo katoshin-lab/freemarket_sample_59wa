@@ -9,6 +9,7 @@
   height: 100px;
   box-shadow: 2px 2px 4px red;
   &__upper {
+    min-width: 968px;
     margin: (0 auto);
     padding: (0 0 10px 0);
     width: 70%;
@@ -18,8 +19,12 @@
       width: 134px;
       height: 36px;
     }
+    &--search {
+      width: 100%;
+    }
   }
   &__bottom {
+    min-width: 968px;
     margin: (0 auto);
     padding: (5px 0 0 0);
     width: 70%;
