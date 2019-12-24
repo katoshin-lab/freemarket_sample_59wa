@@ -4,15 +4,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-  GET /resource/sign_up
+  # GET /resource/sign_up
   def new
     super
   end
 
-  POST /resource
+  # POST /resource
   def create
     super
-    redirect_to sms_authentication_signups_path
   end
 
   # GET /resource/edit
@@ -43,8 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :birthday])
-    params.permit(:last_name, :first_name, :last_name_kana, :first_name_kana)
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :birthday, :last_name, :first_name, :last_name_kana, :first_name_kana])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
