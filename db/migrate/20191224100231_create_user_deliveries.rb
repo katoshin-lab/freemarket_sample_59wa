@@ -10,7 +10,7 @@ class CreateUserDeliveries < ActiveRecord::Migration[5.2]
       t.string :city,                      null: false, default: "", limit: 50
       t.string :block,                     null: false, default: "", limit: 50
       t.string :building_name,             limit: 50
-      t.string :phone_number,              limit: 5
+      t.integer :phone_number,              limit: 5
       t.references :user,                  null: false, foreign_key: true
       t.timestamps
     end

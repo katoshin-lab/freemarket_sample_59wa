@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_12_24_100231) do
     t.string "city", limit: 50, default: "", null: false
     t.string "block", limit: 50, default: "", null: false
     t.string "building_name", limit: 50
-    t.string "phone_number", limit: 5
+    t.bigint "phone_number"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
