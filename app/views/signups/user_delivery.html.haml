@@ -1,0 +1,32 @@
+= form_with model: @user_delivery, local: true, url: post_user_delivery_signups_path do |f|
+  .field
+    = f.label :last_name,  "苗字"
+    = f.text_field :last_name
+  .field
+    = f.label :first_name,  "名前"
+    = f.text_field :first_name
+  .field
+    = f.label :last_name_kana,  "苗字カナ"
+    = f.text_field :last_name_kana
+  .field
+    = f.label :first_name_kana,  "名前カナ"
+    = f.text_field :first_name_kana
+  .field
+    = f.label :postal_number,  "郵便番号"
+    = f.text_field :postal_number
+  .field
+    = f.label :prefecture_id,  "都道府県"
+    = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+  .field
+    = f.label :city,  "市区町村"
+    = f.text_field :city
+  .field
+    = f.label :block,  "番地"
+    = f.text_field :block
+  .field
+    = f.label :building_name,  "建物名"
+    = f.text_field :building_name
+  .field
+    = f.label :phone_number,  "電話"
+    = f.text_field :phone_number
+  = f.submit '次へ'
