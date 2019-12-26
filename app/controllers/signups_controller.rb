@@ -29,22 +29,9 @@ class SignupsController < ApplicationController
     @user = User.new
     confirmation_number = params[:confirmation_number]
     if confirmation_number.to_i == session[:sms_number]
-      redirect_to new_address_path
+      redirect_to new_delivery_path
     else
-      render "signups/sms_confirmation"
-    end
-  end
-
-  def user_delivery
-    @user_delivery = UserDelivery.new
-  end
-
-  def post_user_delivery
-    @user_delivery = UserDelivery.new(user_delivery_params)
-    if @user_delivery.save
-      redirect_to user_payment_signups_path
-    else
-      render "signups/user_delivery"
+      render action: "sms_confirmation"
     end
   end
 
@@ -52,9 +39,5 @@ class SignupsController < ApplicationController
 
   def user_params
     params.permit(:mobile_phone_number)
-  end
-
-  def user_delivery_params
-    params.require(:user_delivery).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_number, :prefecture_id, :city, :block, :building_name, :phone_number).merge(user_id: current_user.id)
   end
 end
