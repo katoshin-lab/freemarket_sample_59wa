@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_094656) do
+ActiveRecord::Schema.define(version: 2019_12_24_100231) do
+
+  create_table "user_deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "last_name", limit: 40, default: "", null: false
+    t.string "first_name", limit: 40, default: "", null: false
+    t.string "last_name_kana", limit: 40, default: "", null: false
+    t.string "first_name_kana", limit: 40, default: "", null: false
+    t.integer "postal_number", default: 0, null: false
+    t.integer "prefecture_id", default: 48, null: false
+    t.string "city", limit: 50, default: "", null: false
+    t.string "block", limit: 50, default: "", null: false
+    t.string "building_name", limit: 50
+    t.string "phone_number", limit: 5
+    t.bigint "user_id", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_deliveries_on_user_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 40, default: "", null: false
