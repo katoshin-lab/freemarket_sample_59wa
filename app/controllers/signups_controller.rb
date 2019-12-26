@@ -40,6 +40,12 @@ class SignupsController < ApplicationController
   end
 
   def post_user_delivery
+    @user_delivery = UserDelivery.new(user_delivery_params)
+    if @user_delivery.save
+      redirect_to user_payment_signups_path
+    else
+      render "signups/user_delivery"
+    end
   end
 
   protected
@@ -49,6 +55,6 @@ class SignupsController < ApplicationController
   end
 
   def user_delivery_params
-    params.permit()
+    params.require(:user_delivery).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_number, :prefecture_id, :city, :block, :building_name, :phone_number).merge(user_id: current_user.id)
   end
 end
