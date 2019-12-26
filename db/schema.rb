@@ -17,13 +17,13 @@ ActiveRecord::Schema.define(version: 2019_12_24_100231) do
     t.string "first_name", limit: 40, default: "", null: false
     t.string "last_name_kana", limit: 40, default: "", null: false
     t.string "first_name_kana", limit: 40, default: "", null: false
-    t.integer "postal_number", default: 0, null: false
-    t.integer "prefecture_id", default: 48, null: false
+    t.integer "postal_number", null: false
+    t.integer "prefecture_id", default: 0, null: false
     t.string "city", limit: 50, default: "", null: false
     t.string "block", limit: 50, default: "", null: false
     t.string "building_name", limit: 50
     t.string "phone_number", limit: 5
-    t.bigint "user_id", default: 0, null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_deliveries_on_user_id"
