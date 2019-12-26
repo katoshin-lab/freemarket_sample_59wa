@@ -3,8 +3,7 @@ class SignupsController < ApplicationController
   end
 
   def sms_post
-    @user_identification = UserIdentification.new
-    @user_identification.save
+    User.update(user_params)
     mobile_phone_number = params[:mobile_phone_number]
     phone_number = PhonyRails.normalize_number mobile_phone_number, country_code: 'JP'
     sms_number = rand(10000..99999)
@@ -27,7 +26,7 @@ class SignupsController < ApplicationController
   end
 
   def sms_check
-    @user_identification = UserIdentification.new
+    @user = User.new
     confirmation_number = params[:confirmation_number]
     if confirmation_number.to_i == session[:sms_number]
       redirect_to new_address_path
@@ -36,15 +35,20 @@ class SignupsController < ApplicationController
     end
   end
 
-  def delivery_info
+  def user_delivery
+    @user_delivery = UserDelivery.new
   end
 
-  def post_delivery_info
+  def post_user_delivery
   end
 
   protected
 
-  def user_identifcation_params
+  def user_params
     params.permit(:mobile_phone_number)
+  end
+
+  def user_delivery_params
+    params.permit()
   end
 end
