@@ -36,7 +36,14 @@ class SignupsController < ApplicationController
     end
   end
 
+  def delivery_info
+  end
+
+  def post_delivery_info
+  end
+
   protected
+
   def user_identifcation_params
     params.permit(:mobile_phone_number)
   end
