@@ -5,11 +5,11 @@
   box-sizing: border-box;
   padding: (8px);
   min-width: 968px;
-  border-bottom: 1px solid #d8d8d8;
   background-color: white;
   height: 100px;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  box-shadow: 2px 2px 4px red;
   &__upper {
+    min-width: 968px;
     margin: (0 auto);
     padding: (0 0 10px 0);
     width: 70%;
@@ -19,8 +19,12 @@
       width: 134px;
       height: 36px;
     }
+    &--search {
+      width: 100%;
+    }
   }
   &__bottom {
+    min-width: 968px;
     margin: (0 auto);
     padding: (5px 0 0 0);
     width: 70%;

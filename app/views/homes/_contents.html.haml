@@ -5,10 +5,9 @@
     .contents-image__title
       .contents-image__title--text
         %h3
-          フリーマケット
-          %br 　サイト
+          フリーマーケットサイト
         %p 
-          フリーマケットサイトです。ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+          フリーマケットサイトです。ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
   .contents-category
     %h4
       人気のカテゴリー
@@ -35,9 +34,4 @@
                 %span ああああああああああああああああああああああああああああああああああああああああ
   .contents-bottom-image
     %p.contents-bottom-image__text
-= link_to new_item_path do
-  .btn-exhibit
-    .btn-exhibit__box
-      %p.btn-exhibit--text
-        出品
-      %i.fas.fa-camera
+= render partial: 'homes/btn-exhibit'
