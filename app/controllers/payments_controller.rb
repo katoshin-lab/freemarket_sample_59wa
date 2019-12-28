@@ -16,7 +16,6 @@ class PaymentsController < ApplicationController
         metadata: {user_id: current_user.id}
       )
       @user_payment = UserPayment.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-      binding.pry
       if @user_payment.save
       else
         redirect_to action: new
