@@ -35,6 +35,9 @@ class SignupsController < ApplicationController
     end
   end
 
+  def complete
+  end
+
   protected
 
   def user_params
