@@ -99,7 +99,7 @@
     margin: auto
   }
   &__image_btn {
-    width: 114px;
+    width: 57px;
     height: 44px;
     box-sizing: border-box;
     cursor: pointer;
@@ -108,9 +108,14 @@
     text-align: center;
     line-height: 44px;
     color: $accent;
+    &--edit {
+      @extend .sell__image_btn;
+      float: left;
+    }
     &--delete {
       @extend .sell__image_btn;
       border-left: #eee 1px solid;
+      float: right;
     }
   }
 

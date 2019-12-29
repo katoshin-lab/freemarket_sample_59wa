@@ -12,6 +12,9 @@ $(function() {
         <div class="sell__image_box">
           <div class="sell__image" id="upload_image${number}">
           </div>
+          <div class="sell__image_btn--edit" id=${number}_edit>
+            編集
+          </div>
           <div class="sell__image_btn--delete" id=${number}>
             削除
           </div>
