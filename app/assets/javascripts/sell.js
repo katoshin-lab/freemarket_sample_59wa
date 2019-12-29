@@ -88,7 +88,7 @@ $(function() {
     var listHTML = '';
     $.ajax({
       type: 'GET',
-      url: '/items/categories',
+      url: '/items/new',
       data: {ancestry: category},
       dataType: 'json'
     })
@@ -112,7 +112,7 @@ $(function() {
     var listHTML = '';
     $.ajax({
       type: 'GET',
-      url: '/items/categories',
+      url: '/items/new',
       data: {ancestry: category+"/"+subcategory},
       dataType: 'json'
     })
