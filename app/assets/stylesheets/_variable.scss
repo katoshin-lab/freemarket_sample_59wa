@@ -6,6 +6,8 @@ $accent: #0099E8;
 $black: black;
 $gray: rgb(245, 245, 245);
 $dark: #999;
+$darkgray: #ccc;
+$focused: #b3d4fc;
 $lightgray: rgb(255, 255, 255);
 $lightblack: rgb(34, 34, 34);
 
@@ -14,4 +16,29 @@ $lightblack: rgb(34, 34, 34);
 
 @mixin border($accent) {
   border: 1px solid $accent;
+}
+@mixin focused {
+  &:focus {
+    outline: 0;
+    border-color: $focused;
+  }
+}
+@mixin form_default {
+  width: 100%;
+  font-weight: normal;
+  margin-top: 8px;
+  padding: 10px 16px 8px;
+  border: solid 1px $darkgray;
+  border-radius: 4px;
+  background-color: white;
+  line-height: 1.5;
+  box-sizing: border-box;
+  @include focused;
+}
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
 }
