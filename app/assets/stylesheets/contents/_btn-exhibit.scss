@@ -1,0 +1,27 @@
+
+//出品ボタン
+
+.btn-exhibit {
+  bottom: 32px;
+  font-size: 22px;
+  height: 160px;
+  right: 32px;
+  width: 160px;
+  background-color: $red;
+  position: fixed;
+  z-index: 2;
+  border-radius: 50%;
+  &__box {
+    color: white;
+    width: 160px;
+    height: 160px;
+    padding-top: 30px;
+    text-align: center;
+    &__text {
+      font-size: 22px;
+    }
+    i {
+      font-size: 2.7em;
+    }
+ }
+}

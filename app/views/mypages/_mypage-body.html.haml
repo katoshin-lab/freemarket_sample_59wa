@@ -1,0 +1,66 @@
+%main.mypage-container
+  .mypage-user
+    .mypage-user__icon
+      = link_to "#" do
+        %i.fas.fa-user-alt
+        %h2
+          テスト太郎
+        .mypage-user__icon--number
+          評価
+          %span 0 
+          出品数
+          %span 0
+    .mypage-tabs
+      %ul.mypage-tabs__box
+        %li.mypage-tabs__box--text
+          %h3.mypage-tabs-title
+            = link_to "#" ,class: "mypage-tabs-title__right" do
+              お知らせ
+        %li.mypage-tabs__box--text
+          %h3.mypage-tabs-title
+            = link_to "#" , class: "mypage-tabs-title__left" do
+              やることリスト
+      %ul.mypage-tabs__info 
+        %li
+          = link_to "#" , class: "mypage-info" do
+            .mypage-info__image           
+              = image_tag "logo_gray.svg" 
+            .mypage-info__text
+              %p.mypage-info__text--details
+                あああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+              .mypage-info__text--time
+                %i.far.fa-clock
+                %span
+                  9時間前
+            %i.mypage-info__right.fas.fa-chevron-right
+        %li
+          = link_to "#" , class: "mypage-info" do
+            .mypage-info__image           
+              = image_tag "logo_gray.svg" 
+            .mypage-info__text
+              %p.mypage-info__text--details
+                あああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+              .mypage-info__text--time
+                %i.far.fa-clock
+                %span
+                  9時間前
+            %i.mypage-info__right.fas.fa-chevron-right
+        %li.mypage-tabs__info--list
+          = link_to "#"  do
+            一覧を見る
+    .mypage-item
+      %h2.mypage-item__title
+        購入した商品 
+      %ul.mypage-tabs__box
+        %li.mypage-tabs__box--text
+          %h3.mypage-tabs-title
+            = link_to "#" ,class: "mypage-tabs-title__right" do
+              取引中
+        %li.mypage-tabs__box--text
+          %h3.mypage-tabs-title
+            = link_to "#" , class: "mypage-tabs-title__left" do
+              過去の取引
+      .mypage-item__box
+        購入した商品はありません
+  = render partial: 'mypages/mypage-list'
+  = render partial: 'homes/btn-exhibit'
