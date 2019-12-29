@@ -1,0 +1,55 @@
+
+//お知らせ情報が入っているボックス
+
+.mypage-info {
+  position: relative;
+  display: block;
+  min-height: 80px;
+  padding: 16px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  &:hover {
+    background: #eee;
+  }
+   &__image {
+    position: relative;
+    overflow: hidden;
+    float: left;
+    width: 48px;
+    height: 48px;
+    img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+    }
+   }
+   &__text {
+    margin: 0 40px 0 68px;
+    &--details {
+      overflow: hidden;
+      max-height: 4.4em;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      line-height: 1.5;
+   }
+   &--time {
+    display: inline-block;
+    color: #888;
+    i {
+      margin: 5px 6px 0 0;
+      font-size: 1.1em;
+    }
+   }
+  }
+  &__right {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translate(0, -50%);
+   }
+ }
+
+
