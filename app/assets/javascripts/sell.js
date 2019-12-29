@@ -1,5 +1,6 @@
 $(function() {
 
+  // 画像のアップロード部分（10枚まで）
   $('#dropbox').on('change', $('.file_field'), function(e) {
     var number = Number($('#number').text());
     var total = Number($('#total').text());
@@ -47,6 +48,7 @@ $(function() {
       $('#total').text(total);
     };
   });
+  // 画像の削除機能部分
   $('#container').click('.sell__image_btn--delete', function() {
     var total = Number($('#total').text());
     var click = $(event.target);
@@ -66,6 +68,66 @@ $(function() {
     $('#total').text(total).trigger('create');
   });
 
+  // カテゴリー選択部分
+  function build_list(category, HTML) {
+    var selectHTML = `
+    <div class="sell__select_form" id="${category}_selector">
+      <i class="fas fa-chevron-down"></i>
+      <select id="${category}" name="${category}">
+        <option value>---</option>
+        ${HTML}
+      </select>
+    </div>`;
+    $('.sell__category').append(selectHTML)
+  }
+  $('#category_selector').on('change', function() {
+    var category = ($('#category option:selected').val());
+    var listHTML = '';
+    $.ajax({
+      type: 'GET',
+      url: '/items/categories',
+      data: {ancestry: category},
+      dataType: 'json'
+    })
+    .done(function(data) {
+      $('#subcategory_selector').remove();
+      $('#sub_subcategory_selector').remove();
+      if (data.length !== 0) {
+        data.forEach(function(subcategory) {
+          listHTML += `
+          <option value="${subcategory.id}">${subcategory.name}</option>
+          `;
+        });
+        build_list("subcategory", listHTML);
+      };
+    })
+  })
+  // サブカテゴリー選択部分
+  $('#category_field').on('change', '#subcategory_selector', function() {
+    var category = ($('#category option:selected').val());
+    var subcategory = ($('#subcategory option:selected').val());
+    var listHTML = '';
+    $.ajax({
+      type: 'GET',
+      url: '/items/categories',
+      data: {ancestry: category+"/"+subcategory},
+      dataType: 'json'
+    })
+    .done(function(data) {
+      $('#sub_subcategory_selector').remove();
+      if (data.length !== 0) {
+        data.forEach(function(sub_subcategory) {
+          listHTML += `
+          <option value="${sub_subcategory.id}">${sub_subcategory.name}</option>
+          `;
+        });
+        build_list("sub_subcategory", listHTML);
+      };
+    })
+  })
+
+
+  // 送料負担切り替えの部分
   $('#is_seller_shipping').on('change', function() {
     var seller_shipping = $('#is_seller_shipping option:selected').val()
     if ( seller_shipping == "" ) {
@@ -95,10 +157,10 @@ $(function() {
       `
       $('#shipping_method').empty().append(HTML);
       $('#method').show();
-
     }
   })
 
+  // 手数料、利益の自動計算部分
   $('#price').on("keyup", function(){
     var input = $('#price').val();
     var charge = Math.floor(input * 0.1);

@@ -44,13 +44,14 @@
       .sell__left_box
         商品の詳細
       .sell__right_box
-        .sell__label
-          = form.label :category, "カテゴリー"
-          .sell__required
-            必須
-        .sell__select_form
-          %i.fas.fa-chevron-down
-          = form.collection_select :category, @categories, :id, :name, prompt: "---"
+        .sell__category#category_field
+          .sell__label
+            = form.label :category, "カテゴリー"
+            .sell__required
+              必須
+          .sell__select_form#category_selector
+            %i.fas.fa-chevron-down
+            = form.collection_select :category, @categories, :id, :name, prompt: "---"
 
         .sell__label--follow
           = form.label :condition, "商品の状態"
