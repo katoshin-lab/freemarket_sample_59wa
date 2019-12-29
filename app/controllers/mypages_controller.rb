@@ -2,6 +2,6 @@ class MypagesController < ApplicationController
   def index
   end
 
-  def logout
+  def new
   end
 end
