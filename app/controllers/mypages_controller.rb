@@ -2,9 +2,9 @@ class MypagesController < ApplicationController
   def index
   end
 
-  def new
+  def logout
   end
 
-  def show    
+  def profile
   end
 end
