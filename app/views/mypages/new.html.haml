@@ -1,0 +1,26 @@
+.wrapper
+  = render partial: 'homes/header-login'
+  .header-nav-bar
+    %ul
+      %li
+        = link_to root_path do
+          %span
+            メルカリ 
+          = icon('fas', 'chevron-right')
+      %li
+        = link_to mypages_path do
+          %span
+            マイページ
+          = icon('fas', 'chevron-right')
+      %li
+        = link_to root_path do
+          %span.page
+            ログアウト
+  %main.mypage-container
+    = render partial: 'mypages/mypage-list'
+    .user-logout
+      .user-logout__button
+        = link_to destroy_user_session_path do
+          .btn-logout
+            ログアウト
+  = render partial: 'homes/fotter'

@@ -1,0 +1,21 @@
+//ログアウト
+.user-logout {
+  float: right;
+  width: 700px;
+  background: white;
+  &__button {
+    padding: (64px 0 64px 0);
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+.btn-logout {
+  @include red-btn;
+  text-align: center;
+  display: block;
+  width: 100%;
+  color: white;
+  line-height: 48px;
+  font-size: 14px;
+}
