@@ -1,34 +1,3 @@
-$gray: #f5f5f5;
-$darkgray: #ccc;
-$red: #ea352d;
-$focused: #b3d4fc;
-$link: #0099e8;
-@mixin focused {
-  &:focus {
-    outline: 0;
-    border-color: $focused;
-  }
-}
-@mixin form_default {
-  width: 100%;
-  font-weight: normal;
-  margin-top: 8px;
-  padding: 10px 16px 8px;
-  border: solid 1px $darkgray;
-  border-radius: 4px;
-  background-color: white;
-  line-height: 1.5;
-  box-sizing: border-box;
-  @include focused;
-}
-@mixin clearfix {
-  &::after {
-    content: "";
-    display: block;
-    clear: both;
-  }
-}
-
 .sell {
   background-color: $gray;
   
@@ -105,18 +74,84 @@ $link: #0099e8;
     font-weight: normal;
   }
 
-  &__upload {
-    width: 100%;
-    height: 80px;
+  &__image_box {
+    width: 116px;
+    height: 160px;
+    box-sizing: border-box;
     margin-top: 20px;
-    padding: 40px 0;
+    margin-left: 10px;
+    padding: 0;
     background-color: $gray;
-    border: dashed 1px $darkgray;
+    border: #eee 1px solid;
+    float: left;
+    margin-left: 10px;
+    &:first-child, &:nth-child(6) {
+      @extend .sell__image_box;
+      margin-left: 0;
+    }
+  }
+  &__image {
     text-align: center;
-    font-family: monospace;
-    white-space: pre;
-    font-weight: normal;
+    line-height: 114px;
+    vertical-align: middle;
+    max-width: 114px;
+    max-height: 114px;
+    margin: auto
+  }
+  &__image_btn {
+    width: 57px;
+    height: 44px;
+    box-sizing: border-box;
+    cursor: pointer;
     font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 44px;
+    color: $accent;
+    &--edit {
+      @extend .sell__image_btn;
+      float: left;
+    }
+    &--delete {
+      @extend .sell__image_btn;
+      border-left: #eee 1px solid;
+      float: right;
+    }
+  }
+
+  &__upload {
+    &--drop_box {
+      width: 620px;
+      height: 160px;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: $gray;
+      border: dashed 1px $darkgray;
+      float: right;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      position: relative;
+      form {
+        display: none;
+      }
+      input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 1;
+        cursor: pointer;
+      }
+    }
+    &--text {
+      text-align: center;
+      font-weight: normal;
+      font-size: 14px;
+      flex: 1;
+    }
   }
   &__text_field {
     input {
@@ -166,7 +201,7 @@ $link: #0099e8;
       cursor: pointer;
       height: 48px;
       padding: 0 16px;
-      -webkit-appearance: button;
+      -webkit-appearance: none;
       appearance: button;
       font-size: 16px;
       &::-ms-expand {
@@ -193,7 +228,7 @@ $link: #0099e8;
     line-height: 14px;
     text-align: center;
     display: inline-block;
-    background-color: $link;
+    background-color: $accent;
     border-radius: 50%;
     a {
       color: white;
@@ -214,7 +249,7 @@ $link: #0099e8;
     font-size: 14px;
     a {
       display: inline;
-      color: $link;
+      color: $accent;
       text-decoration: none;
     }
   }
@@ -249,7 +284,7 @@ $link: #0099e8;
   &__footer {
     width: 100%;
     height: 200px;
-text-align: center;
+    text-align: center;
     &--link {
       width: 700px;
       @include clearfix;
@@ -271,16 +306,10 @@ text-align: center;
       font-size: 13px;
     }
   }
-}
-
-
-
-
-
-
-// 768px以上でレスポンシブデザインの境界
-
-@media all and (min-width: 768px) {
-  // ほにゃらら
+  &__hidden {
+    display: none;
   }
-  
+  &__number {
+    display: none;
+  }
+}
