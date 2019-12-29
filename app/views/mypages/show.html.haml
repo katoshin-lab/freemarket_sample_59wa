@@ -18,6 +18,7 @@
             プロフィール
   %main.mypage-container
     = render partial: 'mypages/mypage-list'
+    = render partial: 'homes/btn-exhibit'
     .mypage-profile
       %h2.mypage-profile__title
         プロフィール
@@ -28,3 +29,4 @@
         .mypage-profile__text 
           = f.text_area :text, class: 'mypage-profile__text--form',  placeholder: '例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
           = f.submit "変更する", class: 'mypage-profile__text--btn'
+= render partial: 'homes/fotter'
