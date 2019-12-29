@@ -12,9 +12,18 @@
           必須
         .sell__text
           最大10枚までアップロードできます
-        .sell__upload#image-area
-          ドラッグアンドドロップ
-          またはクリックしてファイルをアップロード
+        .sell__image_container#container
+
+        .sell__upload--drop_box#dropbox
+          .sell__upload--text
+            ドラッグアンドドロップ
+            %br
+            またはクリックしてファイルをアップロード
+          = form.file_field :image, id: :image1, multiple: true, class: :file_field
+        .sell__number#number
+          0
+        .sell__number#total
+          0
 
     .sell__content
       .sell__label
@@ -35,8 +44,16 @@
       .sell__left_box
         商品の詳細
       .sell__right_box
+        .sell__category#category_field
+          .sell__label
+            = form.label :category, "カテゴリー"
+            .sell__required
+              必須
+          .sell__select_form#category_selector
+            %i.fas.fa-chevron-down
+            = form.collection_select :category, @categories, :id, :name, prompt: "---"
 
-        .sell__label
+        .sell__label--follow
           = form.label :condition, "商品の状態"
           .sell__required
             必須
@@ -59,13 +76,14 @@
           %i.fas.fa-chevron-down
           = form.select :is_seller_shipping, [["送料込み(出品者負担)", true], ["着払い(購入者負担)", false]], prompt: "---"
 
-        .sell__label--follow
-          = form.label :shipping_method, "配送の方法"
-          .sell__required
-            必須
-        .sell__select_form
-          %i.fas.fa-chevron-down
-          = form.collection_select :shipping_method, @shipping_methods, :id, :shipping_method, prompt: "---"
+        .sell__hidden#method
+          .sell__label--follow
+            = form.label :shipping_method, "配送の方法"
+            .sell__required
+              必須
+          .sell__select_form
+            %i.fas.fa-chevron-down
+            = form.select :shipping_method, {}, prompt: "---"
 
         .sell__label--follow
           = form.label :shipping_origin, "発送元の地域"
@@ -101,13 +119,13 @@
       .sell__right_box--follow
         .sell__label--charge
           販売手数料(10%)
-        .sell__charge
-          ¥1,000
+        .sell__charge#charge
+          \-
       .sell__right_box--follow
         .sell__label--gain
           販売利益
-        .sell__gain
-          ¥9,000
+        .sell__gain#gain
+          \-
     .sell__content
       .sell__attention
         %span><
@@ -139,5 +157,4 @@
     .sell__footer--img
       = link_to image_tag("logo_gray.svg", size: "90x90", class: "img"), root_path
     .sell__footer--text
-      © Freemarket, Inc. 
-      
+      © Freemarket, Inc.
