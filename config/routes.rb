@@ -20,5 +20,4 @@ Rails.application.routes.draw do
   end
   resources :deliveries, only: [:new, :create, :update]
   resources :payments, only: [:new, :create, :update, :destroy]
-  root 'tests#index'
 end
