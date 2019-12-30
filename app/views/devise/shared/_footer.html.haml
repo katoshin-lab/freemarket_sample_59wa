@@ -2,11 +2,11 @@
   %nav
     %ul.clearfix
       %li
-        %a{href: "/users/privacy"} プライバシーポリシー
+        = link_to "プライバシーポリシー", "https://www.mercari.com/jp/privacy/"
       %li
-        %a{href: "/users/tos"} フリーマーケット利用規約
+        = link_to "フリーマーケット利用規約", "https://www.mercari.com/jp/tos/"
       %li
-        %a{href: "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
+        = link_to "特定商取引に関する表記", "https://www.mercari.com/jp/tokutei/"
   = link_to image_tag("logo_gray.svg", size: "80x65", class: "img"), "root_path"
   %p
     %small © Freemarket, Inc.
