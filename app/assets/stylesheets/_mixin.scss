@@ -1,0 +1,52 @@
+@mixin form() {
+  width: 100%;
+}
+
+@mixin btn($color: $white, $background: $red) {
+  line-height: 48px;
+  background: $background;
+  border: 1px solid $background;
+  color: $color;
+  margin: 20px 0 0;
+  width: 100%;
+}
+
+@mixin clearfix() {
+  &:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+@mixin label() {
+  font-weight: 600;
+  display: inline-block;
+}
+
+@mixin required() {
+  background-color: $red;
+  color: $white;
+  font-size: 14px;
+  border-radius: 2px;
+  padding: 0 2px;
+  display: inline-block;
+}
+
+@mixin input1{
+  margin: 8px 8px 0 0;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+@mixin input2{
+  margin: 8px 0 0;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+}
