@@ -1,17 +1,8 @@
-
-.signup-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 128px;
-}
-
 //新規登録・SNS登録部分
 .main {
   background-color: white;
   width: 700px;
   margin: 0 auto;
-  height: 390px;
   &__registration {
     width: 345px;
     font-size: 22px;
@@ -23,7 +14,7 @@
   }
 
   &__content{
-    padding: 25px 16px 30px;
+    padding: 8px 16px 40px;
     color: #fff;
     width: 345px;
     font-size: 14px;
@@ -61,39 +52,3 @@
     }
   }
 }
-
-//ナビゲーション部分
-.signup-footer {
-  position: relative;
-  width: 400px;
-  margin: 0 auto;
-  font-size: 12px;
-  &__navbar {
-    display: flex;
-    position: absolute;
-    top: 160px;
-    right: -15px;
-    white-space: nowrap;
-
-    @mixin nav {
-      list-style: none;
-      padding-left: 20px;
-    }
-    .center, .right{
-      @include nav;
-    }
-  }
-  .img{
-    position: absolute;
-    width: 80px;
-    height: 65px;
-    top: 210px;
-    right: 160px;
-  }
-  p{
-    position: absolute;
-    top: 280px;
-    left: 150px;
-  }
-}
-
