@@ -47,5 +47,31 @@
       line-height: 2rem;
     }
   }
+
+  &__contents {
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    &--link {
+      width: 700px;
+      @include clearfix;
+      margin: 40px auto;
+      a {
+        color: #333;
+        font-size: 12px;
+        font-weight: normal;
+        text-decoration: none;
+        margin: 0 10px;
+        display: inline-block;
+      }
+      }
+    &--img {
+      display: block;
+      margin: 0 auto;
+    }
+    &--text {
+      font-size: 13px;
+    }
+  }
 }
 
