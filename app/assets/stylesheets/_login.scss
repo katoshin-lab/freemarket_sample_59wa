@@ -1,14 +1,12 @@
 .login {
-  background-color: $gray;
   width: 456px;
-  height: 630px;
   margin: 0 auto;
 
   &__panel{
     background-color: $white;
     margin: 0 auto;
+    height: 731px;
     align-items: center;
-    height: 760px;
     &--no-content{
       border-bottom: 1px #eee solid;
       padding: 40px 64px;
@@ -16,9 +14,9 @@
       .blue{
         display: block;
         margin: 6px 0 0;
-        border: 1px solid #0099e8;
-        background: #0099e8;
-        color: #fff;
+        border: 1px solid $accent;
+        background: $accent;
+        color: $white;
         line-height: 40px;
       }
     }
@@ -27,18 +25,17 @@
       display: block;
       text-align: center;
       padding: 35px 64px 35px 64px;
-
       &--btn-sns-facebook{
         position: relative;
         background: #385185;
         color: $white;
-        line-height: 50px;
+        line-height: 48px;
       }
       &--btn-google{
         position: relative;
         margin: 16px 0 0;
         border: 1px #eee solid;
-        line-height: 50px;
+        line-height: 48px;
       }
       i{
         position: absolute;
@@ -56,7 +53,7 @@
       @mixin form{
         display: block;
         width: 100%;
-        line-height: 50px;
+        line-height: 48px;
         border-radius: 4px;
         margin: 25px 0;
         border: 1px solid #ccc;
@@ -67,16 +64,16 @@
       }
       .btn-login{
         display: block;
-        background-color: #ea352d;
+        background-color: $red;
         margin: 25px 0 30px 0;
-        border: 1px solid #ea352d;
-        color: #fff;
-        line-height: 50px;
+        border: 1px solid $red;
+        color: $white;
+        line-height: 48px;
       }
       .btn-pass-missing{
         position: absolute;
         left: 67px;
-        color: #0099e8;
+        color: $accent;
       }
     }
   }

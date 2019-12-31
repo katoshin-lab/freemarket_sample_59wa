@@ -1,5 +1,6 @@
 @import "./reset";
 @import "./variable";
+@import "mixin";
 @import "./header/header";
 @import "./header/search";
 @import "./header/header-login";
@@ -7,7 +8,10 @@
 @import 'font-awesome-sprockets';
 @import "font-awesome";
 @import "signups";
+@import "signups-header";
 @import "login";
+@import "registration";
+@import "shared-footer";
 @import "sell";
 @import "./contents/contents-image";
 @import "./contents/contents-category";

@@ -1,0 +1,106 @@
+.registration
+  %header.registration__header
+    = link_to image_tag("fmarket_logo_red.svg", size: "184x49"), root_path
+    .registration__progress
+      .registration__progress--bar
+        .progress
+          .progress-title
+            会員情報
+          .progress-node
+            .progress-node__circle
+            .progress-node__line
+        .progress
+          .progress-title
+            電話番号認証
+          .progress-node
+            .progress-node__circle
+            .progress-node__line
+        .progress
+          .progress-title
+            お届け先住所入力
+          .progress-node
+            .progress-node__circle
+            .progress-node__line
+        .progress
+          .progress-title
+            支払い方法
+          .progress-node
+            .progress-node__circle
+            .progress-node__line
+        .progress
+          .progress-title
+            完了
+          .progress-node
+            .progress-node__circle
+  %main.registration__main
+    %section.registration__inner
+      %h2.registration__inner--title 会員情報入力
+      .registration__form
+        = form_with(model: @user, url: "user_registration_path", method: :post, local: true) do |f|
+          .registration__form--field
+            = f.label :ニックネーム
+            %span.registration__form--field_required 必須
+            %br/
+            = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "例）メルカリ太郎", class: "inputField", required: true
+          .registration__form--field
+            = f.label :メールアドレス
+            %span.registration__form--field_required 必須
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "inputField", required: true
+          .registration__form--field
+            = f.label :パスワード
+            %span.registration__form--field_required 必須
+            %br/
+            = f.password_field :password, autofocus: true, autocomplete: "password", placeholder: "７文字以上の半角英数字", class: "inputField", required: true
+          .registration__form--group
+            %p.form-text ※ 英字と数字の両方を含めて設定してください
+            %br/
+            %input{type: "checkbox", name: "", value: "", class: "checkbox-btn"} 
+              パスワードを表示する
+          .registration__form--text_group
+            %h3.sub-header 本人確認
+            .text
+              安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+          .registration__form--field
+            = f.label :お名前（全角）
+            %span.registration__form--field_required 必須
+            %br/
+            = f.fields_for :profile do |f|
+              = f.text_field :first_name_kanji, autofocus: true, autocomplete: "off", placeholder: "例）山田", class: "inputField-First", required: true
+              = f.text_field :family_name_kanji, autofocus: true, autocomplete: "off", placeholder: "例）彩", class: "inputField-Family", required: true
+          .registration__form--field
+            = f.label :お名前カナ（全角）
+            %span.registration__form--field_required 必須
+            %br/
+            = f.fields_for :profile do |f|
+              = f.text_field :first_name_kana, autofocus: true, autocomplete: "off", placeholder: "例）ヤマダ", class: "inputField-First", required: true
+              = f.text_field :family_name_kana, autofocus: true, autocomplete: "off", placeholder: "例）アヤ", class: "inputField-Family", required: true
+          .registration__form--field
+            = f.label :生年月日
+            %span.registration__form--field_required 必須
+            %br/
+            = f.fields_for :profile do |f|
+              != sprintf(f.date_select(:birthday, prompt:"--", use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+          .registration__form--attention
+            %p ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+          .registration__form--text_center
+            「次へ進む」のボタンを押すことにより、
+            = link_to "/users/tos" do
+              利用規約
+            に同意したものとみなします。
+          .registration__form--nextbtn
+            = f.submit "次へ進む", class: "registrationBtn"
+          .registration__form--text_right 
+            = link_to "https://www.mercari.com/jp/help_center/article/423/" do 
+              本人情報の登録について
+            %i.fas.fa-chevron-right
+          .registration__form--text_reCAPTCHA
+            %p 
+              This site is protected by reCAPTCHA and the Google 
+              = link_to "https://policies.google.com/privacy" do 
+                Privacy Policy
+              and 
+              =link_to "https://policies.google.com/terms" do 
+                Terms of Service 
+              apply.
+  =render "devise/shared/footer"
