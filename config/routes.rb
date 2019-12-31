@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'homes#index'
   resources :items, only: [:index, :new]
   resources :mypages, only: [:index, :new]
-  resources :signups, only: [:new]　do
+  resources :signups, only: [:new]
 
   devise_for :users, controllers: {
     registrations: "users/registrations",

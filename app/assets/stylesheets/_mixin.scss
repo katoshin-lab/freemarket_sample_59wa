@@ -1,7 +1,15 @@
-@mixin form() {
-  width: 100%;
+//共通
+@mixin clearfix() {
+  &:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
 }
+//終了
 
+
+//会員情報入力画面
 @mixin btn($color: $white, $background: $red) {
   line-height: 48px;
   background: $background;
@@ -10,29 +18,14 @@
   margin: 20px 0 0;
   width: 100%;
 }
-
-@mixin clearfix() {
-  &:after {
-    display: block;
-    content: "";
-    clear: both;
-  }
-}
-
-@mixin label() {
-  font-weight: 600;
-  display: inline-block;
-}
-
-@mixin required() {
+@mixin required($color: $white) {
   background-color: $red;
-  color: $white;
+  color: $color;
   font-size: 14px;
   border-radius: 2px;
   padding: 0 2px;
   display: inline-block;
 }
-
 @mixin input1{
   margin: 8px 8px 0 0;
   padding: 10px 16px 8px;
@@ -41,7 +34,6 @@
   font-size: 16px;
   box-sizing: border-box;
 }
-
 @mixin input2{
   margin: 8px 0 0;
   padding: 10px 16px 8px;
@@ -50,3 +42,4 @@
   font-size: 16px;
   box-sizing: border-box;
 }
+//終了

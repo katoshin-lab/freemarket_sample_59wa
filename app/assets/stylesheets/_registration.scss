@@ -84,7 +84,7 @@
         display: inline-block;
       }
       &_required {
-        @include required;
+        @include required();
       }
       .inputField {
         width: 100%;
