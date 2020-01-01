@@ -4,7 +4,7 @@ class SignupsController < ApplicationController
     @user = User.new
   end
 
-  def sms_authetication
+  def sms_authentication
   end
   
 end
