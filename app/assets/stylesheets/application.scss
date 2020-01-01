@@ -8,10 +8,11 @@
 @import 'font-awesome-sprockets';
 @import "font-awesome";
 @import "signups";
-@import "signups-header";
+@import "./header/signups-header";
 @import "login";
 @import "registration";
-@import "shared-footer";
+@import "./footer/shared-footer";
+@import "./header/registration-header";
 @import "sell";
 @import "./contents/contents-image";
 @import "./contents/contents-category";
@@ -19,8 +20,8 @@
 @import "./contents/items/box-list";
 @import "./contents/contents-bottom";
 @import "./contents/btn-exhibit";
-@import "./fotter/fotter";
-@import "./fotter/fotter-datails";
+@import "./footer/footer";
+@import "./footer/footer-datails";
 @import "./mypage/mypage-user";
 @import "./mypage/mypage-list";
 @import "./mypage/mypage-tabs";

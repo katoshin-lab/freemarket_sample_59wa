@@ -1,37 +1,5 @@
+= render partial: "shared/registration-header"
 .registration
-  %header.registration__header
-    = link_to image_tag("fmarket_logo_red.svg", size: "184x49"), root_path
-    .registration__progress
-      .registration__progress--bar
-        .progress
-          .progress-title
-            会員情報
-          .progress-node
-            .progress-node__circle
-            .progress-node__line
-        .progress
-          .progress-title
-            電話番号認証
-          .progress-node
-            .progress-node__circle
-            .progress-node__line
-        .progress
-          .progress-title
-            お届け先住所入力
-          .progress-node
-            .progress-node__circle
-            .progress-node__line
-        .progress
-          .progress-title
-            支払い方法
-          .progress-node
-            .progress-node__circle
-            .progress-node__line
-        .progress
-          .progress-title
-            完了
-          .progress-node
-            .progress-node__circle
   %main.registration__main
     %section.registration__inner
       %h2.registration__inner--title 会員情報入力
@@ -103,4 +71,4 @@
               =link_to "https://policies.google.com/terms" do 
                 Terms of Service 
               apply.
-  =render "devise/shared/footer"
+= render partial: "devise/shared/shared-footer"
