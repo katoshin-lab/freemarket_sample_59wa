@@ -1,14 +1,17 @@
+require 'faker'
+require 'forgery_ja'
+
 FactoryBot.define do
   factory :user do
-    name                     {"testname"}
-    email                    {"test@gmail.com"}
-    password                 {"0123456"}
-    last_name                {"山田"}
-    first_name               {"太郎"}
-    last_name_kana           {"ヤマダ"}
-    first_name_kana          {"タロウ"}
-    mobile_phone_number      {"09012345678"}
-    birthday                 {"19900101"}
-    profile                  {"こんにちは"}
+    name                     { Faker::Alphanumeric.alphanumeric(number: 10) }
+    email                    { ForgeryJa('email').address }
+    password                 { Faker::Alphanumeric.alphanumeric(number: 10) }
+    last_name                { ForgeryJa(:name).last_name }
+    first_name               { ForgeryJa(:name).first_name }
+    last_name_kana           { ForgeryJa(:name).last_name(to: ForgeryJa::KANA) }
+    first_name_kana          { ForgeryJa(:name).first_name(to: ForgeryJa::KANA) }
+    mobile_phone_number      { ForgeryJa(:mobile).phone_number }
+    birthday                 { Faker::Date.in_date_period }
+    profile                  { Faker::Lorem.sentence(word_count: 3) }
   end
 end
