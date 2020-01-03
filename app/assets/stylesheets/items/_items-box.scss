@@ -8,6 +8,7 @@
     margin: 24px 0 8px;
     font-size: 22px;
     color: $accent;
+    @include text-hover();
   }
   &__box {
     width: auto;
@@ -35,6 +36,9 @@
       font-weight: 400;
       height: 3em;
       line-height: 1.5;
+      &::after {
+        @include opacity();
+      } 
     }
     &--price {
       display: inline-block;

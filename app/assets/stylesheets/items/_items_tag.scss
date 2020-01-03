@@ -25,6 +25,7 @@
     float: right;
     padding: 8px 16px;
     a {
+      @include text-hover();
       color: $accent;
       i {
         padding-right: 5px;

@@ -8,12 +8,14 @@
     text-align: right;
     a {
       color: $accent;
+      @include text-hover();
     }
   }
   &__left {
     float: left;
     width: 45%;
     a {
+      @include text-hover();
       color: $accent;
     }
   }
