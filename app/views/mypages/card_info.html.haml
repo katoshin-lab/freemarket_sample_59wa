@@ -17,6 +17,23 @@
           %span.page
             支払い方法
   %main.mypage-container
+    .add-card
+      %h2
+        支払い方法
+      .add-card__content
+        .add-card__content--text
+          クレジットカード一覧
+        .card-info
+          = image_tag "new_visa.gif", alt: "test"
+          .card-info__number
+            ************1234
+          .card-info__date
+            01 / 01
+          = link_to "#", class: "card-info__btn" do
+            削除する
+      = link_to "#", class: "add-card__show" do
+        支払い方法について
+        %i.fas.fa-chevron-right
     = render partial: 'mypages/mypage-list'
     = render partial: 'homes/btn-exhibit'
   = render partial: 'homes/fotter'
