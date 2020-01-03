@@ -18,6 +18,7 @@
             ログアウト
   %main.mypage-container
     = render partial: 'mypages/mypage-list'
+    = render partial: 'homes/btn-exhibit'
     .user-logout
       .user-logout__button
         = link_to destroy_user_session_path do

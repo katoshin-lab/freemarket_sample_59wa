@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root 'homes#index'
   resources :items, only: [:index, :new]
-  resources :mypages, only: [:index, :new]
+  resources :mypages, only: [:index] do
+    collection do
+      get :logout
+      get :profile
+    end
+  end
   resources :signups, only: [:new]
 
   devise_for :users, controllers: {
