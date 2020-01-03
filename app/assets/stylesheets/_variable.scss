@@ -58,3 +58,9 @@ $lightblack: rgb(34, 34, 34);
     clear: both;
   }
 }
+
+@mixin underline {
+  &:hover {
+    text-decoration: underline;
+  }
+}
