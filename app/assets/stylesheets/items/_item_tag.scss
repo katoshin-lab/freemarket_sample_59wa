@@ -1,0 +1,34 @@
+//タグ部分
+
+.items-tag {
+  margin: 16px 0 0;
+  @include clearfix();
+  &__left {
+    float: left;
+    li {
+      border: 1px solid #f5f5f5;
+      background: #f5f5f5;
+      padding: 5px 16px;
+      border-radius: 40px;
+      display: inline-block;
+      margin-right: 16px;
+      i {
+        color: #ccc;
+      }
+      span {
+        margin: 1px 0 0 8px;
+        color: #333333;
+      }
+    }
+  }
+  &__right {
+    float: right;
+    padding: 8px 16px;
+    a {
+      color: $accent;
+      i {
+        padding-right: 5px;
+      }
+    }
+  }
+}
