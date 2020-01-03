@@ -1,0 +1,36 @@
+
+//フォーム部分
+
+.items-form {
+  padding: 24px 40px 24px;
+  margin: 40px auto 0;
+  background: white;
+  width: 700px;
+  &__note {
+    padding: 8px;
+    font-size: 14px;
+    background: #fff6de;
+  }
+  &__text {
+    margin: 8px 0 0;
+    display: block;
+    width: 97%;
+    max-width: 100%;
+    min-height: 104px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  &__btn {
+    width: 100%;
+    margin: 8px 0 0;
+    text-align: center;
+    line-height: 48px;
+    background: #aaa;
+    border: 1px solid #aaa;
+    color: #fff;
+    cursor: pointer;
+  }
+}

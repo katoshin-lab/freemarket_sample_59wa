@@ -105,5 +105,10 @@
           = icon('fas', 'lock')
           %span
             あんしん・あんぜんへの取り組み
+  .items-form
+    = form_with model: @user, url: "", method: :post, local: true do |f|
+      %p.items-form__note 
+        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      = f.text_area :text, class: "items-form__text"
+      = f.submit "コメントする", class: 'items-form__btn'
   = render partial: 'homes/fotter'
-  
