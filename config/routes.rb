@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get :logout
       get :profile
       get :addcard
+      get :card_info
     end
   end
   resources :signups, only: [:new]
