@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       get :logout
       get :profile
+      get :card
     end
   end
   resources :signups, only: [:new]
