@@ -111,4 +111,24 @@
         相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
       = f.text_area :text, class: "items-form__text"
       = f.submit "コメントする", class: 'items-form__btn'
+  %ul.items-prev
+    %li.items-prev__left
+      = link_to root_path do
+        = icon('fas', 'chevron-left') 
+        %span テストの商品
+    %li.items-prev__right
+      = link_to root_path do
+        %span テストの商品のズボンaaaaaaaaaaaaaa
+        = icon('fas', 'chevron-right') 
+  .items-media
+    %ul.items-media__box
+      %li.items-media__box--facebook
+        = link_to "https://www.facebook.com/" do
+          = icon('fab', 'facebook-square') 
+      %li.items-media__box--twitter
+        = link_to "https://twitter.com/login?lang=ja" do
+          = icon('fab', 'twitter') 
+      %li.items-media__box--pinterest
+        = link_to "https://www.pinterest.jp/" do
+          = icon('fab', 'pinterest') 
   = render partial: 'homes/fotter'
