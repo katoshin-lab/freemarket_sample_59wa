@@ -1,3 +1,109 @@
 .wrapper
   = render partial: 'homes/header'
+  .items-container
+    %h1
+      テストの商品
+    .items-container__content
+      .items-image
+        = image_tag "test3.jpeg", class: "items-image__box"
+        .items-image__boxes
+          = image_tag "test3.jpeg"
+        .items-image__boxes
+          = image_tag "test3.jpeg"
+        .items-image__boxes
+          = image_tag "test3.jpeg"
+        .items-image__boxes
+          = image_tag "test3.jpeg"
+        .items-image__boxes
+          = image_tag "test3.jpeg"
+      .items-container__info
+        %table
+          %tr
+            %th 出品者
+            %td 
+              = link_to root_path do
+                テスト太郎
+              .items-container__info--icon-good
+                = icon('fas', 'grin')
+                %span
+                  64
+              .items-container__info--icon-normal
+                = icon('fas', 'meh')
+                %span
+                  32
+              .items-container__info--icon-sad
+                = icon('fas', 'frown-open')
+                %span
+                  16
+          %tr
+            %th カテゴリー
+            %td 
+              = link_to root_path do
+                メンズ
+              .items-container__info--right
+                = link_to root_path do
+                  = icon('fas', 'chevron-right')  
+                  トップス
+                = link_to root_path do
+                  = icon('fas', 'chevron-right')  
+                  Tシャツ
+          %tr
+            %th ブランド
+            %td 
+              = link_to root_path do
+                ナイキ             
+          %tr
+            %th 商品の状態
+            %td  
+              やや傷あり
+          %tr
+            %th 配送料の負担
+            %td  
+              送料込み(出品者負担)
+          %tr
+            %th 配送の方法
+            %td  
+              らくらく便
+          %tr
+            %th 配送元地域
+            %td  
+              = link_to root_path do
+                大阪府
+          %tr
+            %th 配送の目安
+            %td  
+              2~3日で発送
+    .items-container__price
+      %span.items-container__price--text
+        ¥2,300
+      %span.items-container__price--tax      
+        (税込)
+      %span.items-container__price--fee      
+        送料込み      
+    .items-container__btn
+      = link_to root_path do
+        購入画面に進む
+    .items-container__text
+      %p
+        ナイキジャージです。
+        ２年程、冬の時期に使用しました。
+        サイズはＭで身長178、体重70キロの自分にサイズピッタリでした。
+        購入、コメント前にはお手数ですがプロフィールを一読お願いいたします。
+    .items-tag
+      %ul.items-tag__left
+        %li.items-tag__left--good
+          = link_to root_path do
+            = icon('far', 'heart')
+            %span いいね!
+            %span 1
+        %li
+          = link_to root_path do
+            = icon('far', 'flag')
+            %span 不適切な商品の報告
+      .items-tag__right
+        = link_to root_path do
+          = icon('fas', 'lock')
+          %span
+            あんしん・あんぜんへの取り組み
   = render partial: 'homes/fotter'
+  

@@ -64,3 +64,95 @@ $lightblack: rgb(34, 34, 34);
     text-decoration: underline;
   }
 }
+
+@mixin link-color {
+  display: block;
+  color: $accent;
+}
+
+//表情アイコン部分
+
+@mixin  icon-good {
+  display: inline-block;
+  i {
+    font-size: 16px;
+    color: #ef5185;
+  }
+}
+
+@mixin icon-bad {
+    display: inline-block;
+    margin: 8px 0 0 16px;
+  i {
+    font-size: 16px;
+    color: #6ab5d8;
+  }
+}
+
+@mixin icon-normal {
+    display: inline-block;
+    margin: 8px 0 0 16px;
+  i {
+    font-size: 16px;
+    color: #fba933;
+  }
+}
+
+//アイテムテーブルのcssの設定
+
+@mixin item-table {
+  table {
+    width: 100%;
+  }
+  tr {
+    border: 1px solid #f5f5f5;
+  }
+  th {
+    padding: 8px;
+    width: 39%;
+    text-align: left;
+    font-weight: 400;
+    background: #fafafa;
+  }
+  td {
+    padding: 10px;
+    width: 61%;
+  }
+}
+
+
+//画像の幅調整
+
+@mixin image-box { 
+  img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: bottom;
+  }
+}
+
+//snsアイコン
+
+@mixin sns-icon {
+    display: inline-block;
+    margin: 0 8px 8px 0;
+    vertical-align: middle;
+    text-align: center;
+}
+
+@mixin sns-icon-size {
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  line-height: 44px;
+  font-size: 2.3em;
+  color: #fff;
+}
+
