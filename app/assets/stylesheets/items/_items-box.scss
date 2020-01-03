@@ -1,0 +1,59 @@
+
+//その他の商品部分
+
+.items-list {
+  margin: 0 auto;
+  width: 700px;
+  h2 {
+    margin: 24px 0 8px;
+    font-size: 22px;
+    color: $accent;
+  }
+  &__box {
+    width: auto;
+    font-size: 0;
+  }
+}
+
+.item-box {
+  display: inline-block;
+  width: 220px;
+  margin: 0 16px 20px 0;
+  background-color: white;
+  &__photo {
+    @include image-box();
+    width: 220px;
+    height: 220px;
+    position: relative;
+    display: inline-block;
+  }
+  &__body {
+    padding: 16px;
+    &--text {
+      overflow: hidden;
+      position: relative;
+      font-weight: 400;
+      height: 3em;
+      line-height: 1.5;
+    }
+    &--price {
+      display: inline-block;
+      margin: 8px 0 0;
+      font-size: 17px;
+      font-weight: 400;
+    }
+    &--icon {
+      display: inline-block;
+      margin-left: 95px;
+      i {
+        font-size: 16px;
+        color: #ccc;
+      }
+    }
+  }
+}
+
+
+.item-box:nth-child(3n) {
+  margin-right: 0px;
+}
