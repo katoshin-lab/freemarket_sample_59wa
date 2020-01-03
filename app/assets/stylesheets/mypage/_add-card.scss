@@ -1,0 +1,43 @@
+//カード追加画面
+.add-card {
+  float: right;
+  width: 700px;
+  background: white;
+  h2 {
+    text-align: center;
+    font-size: 24px;
+    padding: 8px 24px;
+    border-bottom: 1px solid $lightgray;
+  }
+  &__content {
+    padding: 64px 0 40px 0;
+    border-bottom: 1px solid $lightgray;
+    &--text {
+      max-width: 320px;
+      margin: 0 auto;
+      font-weight: bold;
+      font-size: 16px;
+      padding-bottom: 24px;
+    }
+    &--btn {
+      @include red-btn;
+      display: block;
+      color: white;
+      line-height: 48px;
+      font-size: 14px;
+      text-align: center;
+      max-width: 320px;
+      margin: 0 auto;
+      i {
+        padding-right: 5px;
+      }
+    }
+  }
+  &__show {
+    @include underline;
+    padding: 40px 40px 40px 0;
+    display: block;
+    text-align: right;
+    color: $accent;
+  }
+}

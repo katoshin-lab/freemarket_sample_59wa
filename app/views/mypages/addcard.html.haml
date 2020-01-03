@@ -17,6 +17,19 @@
           %span.page
             支払い方法
   %main.mypage-container
+    .add-card
+      %h2
+        支払い方法
+      .add-card__content
+        .add-card__content--text
+          クレジットカード一覧
+        = link_to "#" do
+          .add-card__content--btn
+            = icon('fas', 'credit-card')
+            クレジットカード追加を追加する
+      = link_to "#", class: "add-card__show" do
+        支払い方法について
+        = icon('fas', 'chevron-right')  
     = render partial: 'mypages/mypage-list'
     = render partial: 'homes/btn-exhibit'
   = render partial: 'homes/fotter'

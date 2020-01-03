@@ -8,7 +8,7 @@ class MypagesController < ApplicationController
   def profile
   end
 
-  def card
+  def addcard
     
   end
 end
