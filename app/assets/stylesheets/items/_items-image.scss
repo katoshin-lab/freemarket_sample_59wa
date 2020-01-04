@@ -1,0 +1,25 @@
+//商品画像部分
+
+.items-image {
+  position: relative;
+  float: left;
+  min-width: 300px;
+  max-width: 300px;
+  min-height: 375px;
+  margin: 0 auto;
+  background: #fafafa;
+  font-size: 0;
+  &__box {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+  }
+  &__boxes {
+    @include image-box();
+    position: relative;
+    width: 60px;
+    height: 60px;
+    max-height: none;
+    display: inline-block;
+  }
+}

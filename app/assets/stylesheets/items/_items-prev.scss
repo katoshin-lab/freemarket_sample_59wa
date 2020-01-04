@@ -1,0 +1,22 @@
+.items-prev {
+  @include clearfix();
+  margin: 24px auto 0;
+  width: 700px;
+  &__right {
+    float: right;
+    width: 45%;
+    text-align: right;
+    a {
+      color: $accent;
+      @include text-hover();
+    }
+  }
+  &__left {
+    float: left;
+    width: 45%;
+    a {
+      @include text-hover();
+      color: $accent;
+    }
+  }
+}
