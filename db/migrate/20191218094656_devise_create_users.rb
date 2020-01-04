@@ -11,7 +11,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :first_name,            null: false, default: "", limit: 40
       t.string :last_name_kana,        null: false, default: "", limit: 40
       t.string :first_name_kana,       null: false, default: "", limit: 40
-      t.integer :mobile_phone_number,  null: false, default: 0, limit: 5
+      t.integer :mobile_phone_number,  null: false, default: 1111111111, limit: 5
       t.date :birthday
       t.text :profile
 

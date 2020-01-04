@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2019_12_26_123644) do
     t.string "first_name", limit: 40, default: "", null: false
     t.string "last_name_kana", limit: 40, default: "", null: false
     t.string "first_name_kana", limit: 40, default: "", null: false
-    t.bigint "mobile_phone_number", default: 0, null: false
+    t.bigint "mobile_phone_number", default: 1111111111, null: false
     t.date "birthday"
     t.text "profile"
     t.string "reset_password_token"
