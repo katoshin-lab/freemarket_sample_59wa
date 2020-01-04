@@ -15,4 +15,8 @@ class MypagesController < ApplicationController
   def card_info
     
   end
+
+  def personal_info
+    
+  end
 end
