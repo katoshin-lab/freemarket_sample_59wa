@@ -1,0 +1,16 @@
+
+.items-bottom {
+  width: 100%;
+  border-top: 1px solid #eee;
+  &__tag {
+    width: 1020px;
+    margin: 0 auto;
+    padding: 16px 0;
+    li {
+      display: inline-block;
+      font-size: 14px;
+      line-height: 1.2;
+      padding-right: 5px;
+    }
+  }
+}

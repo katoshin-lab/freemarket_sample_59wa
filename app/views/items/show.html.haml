@@ -1,0 +1,213 @@
+.wrapper
+  = render partial: 'homes/header'
+  .items-container
+    %h1
+      テストの商品
+    .items-container__content
+      .items-image
+        = image_tag "test3.jpeg", class: "items-image__box"
+        .items-image__boxes
+          = image_tag "test3.jpeg"
+        .items-image__boxes
+          = image_tag "test3.jpeg"
+        .items-image__boxes
+          = image_tag "test3.jpeg"
+        .items-image__boxes
+          = image_tag "test3.jpeg"
+        .items-image__boxes
+          = image_tag "test3.jpeg"
+      .items-container__info
+        %table
+          %tr
+            %th 出品者
+            %td 
+              = link_to root_path do
+                テスト太郎
+              .items-container__info--icon-good
+                = icon('fas', 'grin')
+                %span
+                  64
+              .items-container__info--icon-normal
+                = icon('fas', 'meh')
+                %span
+                  32
+              .items-container__info--icon-sad
+                = icon('fas', 'frown-open')
+                %span
+                  16
+          %tr
+            %th カテゴリー
+            %td 
+              = link_to root_path do
+                メンズ
+              .items-container__info--right
+                = link_to root_path do
+                  = icon('fas', 'chevron-right')  
+                  トップス
+                = link_to root_path do
+                  = icon('fas', 'chevron-right')  
+                  Tシャツ
+          %tr
+            %th ブランド
+            %td 
+              = link_to root_path do
+                ナイキ             
+          %tr
+            %th 商品の状態
+            %td  
+              やや傷あり
+          %tr
+            %th 配送料の負担
+            %td  
+              送料込み(出品者負担)
+          %tr
+            %th 配送の方法
+            %td  
+              らくらく便
+          %tr
+            %th 配送元地域
+            %td  
+              = link_to root_path do
+                大阪府
+          %tr
+            %th 配送の目安
+            %td  
+              2~3日で発送
+    .items-container__price
+      %span.items-container__price--text
+        ¥2,300
+      %span.items-container__price--tax      
+        (税込)
+      %span.items-container__price--fee      
+        送料込み      
+    .items-container__btn
+      = link_to root_path do
+        購入画面に進む
+    .items-container__text
+      %p
+        ナイキジャージです。
+        ２年程、冬の時期に使用しました。
+        サイズはＭで身長178、体重70キロの自分にサイズピッタリでした。
+        購入、コメント前にはお手数ですがプロフィールを一読お願いいたします。
+    .items-tag
+      %ul.items-tag__left
+        %li.items-tag__left--good
+          = link_to root_path do
+            = icon('far', 'heart')
+            %span いいね!
+            %span 1
+        %li
+          = link_to root_path do
+            = icon('far', 'flag')
+            %span 不適切な商品の報告
+      .items-tag__right
+        = link_to root_path do
+          = icon('fas', 'lock')
+          %span
+            あんしん・あんぜんへの取り組み
+  .items-form
+    = form_with model: @user, url: "", method: :post, local: true do |f|
+      %p.items-form__note 
+        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      = f.text_area :text, class: "items-form__text"
+      = f.submit "コメントする", class: 'items-form__btn'
+  %ul.items-prev
+    %li.items-prev__left
+      = link_to root_path do
+        = icon('fas', 'chevron-left') 
+        %span テストの商品
+    %li.items-prev__right
+      = link_to root_path do
+        %span テストの商品のズボンaaaaaaaaaaaaaa
+        = icon('fas', 'chevron-right') 
+  .items-media
+    %ul.items-media__box
+      %li.items-media__box--facebook
+        = link_to "https://www.facebook.com/" do
+          = icon('fab', 'facebook-square') 
+      %li.items-media__box--twitter
+        = link_to "https://twitter.com/login?lang=ja" do
+          = icon('fab', 'twitter') 
+      %li.items-media__box--pinterest
+        = link_to "https://www.pinterest.jp/" do
+          = icon('fab', 'pinterest') 
+  .items-list
+    = link_to "#" do
+      %h2
+        テスト太郎さんのその他の出品
+    .items-list__content
+      .item-box 
+        = link_to "#" do
+          .item-box__photo
+            = image_tag "test3.jpeg"
+          .item-box__body 
+            %h3.item-box__body--text
+              テストのブランドの商品ですああああああああああああああああああああああああああああああああああああ
+            .item-box__body--price 
+              ¥2,200
+            .item-box__body--icon
+              = icon('far', 'heart')
+              %span
+                6
+      .item-box 
+        = link_to "#" do
+          .item-box__photo
+            = image_tag "test3.jpeg"
+          .item-box__body 
+            %h3.item-box__body--text
+              テストのブランドの商品ですああああああああああああああああああああああああああああああああああああ
+            .item-box__body--price 
+              ¥2,200
+            .item-box__body--icon
+              = icon('far', 'heart')
+              %span
+                6
+      .item-box
+        = link_to "#" do
+          .item-box__photo
+            = image_tag "test3.jpeg"
+          .item-box__body 
+            %h3.item-box__body--text
+              テストのブランドの商品ですああああああああああああああああああああああああああああああああああああ
+            .item-box__body--price 
+              ¥2,200
+            .item-box__body--icon
+              = icon('far', 'heart')
+              %span
+                6
+      .item-box 
+        = link_to "#" do
+          .item-box__photo
+            = image_tag "test3.jpeg"
+          .item-box__body 
+            %h3.item-box__body--text
+              テストのブランドの商品ですああああああああああああああああああああああああああああああああああああ
+            .item-box__body--price 
+              ¥2,200
+            .item-box__body--icon
+              = icon('far', 'heart')
+              %span
+                6
+      .item-box
+        = link_to "#" do
+          .item-box__photo
+            = image_tag "test3.jpeg"
+          .item-box__body 
+            %h3.item-box__body--text
+              テストのブランドの商品ですああああああああああああああああああああああああああああああああああああ
+            .item-box__body--price 
+              ¥2,200
+            .item-box__body--icon
+              = icon('far', 'heart')
+              %span
+                6
+  .items-bottom
+    %ul.items-bottom__tag
+      %li
+        = link_to "#" do
+          %span
+            フリーマーケット
+        = icon('fas', 'chevron-right')  
+      %li
+        テスト商品
+  = render partial: 'homes/fotter'
