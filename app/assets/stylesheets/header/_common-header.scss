@@ -4,15 +4,15 @@
     min-height: 128px;
     display: flex;
     .commonImg{
-      width: 400px;
-      margin: 0 0 0 230px;
+      width: 250px;
+      margin: 0 0 0 310px;
       margin-top: 30px;
     }
     .progress-bar{
       font-size: 0;
       margin-top: 30px;
       text-align: center;
-      width:  500px;
+      width: 600px;
       .clearfix{
         li{
           position: relative;
@@ -21,6 +21,7 @@
           margin: 0 5% 0 0;
           font-size: 12px;
           color: $dark;
+          min-width: 70px;
           .progress-status{
             width: 12px;
             height: 12px;
