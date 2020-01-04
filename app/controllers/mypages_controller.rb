@@ -17,6 +17,7 @@ class MypagesController < ApplicationController
   end
 
   def personal_info
-    
+    @users = User.all
+    @prefectures = Prefecture.all
   end
 end
