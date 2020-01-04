@@ -3,14 +3,14 @@ require 'forgery_ja'
 
 FactoryBot.define do
   factory :user do
-    name                     { Faker::Alphanumeric.alphanumeric(number: 10) }
+    name                     { Faker::Alphanumeric.alphanumeric(number: 20) }
     email                    { ForgeryJa('email').address }
     password                 { Faker::Alphanumeric.alphanumeric(number: 10) }
     last_name                { ForgeryJa(:name).last_name }
     first_name               { ForgeryJa(:name).first_name }
     last_name_kana           { ForgeryJa(:name).last_name(to: ForgeryJa::KANA) }
     first_name_kana          { ForgeryJa(:name).first_name(to: ForgeryJa::KANA) }
-    mobile_phone_number      { ForgeryJa(:mobile).phone_number }
+    mobile_phone_number      { Faker::Number.number(digits: Faker::Number.between(from: 10, to: 11)) }
     birthday                 { Faker::Date.in_date_period }
     profile                  { Faker::Lorem.sentence(word_count: 3) }
   end
