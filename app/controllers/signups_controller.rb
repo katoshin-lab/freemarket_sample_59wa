@@ -6,5 +6,8 @@ class SignupsController < ApplicationController
 
   def sms_authentication
   end
+
+  def sms_confirmation
+  end
   
 end
