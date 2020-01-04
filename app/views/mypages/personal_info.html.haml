@@ -1,0 +1,25 @@
+.wrapper
+  = render partial: 'homes/header-login'
+  .header-nav-bar
+    %ul
+      %li
+        = link_to root_path do
+          %span
+            メルカリ 
+          = icon('fas', 'chevron-right')
+      %li
+        = link_to mypages_path do
+          %span
+            マイページ
+          = icon('fas', 'chevron-right')
+      %li
+        = link_to root_path do
+          %span.page
+            本人情報の登録
+  %main.mypage-container
+    .personal-content
+      %h2
+        本人情報の登録
+    = render partial: 'mypages/mypage-list'
+    = render partial: 'homes/btn-exhibit'
+  = render partial: 'homes/fotter'
