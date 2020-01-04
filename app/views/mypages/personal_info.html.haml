@@ -17,15 +17,15 @@
           %span.page
             本人確認情報
   %main.mypage-container
-    .mypage-content
+    .personal-info
       %h2
         本人情報の登録
-      = form_with model: @user, class: "mypage-content__form", url: "", method: :post, local: true do |f|
+      = form_with model: @user, class: "personal-info__form", url: "", method: :post, local: true do |f|
         %p 
           お客さまの本人情報をご登録ください
           %br/
           登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります
-        = link_to "#", class: "mypage-content__form--show" do
+        = link_to "#", class: "personal-info__form--show" do
           本人確認書類のアップローダーについて
           = icon('fas', 'chevron-right')  
         .form-group
@@ -67,7 +67,7 @@
           = f.text_field :zip_code, placeholder: "例）柳ビル101", class: "input-default"
         = link_to "#", class: "form-group__btn" do  
           変更する
-        = link_to "#", class: "mypage-content__form--show mypage-content__form--personal" do
+        = link_to "#", class: "personal-info__form--show personal-info__form--personal" do
           本人情報登録について
           = icon('fas', 'chevron-right')  
     = render partial: 'mypages/mypage-list'
