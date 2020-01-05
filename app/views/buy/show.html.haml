@@ -7,12 +7,12 @@
 
   .buy__content
     .buy__image
-      = image_tag ("test2.jpg")
+      = image_tag ("test3.jpg")
     .buy__detail
       .buy__item_name
-        ◎ポケットモンスター キテルグマ iPhone8/7/6s/6 ハードケース
+        テスト商品　パーカー　グレー色
       .buy__price
-        ¥999（税込）送料込み
+        ¥2,000（税込）送料込み
   .buy__border
 
   .buy__content
@@ -20,7 +20,7 @@
       .buy__label--big
         支払い金額
       .buy__amount
-        ¥999
+        ¥2,000
     .buy__point_check--invalid
       = check_box_tag :point
       = label_tag :point, "ポイントを使用(所持ポイント: P0)"
@@ -30,8 +30,6 @@
     .buy__wrapper
       .buy__label
         支払い方法
-      .buy__edit
-        = link_to "変更する", ""
     .buy__text
       .buy__info
         = link_to icon('fas', 'plus-circle')+" 登録してください", ""
