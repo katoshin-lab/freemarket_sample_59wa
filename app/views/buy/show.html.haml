@@ -21,7 +21,7 @@
         支払い金額
       .buy__amount
         ¥999
-    .buy__point_check
+    .buy__point_check--invalid
       = check_box_tag :point
       = label_tag :point, "ポイントを使用(所持ポイント: P0)"
   .buy__content--border
@@ -31,11 +31,10 @@
       .buy__label
         支払い方法
       .buy__edit
-        変更する
+        = link_to "変更する", ""
     .buy__text
       .buy__info
-        = icon('fas', 'plus-circle')
-        登録してください
+        = link_to icon('fas', 'plus-circle')+" 登録してください", ""
   .buy__content--border
     .buy__border
   .buy__content
@@ -43,7 +42,7 @@
       .buy__label
         配送先
       .buy__edit
-        変更する
+        = link_to "変更する", ""
     .buy__text
       郵便番号573-0018
       %br
@@ -51,7 +50,7 @@
   .buy__content--border
     .buy__border
   .buy__content
-    .buy__submit--error
+    .buy__submit--invalid
       購入する
 
 = render partial: "layouts/footer"
