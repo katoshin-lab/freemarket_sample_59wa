@@ -26,13 +26,16 @@
         display: inline-block;
       }
       &-required{
-        @include required();
+        @include required(); 
+      }
+      span{
+        margin: 20px 15px 0 15px;
       }
       .inputField{
         @include inputField;
       }
       select{
-        width: 30%;
+        width: 40%;
         margin-top: 8px;
         padding: 10px 16px 8px;
         border-radius: 4px;
@@ -42,9 +45,8 @@
         height: 44px;
         box-sizing: border-box;
       }
-      .paymentBtn {
-        font-size: 14px;
-        @include btn();
+      &-time{
+        display: flex;
       }
     }
     &--card-list{
@@ -56,6 +58,19 @@
       .cardIcon{
         padding-right: 10px;
       }
+    }
+    &--text-right{
+      max-width: 343px;
+      text-align: right;
+      margin: 0 auto;
+      margin-top: 10px;
+    }
+    a:link, a:visited{
+      color: $accent;
+    }
+    .paymentBtn {
+      font-size: 14px;
+      @include btn();
     }
   }
 }
