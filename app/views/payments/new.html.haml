@@ -1,0 +1,71 @@
+.common
+  %header.common__header
+    = link_to "root-path" do
+      =image_tag("fmarket_logo_red.svg", size: "184x49", class: "commonImg")
+    %nav.progress-bar
+      %ol.clearfix
+        %li.through
+          会員情報
+          .progress-status
+        %li.through
+          電話番号認証
+          .progress-status
+        %li.through
+          お届け先住所入力
+          .progress-status
+        %li.active_red
+          支払い方法
+          .progress-status
+        %li
+          完了
+          .progress-status
+.pay
+  %main.pay__main
+    %section.pay__inner
+      %h3.pay__inner--title 支払い方法
+      .pay__form
+        = form_with url: payments_path, id: "charge_form" do |f|
+          .pay__form--field
+            = f.label :card_number, "カード番号"
+            %span.pay__form--field-required 必須
+            %br/
+            = f.text_field :card_number, id: "payment_card_number", placeholder: "半角数字のみ", class: "inputField"
+          .pay__form--card-list
+            %ul.clearfix
+              %li 
+                = image_tag("visa.svg", size: "40x50", class: "cardIcon")
+              %li 
+                = image_tag("master-card.svg", size: "40x50", class: "cardIcon")
+              %li 
+                = image_tag("saison-card.svg", size: "40x50", class: "cardIcon")
+              %li 
+                = image_tag("jcb.svg", size: "40x50", class: "cardIcon")
+              %li 
+                = image_tag("american_express.svg", size: "40x40", class: "cardIcon")
+              %li 
+                = image_tag("dinersclub.svg", size: "40x40", class: "cardIcon")
+              %li 
+                = image_tag("discover.svg", size: "40x50", class: "cardIcon")
+          .pay__form--field
+            %br/
+            = f.label :exp, "有効期限"
+            %span.pay__form--field-required 必須
+            %br/
+            .pay__form--field-time
+              = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]], id: "exp_month"
+              %span 月
+              %br/
+              = f.select :exp_year, [["20", 2020],["21", 2021],["22", 2022],["23", 2023],["24", 2024], ["25", 2025]], id: "exp_year"
+              %span 年
+          .pay__form--field
+            %br/
+            = f.label :cvv, "セキュリティコード"
+            %span.pay__form--field-required 必須
+            %br/
+            = f.text_field :cvv, id: "cvv_code", placeholder: "カード背面４桁もしくは３桁の番号", class: "inputField"
+          .pay__form--text-right 
+            %i.fa.fa-question-circle{style: "color: #0099E8;"}
+            = link_to "https://www.mercari.com/jp/help_center/article/244/" do 
+              カード裏面の番号とは？
+            = f.submit "登録する", id: "token", class: "paymentBtn"
+= render partial: "devise/shared/shared-footer"
