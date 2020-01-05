@@ -1,0 +1,23 @@
+
+.personal-info {
+  box-sizing: border-box;
+  @include content();
+    h2 {
+      @include font-title();
+    }
+    &__form {
+      padding: 64px;
+      p {
+        margin: 8px 0 0;
+        line-height: 1.5;
+      }
+    &--show {
+      margin: 8px 0 0;
+      @include show ();
+      @include text-hover();
+    }
+    &--personal {
+      margin-top: 30px;
+    }
+  } 
+}

@@ -1,0 +1,31 @@
+//フォーム部分
+
+.form-group {
+  margin: 40px 0 0;
+  @include input-form();
+  @include select-form();
+  select:focus {
+    border: 1px solid $accent;
+    outline: 0;
+  }
+  input:focus {
+    border: 1px solid $accent;
+    outline: 0;
+  }
+  label {
+    font-weight: 600;
+  }
+  p {
+    margin: 8px 0 0;
+    line-height: 1.5;
+  }
+  &__note {
+    @include form-note ();
+    background: #ccc;
+  }
+  &__btn {
+    margin-top: 40px;
+    @include red-btn();
+    @include btn-default();
+  }
+}

@@ -15,4 +15,9 @@ class MypagesController < ApplicationController
   def card_info
     
   end
+
+  def personal_info
+    @users = User.all
+    @prefectures = Prefecture.all
+  end
 end

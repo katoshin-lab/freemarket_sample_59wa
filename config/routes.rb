@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get :profile
       get :addcard
       get :card_info
+      get :personal_info
     end
   end
   resources :signups, only: [:new]
