@@ -8,6 +8,29 @@
 }
 //終了
 
+//新規会員登録画面
+@mixin signbtn{
+  position: relative;
+  color: $white;
+  border-radius: 4px;
+  align-items: center;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+//終了
+
+//ログイン画面
+@mixin form{
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  border-radius: 4px;
+  margin: 25px 0;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+//終了
 
 //会員情報入力画面
 @mixin btn($color: $white, $background: $red) {
