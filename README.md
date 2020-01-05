@@ -87,24 +87,26 @@ Things you may want to cover:
 |condition|string|null: false, limit: 20|
 |price|integer|null: false|
 |seller|references|null: false, foreign_key: {to_table: users}|
+|buyer|references|null: false, foreign_key: {to_table: users}|
 |is_seller_shipping|boolean|null: false, default: true|
 |prefecture|references|null: false, foreign_key: true|
 |shipping_period|references|null: false, foreign_key: true|
 |shipping_method|references|null: false, foreign_key: true|
 |brand|references|foreign_key: true|
 |category|references|null: false, foreign_key: true|
-|item_status|integer|null: false, limit: 1|
+|item_status|references|null: false, foreign_key: true|
 ### Associations
 - belongs_to :user
 - has_many :images
 - has_many :likes
 - has_many :reports
 - belongs_to :brand
-- belongs_to :shipping_method
-- belongs_to :shipping_period
 - belongs_to :category
 - has_many :dealing_comments
 - belongs_to_active_hash :prefecture
+- belongs_to_active_hash :shipping_period
+- belongs_to_active_hash :shipping_method
+- belongs_to_active_hash :item_status
 
 ## dealing_comments table
 |Column|Type|Options|
@@ -124,20 +126,6 @@ Things you may want to cover:
 ### Associations
 - belongs_to :user
 - belongs_to :item
-
-## shipping_periods table
-|Column|Type|Options|
-|------|----|-------|
-|period|string|limit: 20|
-### Association
-- has_many :items
-
-## shipping_methods table
-|Column|Type|Options|
-|------|----|-------|
-|shipping_method|string|limit: 30|
-### Association
-- has_many :items
 
 ## images table
 |Column|Type|Options|
