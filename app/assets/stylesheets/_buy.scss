@@ -1,0 +1,142 @@
+.buy {
+  background-color: $gray;
+
+  &__border {
+    width: 100%;
+    border-bottom: solid 1px $gray;
+  }
+  &__title {
+    @extend .buy__content;
+    font-size: 22px;
+    text-align: center;
+    font-weight: bold;
+    height: 100px;
+    line-height: 35px;
+  }
+
+  &__content {
+    width: 700px;
+    background-color: white;
+    margin: 0 auto;
+    padding: 32px 180px;
+    box-sizing: border-box;
+    @include clearfix;
+    &--border {
+      @extend .buy__content;
+      padding: 0 180px;
+    }
+  }
+  &__wrapper {
+    @include clearfix;
+  }
+  &__image {
+    float: left;
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  &__detail {
+    float: right;
+    width: 240px;
+    height: 80px;
+    text-align: left;
+    margin-left: 16px;
+  }
+  &__item_name {
+    padding-bottom: 8px;
+  }
+  &__price {
+    font-weight: bold;
+  }
+  &__label {
+    font-weight: bold;
+    float: left;
+  &--big {
+    @extend .buy__label;
+      font-size: 18px;
+    }
+  }
+  &__amount {
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 18px;
+  }
+  &__point_check {
+    margin-top: 24px;
+    color: $dark;
+    text-align: left;
+    label {
+      font-size: 14px;
+    }
+    label:before {
+      content: "\2713";
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      font-size: 20px;
+      line-height: 20px;
+      color: white;
+      background-color: #fff;
+      box-shadow: inset 0px 0px 2px 0px #000;
+      border-radius: 3px;
+      margin-right: 10px;
+    }
+    input[type=checkbox] {
+      display: none;
+      &:checked + label:before {
+        content: "\2713";
+        font-size: 20px;
+        line-height: 20px;
+        color: white;
+        background-color: $accent;
+      }
+    }
+    &--invalid {
+      @extend .buy__point_check;
+      pointer-events : none;
+      label:before {
+        color: $darkgray;
+        background-color: $darkgray;
+        box-shadow: none;
+      }  
+    }  
+  }
+
+  &__edit {
+    float: right;
+    a {
+      color: $accent;
+    }
+  }
+  &__text {
+    text-align: left;
+    margin-top: 8px;
+  }
+  &__info {
+    margin-top: 8px;
+    color: $accent;
+    a {
+      color: $accent;
+    }
+  }
+  &__plus_circle {
+    display: inline-block;
+    border: solid 1px $accent;
+    border-radius: 14px;
+  }
+  &__submit {
+    color: white;
+    background-color: $red;
+    width: 100%;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    margin-bottom: 10px;
+    &--invalid {
+      @extend .buy__submit;
+      background-color: $dark;
+    }
+  }
+}

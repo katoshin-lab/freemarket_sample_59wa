@@ -1,0 +1,54 @@
+= render partial: "layouts/header"
+
+.buy
+  .buy__title
+    購入内容の確認
+  .buy__border
+
+  .buy__content
+    .buy__image
+      = image_tag ("test3.jpg")
+    .buy__detail
+      .buy__item_name
+        テスト商品　パーカー　グレー色
+      .buy__price
+        ¥2,000（税込）送料込み
+  .buy__border
+
+  .buy__content
+    .buy__wrapper
+      .buy__label--big
+        支払い金額
+      .buy__amount
+        ¥2,000
+    .buy__point_check--invalid
+      = check_box_tag :point
+      = label_tag :point, "ポイントを使用(所持ポイント: P0)"
+  .buy__content--border
+    .buy__border
+  .buy__content
+    .buy__wrapper
+      .buy__label
+        支払い方法
+    .buy__text
+      .buy__info
+        = link_to icon('fas', 'plus-circle')+" 登録してください", ""
+  .buy__content--border
+    .buy__border
+  .buy__content
+    .buy__wrapper
+      .buy__label
+        配送先
+      .buy__edit
+        = link_to "変更する", ""
+    .buy__text
+      郵便番号573-0018
+      %br
+      大阪府枚方市桜ヶ丘1-1
+  .buy__content--border
+    .buy__border
+  .buy__content
+    .buy__submit--invalid
+      購入する
+
+= render partial: "layouts/footer"
