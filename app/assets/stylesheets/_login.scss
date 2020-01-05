@@ -5,7 +5,7 @@
   &__panel{
     background-color: $white;
     margin: 0 auto;
-    height: 731px;
+    height: 740px;
     align-items: center;
     &--no-content{
       border-bottom: 1px #eee solid;
@@ -34,8 +34,10 @@
       &--btn-google{
         position: relative;
         margin: 16px 0 0;
-        border: 1px #eee solid;
+        border: 1px $dark solid;
         line-height: 48px;
+        background: #fff url("https://img.icons8.com/color/48/000000/google-logo.png") no-repeat 8px;
+        background-size: 25px;
       }
       i{
         position: absolute;
@@ -49,16 +51,6 @@
       display: block;
       text-align: center;
       padding: 0 64px;
-
-      @mixin form{
-        display: block;
-        width: 100%;
-        line-height: 48px;
-        border-radius: 4px;
-        margin: 25px 0;
-        border: 1px solid #ccc;
-        font-size: 16px;
-      }
       .login-input-mail, .login-input-pass{
         @include form;
       }
