@@ -1,0 +1,61 @@
+.pay {
+  &__main {
+    width: 100%;
+  }
+  &__inner {
+    margin: 0 auto;
+    background-color: $white;
+    width: 700px;
+    &--title {
+      border-bottom: 1px solid $lightgray;
+      padding: 32px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 22px;
+    }
+  }
+  &__form {
+    border-top: 1px solid $lightgray;
+    padding: 24px 16px 40px;
+    &--field{
+      max-width: 343px;
+      margin: 0 auto;
+      label {
+        font-size: 14px;
+        font-weight: 600;
+        display: inline-block;
+      }
+      &-required{
+        @include required();
+      }
+      .inputField{
+        @include inputField;
+      }
+      select{
+        width: 30%;
+        margin-top: 8px;
+        padding: 10px 16px 8px;
+        border-radius: 4px;
+        border: 1px solid $darkgray;
+        background-color: $white;
+        font-size: 16px;
+        height: 44px;
+        box-sizing: border-box;
+      }
+      .paymentBtn {
+        font-size: 14px;
+        @include btn();
+      }
+    }
+    &--card-list{
+      max-width: 343px;
+      margin: 0 auto;
+      ul{
+        display: flex;
+      }
+      .cardIcon{
+        padding-right: 10px;
+      }
+    }
+  }
+}
