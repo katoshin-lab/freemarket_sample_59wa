@@ -72,7 +72,7 @@
       設定
   %ul.mypage-list
     %li
-      = link_to "#", class: "mypage-list__box" do
+      = link_to profile_mypages_path, class: "mypage-list__box" do
         プロフィール
         %i.fas.fa-chevron-right
     %li
@@ -96,7 +96,7 @@
         電話番号確認
         %i.fas.fa-chevron-right
     %li
-      = link_to "#", class: "mypage-list__box" do
+      = link_to logout_mypages_path, class: "mypage-list__box" do
         ログアウト
         %i.fas.fa-chevron-right
 

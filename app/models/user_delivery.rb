@@ -1,0 +1,3 @@
+class UserDelivery < ApplicationRecord
+
+end

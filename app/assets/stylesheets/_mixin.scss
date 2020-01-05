@@ -1,0 +1,78 @@
+//共通
+@mixin clearfix() {
+  &:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+//終了
+
+//新規会員登録画面
+@mixin signbtn{
+  position: relative;
+  color: $white;
+  border-radius: 4px;
+  align-items: center;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+//終了
+
+//ログイン画面
+@mixin form{
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  border-radius: 4px;
+  margin: 25px 0;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+//終了
+
+//会員情報入力画面
+@mixin btn($color: $white, $background: $red) {
+  line-height: 48px;
+  background: $background;
+  border: 1px solid $background;
+  color: $color;
+  margin: 24px 0 0;
+  width: 100%;
+}
+@mixin required($color: $white) {
+  background-color: $red;
+  color: $color;
+  font-size: 12px;
+  border-radius: 2px;
+  padding: 0px 4px;
+  display: inline-block;
+  margin: 0 0 0 8px;
+}
+@mixin any($color: $white) {
+  background-color: $darkgray;
+  color: $color;
+  font-size: 12px;
+  border-radius: 2px;
+  padding: 2px 4px;
+  display: inline-block;
+  margin: 0 0 0 8px;
+}
+@mixin input1{
+  margin: 8px 8px 0 0;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+@mixin input2{
+  margin: 8px 0 0;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+//終了

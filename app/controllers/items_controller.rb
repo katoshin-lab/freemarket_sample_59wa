@@ -13,4 +13,7 @@ class ItemsController < ApplicationController
       format.json
     end
   end
+
+  def show
+  end
 end

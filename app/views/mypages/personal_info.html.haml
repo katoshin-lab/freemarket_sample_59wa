@@ -1,0 +1,75 @@
+.wrapper
+  = render partial: 'homes/header-login'
+  .header-nav-bar
+    %ul
+      %li
+        = link_to root_path do
+          %span
+            メルカリ 
+          = icon('fas', 'chevron-right')
+      %li
+        = link_to mypages_path do
+          %span
+            マイページ
+          = icon('fas', 'chevron-right')
+      %li
+        = link_to root_path do
+          %span.page
+            本人確認情報
+  %main.mypage-container
+    .personal-info
+      %h2
+        本人情報の登録
+      = form_with model: @user, class: "personal-info__form", url: "", method: :post, local: true do |f|
+        %p 
+          お客さまの本人情報をご登録ください
+          %br/
+          登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります
+        = link_to "#", class: "personal-info__form--show" do
+          本人確認書類のアップローダーについて
+          = icon('fas', 'chevron-right')  
+        .form-group
+          = f.label :ニックネーム
+          %p
+            テスト太郎
+        .form-group
+          = f.label :お名前カナ
+          %p
+            テスト タロウ
+        .form-group
+          = f.label :生年月日
+          %p
+            2020/1/1
+        .form-group
+          = f.label :郵便番号
+          %span.form-group__note
+            任意
+          = f.text_field :zip_code, placeholder: "例）123456", class: "input-default"
+        .form-group
+          = f.label :都道府県
+          %span.form-group__note
+            任意
+          = f.collection_select :prefecture, @prefectures, :id, :name, {prompt: "---"}, class: "select-form"
+        .form-group
+          = f.label :市区町村
+          %span.form-group__note
+            任意
+          = f.text_field :zip_code, placeholder: "例）横浜市緑区", class: "input-default"
+        .form-group
+          = f.label :番地
+          %span.form-group__note
+            任意
+          = f.text_field :zip_code, placeholder: "例）青山1-1-1", class: "input-default"
+        .form-group
+          = f.label :建物名
+          %span.form-group__note
+            任意
+          = f.text_field :zip_code, placeholder: "例）柳ビル101", class: "input-default"
+        = link_to "#", class: "form-group__btn" do  
+          変更する
+        = link_to "#", class: "personal-info__form--show personal-info__form--personal" do
+          本人情報登録について
+          = icon('fas', 'chevron-right')  
+    = render partial: 'mypages/mypage-list'
+    = render partial: 'homes/btn-exhibit'
+  = render partial: 'homes/fotter'

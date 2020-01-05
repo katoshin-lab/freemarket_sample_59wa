@@ -27,17 +27,6 @@
             %i.fas.fa-check
             %p やることリスト
         %li.header-list__box
-          = link_to root_path , class: "header-list__box--text" do
+          = link_to mypages_path , class: "header-list__box--text" do
             %i.fas.fa-user-alt
             %p マイページ
-.header-nav-bar
-  %ul
-    %li
-      = link_to root_path do
-        %span
-          メルカリ 
-        %i.fas.fa-chevron-right
-    %li
-      = link_to root_path do
-        %span.page
-          マイページ
