@@ -90,7 +90,7 @@ RSpec.describe User, type: :model do
         @test_user.valid?
         expect(@test_user.errors[:password]).to include("is too short (minimum is 6 characters)")
       end
-      
+
       it "is invalid with a last_name which is more than 21 characters" do
         @test_user.last_name = "あいうえおかきくけこさしすせそたちつてとな"
         @test_user.valid?
@@ -118,13 +118,13 @@ RSpec.describe User, type: :model do
       it "is invalid with a mobile phone number which is less than 9 digits" do
         @test_user.mobile_phone_number = 123456789
         @test_user.valid?
-        expect(@test_user.errors[:mobile_phone_number]).to include("is too short (minimum is 10 characters)")
+        expect(@test_user.errors[:mobile_phone_number]).to include("is invalid")
       end
 
-      it "is invalid with a mobile phone number which is more than 12 digits" do
-        @test_user.mobile_phone_number = 123456789012
+      it "is invalid with a mobile phone number which is more than 11 digits" do
+        @test_user.mobile_phone_number = 12345678901
         @test_user.valid?
-        expect(@test_user.errors[:mobile_phone_number]).to include("is too long (maximum is 11 characters)")
+        expect(@test_user.errors[:mobile_phone_number]).to include("is invalid")
       end
     end
   end

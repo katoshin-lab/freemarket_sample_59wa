@@ -10,7 +10,7 @@ FactoryBot.define do
     first_name               { ForgeryJa(:name).first_name }
     last_name_kana           { ForgeryJa(:name).last_name(to: ForgeryJa::KANA) }
     first_name_kana          { ForgeryJa(:name).first_name(to: ForgeryJa::KANA) }
-    mobile_phone_number      { Faker::Number.number(digits: Faker::Number.between(from: 10, to: 11)) }
+    mobile_phone_number      { Faker::Number.number(digits: 10) }
     birthday                 { Faker::Date.in_date_period }
     profile                  { Faker::Lorem.sentence(word_count: 3) }
   end

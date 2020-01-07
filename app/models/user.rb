@@ -21,7 +21,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { maximum: 20 }
   validates :last_name_kana, presence: true, length: { maximum: 20 }
   validates :first_name_kana, presence: true, length: { maximum: 20 }
-  validates :mobile_phone_number, length: { in: 10..11 }
+  validates :mobile_phone_number, format: { with: /\A[0-9]{10}\z/ }
   validates :birthday, presence: true
   validates :profile, length: { maximum: 1000 }
 
