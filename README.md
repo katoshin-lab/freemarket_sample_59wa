@@ -84,17 +84,17 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false, limit: 80|
 |detail|text|null: false|
-|condition|string|null: false, limit: 20|
+|condition_id|integer|null: false|
 |price|integer|null: false|
 |seller|references|null: false, foreign_key: {to_table: users}|
 |buyer|references|null: false, foreign_key: {to_table: users}|
 |is_seller_shipping|boolean|null: false, default: true|
-|prefecture|references|null: false, foreign_key: true|
-|shipping_period|references|null: false, foreign_key: true|
-|shipping_method|references|null: false, foreign_key: true|
+|prefecture_id|integer|null: false|
+|shipping_period_id|integer|null: false|
+|shipping_method_id|integer|null: false|
 |brand|references|foreign_key: true|
 |category|references|null: false, foreign_key: true|
-|item_status|references|null: false, foreign_key: true|
+|item_status_id|integer|null: false|
 ### Associations
 - belongs_to :user
 - has_many :images
