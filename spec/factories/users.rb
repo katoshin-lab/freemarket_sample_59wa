@@ -3,6 +3,7 @@ require 'forgery_ja'
 
 FactoryBot.define do
   factory :user do
+    id                       { Faker::Number.number(digits: Faker::Number.between(from: 1, to: 10))}
     name                     { Faker::Alphanumeric.alphanumeric(number: 20) }
     email                    { ForgeryJa('email').address }
     password                 { Faker::Alphanumeric.alphanumeric(number: 10) }
