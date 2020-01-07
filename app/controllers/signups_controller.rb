@@ -3,7 +3,7 @@ class SignupsController < ApplicationController
   end
 
   def sms_post
-    User.update(user_params)
+    current_user.update_attributes(mobile_phone_number: params[:mobile_phone_number].to_i)
     mobile_phone_number = params[:mobile_phone_number]
     phone_number = PhonyRails.normalize_number mobile_phone_number, country_code: 'JP'
     sms_number = rand(10000..99999)
@@ -36,11 +36,5 @@ class SignupsController < ApplicationController
   end
 
   def complete
-  end
-
-  protected
-
-  def user_params
-    params.permit(:mobile_phone_number)
   end
 end
