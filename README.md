@@ -103,6 +103,7 @@ Things you may want to cover:
 - belongs_to :brand
 - belongs_to :category
 - has_many :dealing_comments
+- belongs_to_active_hash :condition
 - belongs_to_active_hash :prefecture
 - belongs_to_active_hash :shipping_period
 - belongs_to_active_hash :shipping_method
