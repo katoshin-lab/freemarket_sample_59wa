@@ -2,27 +2,19 @@
   = render partial: 'homes/header'
   .items-container
     %h1
-      テストの商品
+      = @item.name
     .items-container__content
       .items-image
-        = image_tag "test3.jpg", class: "items-image__box"
-        .items-image__boxes
-          = image_tag "test3.jpg"
-        .items-image__boxes
-          = image_tag "test3.jpg"
-        .items-image__boxes
-          = image_tag "test3.jpg"
-        .items-image__boxes
-          = image_tag "test3.jpg"
-        .items-image__boxes
-          = image_tag "test3.jpg"
+        = image_tag @item.images[0].image, class: "items-image__box"
+        = render partial: "image", collection: @item.images
+
       .items-container__info
         %table
           %tr
             %th 出品者
             %td 
               = link_to root_path do
-                テスト太郎
+                = @item.seller.name
               .items-container__info--icon-good
                 = icon('fas', 'grin')
                 %span
@@ -39,63 +31,68 @@
             %th カテゴリー
             %td 
               = link_to root_path do
-                メンズ
-              .items-container__info--right
+                = @item.category.root.name
+              - if @item.category.root != @item.category.parent && @item.category.parent
                 = link_to root_path do
-                  = icon('fas', 'chevron-right')  
-                  トップス
+                  = icon('fas', 'chevron-right')
+                  = @item.category.parent.name
+              - if @item.category.root != @item.category
                 = link_to root_path do
-                  = icon('fas', 'chevron-right')  
-                  Tシャツ
+                  = icon('fas', 'chevron-right')
+                  = @item.category.name
           %tr
             %th ブランド
             %td 
               = link_to root_path do
-                ナイキ             
+                = @item.brand.name if @item.brand
           %tr
             %th 商品の状態
             %td  
-              やや傷あり
+              = @item.condition.name
           %tr
             %th 配送料の負担
-            %td  
-              送料込み(出品者負担)
+            %td
+              - if @item.is_seller_shipping
+                送料込み（出品者負担）
+              - else
+                着払い（購入者負担）
           %tr
             %th 配送の方法
             %td  
-              らくらく便
+              = @item.shipping_method.name
           %tr
             %th 配送元地域
             %td  
               = link_to root_path do
-                大阪府
+                = @item.prefecture.name
           %tr
             %th 配送の目安
             %td  
-              2~3日で発送
+              = @item.shipping_period.period
     .items-container__price
       %span.items-container__price--text
-        ¥2,300
+        = number_to_currency(@item.price, unit: "¥", precision: 0)
       %span.items-container__price--tax      
         (税込)
       %span.items-container__price--fee      
-        送料込み      
+        - if @item.is_seller_shipping
+          送料込み
+        - else
+          着払い
     .items-container__btn
       = link_to root_path do
         購入画面に進む
     .items-container__text
       %p
-        ナイキジャージです。
-        ２年程、冬の時期に使用しました。
-        サイズはＭで身長178、体重70キロの自分にサイズピッタリでした。
-        購入、コメント前にはお手数ですがプロフィールを一読お願いいたします。
+        = @item.detail
     .items-tag
       %ul.items-tag__left
         %li.items-tag__left--good
           = link_to root_path do
             = icon('far', 'heart')
             %span いいね!
-            %span 1
+            %span 
+              = @likes_count
         %li
           = link_to root_path do
             = icon('far', 'flag')
@@ -112,14 +109,18 @@
       = f.text_area :text, class: "items-form__text"
       = f.submit "コメントする", class: 'items-form__btn'
   %ul.items-prev
-    %li.items-prev__left
-      = link_to root_path do
-        = icon('fas', 'chevron-left') 
-        %span テストの商品
-    %li.items-prev__right
-      = link_to root_path do
-        %span テストの商品のズボンaaaaaaaaaaaaaa
-        = icon('fas', 'chevron-right') 
+    - if @prev_item
+      %li.items-prev__left
+        = link_to item_path(@prev_item.id) do
+          = icon('fas', 'chevron-left') 
+          %span 
+            = @prev_item.name
+    - if @next_item
+      %li.items-prev__right
+        = link_to item_path(@next_item.id) do
+          %span
+            = @next_item.name
+          = icon('fas', 'chevron-right') 
   .items-media
     %ul.items-media__box
       %li.items-media__box--facebook
@@ -134,73 +135,10 @@
   .items-list
     = link_to "#" do
       %h2
-        テスト太郎さんのその他の出品
+        = @item.seller.name + "さんのその他の出品"
     .items-list__content
-      .item-box 
-        = link_to "#" do
-          .item-box__photo
-            = image_tag "test3.jpg"
-          .item-box__body 
-            %h3.item-box__body--text
-              テストのブランドの商品ですああああああああああああああああああああああああああああああああああああ
-            .item-box__body--price 
-              ¥2,200
-            .item-box__body--icon
-              = icon('far', 'heart')
-              %span
-                6
-      .item-box 
-        = link_to "#" do
-          .item-box__photo
-            = image_tag "test3.jpg"
-          .item-box__body 
-            %h3.item-box__body--text
-              テストのブランドの商品ですああああああああああああああああああああああああああああああああああああ
-            .item-box__body--price 
-              ¥2,200
-            .item-box__body--icon
-              = icon('far', 'heart')
-              %span
-                6
-      .item-box
-        = link_to "#" do
-          .item-box__photo
-            = image_tag "test3.jpg"
-          .item-box__body 
-            %h3.item-box__body--text
-              テストのブランドの商品ですああああああああああああああああああああああああああああああああああああ
-            .item-box__body--price 
-              ¥2,200
-            .item-box__body--icon
-              = icon('far', 'heart')
-              %span
-                6
-      .item-box 
-        = link_to "#" do
-          .item-box__photo
-            = image_tag "test3.jpg"
-          .item-box__body 
-            %h3.item-box__body--text
-              テストのブランドの商品ですああああああああああああああああああああああああああああああああああああ
-            .item-box__body--price 
-              ¥2,200
-            .item-box__body--icon
-              = icon('far', 'heart')
-              %span
-                6
-      .item-box
-        = link_to "#" do
-          .item-box__photo
-            = image_tag "test3.jpg"
-          .item-box__body 
-            %h3.item-box__body--text
-              テストのブランドの商品ですああああああああああああああああああああああああああああああああああああ
-            .item-box__body--price 
-              ¥2,200
-            .item-box__body--icon
-              = icon('far', 'heart')
-              %span
-                6
+      = render @seller_items
+
   .items-bottom
     %ul.items-bottom__tag
       %li

@@ -3,23 +3,26 @@
 .items-image {
   position: relative;
   float: left;
-  min-width: 300px;
-  max-width: 300px;
-  min-height: 375px;
+  width: 300px;
   margin: 0 auto;
   background: #fafafa;
   font-size: 0;
   &__box {
-    max-width: 100%;
-    max-height: 100%;
+    width: 300px;
+    height: 375px;
     margin: auto;
+    vertical-align: middle;
+    object-fit: contain;
   }
   &__boxes {
     @include image-box();
     position: relative;
     width: 60px;
     height: 60px;
-    max-height: none;
     display: inline-block;
+    img {
+      object-fit: contain;
+      margin: auto;
+    }
   }
 }

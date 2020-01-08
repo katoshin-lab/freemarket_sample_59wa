@@ -1,0 +1,14 @@
+.item-box 
+  = link_to item_path(item) do
+    .item-box__photo
+      = image_tag item.images.first.image
+    .item-box__body 
+      %h3.item-box__body--text
+        = item.name
+      .item-box__body--price 
+        = number_to_currency(item.price, unit: "¥", precision: 0)
+      .item-box__body--icon
+        - if @likes_counts.values_at(item.id)[0]
+          = icon('far', 'heart')
+          %span
+            = @likes_counts.values_at(item.id)[0]
