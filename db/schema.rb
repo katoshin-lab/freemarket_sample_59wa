@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_07_062929) do
+ActiveRecord::Schema.define(version: 2020_01_07_110500) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 40
@@ -41,14 +41,15 @@ ActiveRecord::Schema.define(version: 2020_01_07_062929) do
     t.bigint "seller_id", null: false
     t.bigint "buyer_id"
     t.boolean "is_seller_shipping", default: true, null: false
-    t.integer "prefecture", null: false
-    t.integer "shipping_period", null: false
-    t.integer "shipping_method", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "shipping_period_id", null: false
+    t.integer "shipping_method_id", null: false
     t.bigint "brand_id"
     t.bigint "category_id", null: false
-    t.integer "item_status", null: false
+    t.integer "item_status_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "condition_id", null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
@@ -89,6 +90,7 @@ ActiveRecord::Schema.define(version: 2020_01_07_062929) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
