@@ -3,6 +3,7 @@ class UserDelivery < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 
+  validates :user_id, presence: true
   validates :last_name, presence: true, length: { maximum: 20 }
   validates :first_name, presence: true, length: { maximum: 20 }
   validates :last_name_kana, presence: true, length: { maximum: 20 }
