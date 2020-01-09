@@ -1,27 +1,24 @@
-//パンくず部分
 .common{
   .common__header{
     min-height: 128px;
-    display: flex;
-    .commonImg{
-      width: 250px;
-      margin: 0 0 0 310px;
-      margin-top: 30px;
+    text-align: center;
+    .common-image{
+      display: inline-block;
+      margin: 40px 0 0;
     }
     .progress-bar{
+      display: inline-block;
+      padding: 40px 0 0 65px;
+      vertical-align: top;
       font-size: 0;
-      margin-top: 30px;
-      text-align: center;
-      width: 600px;
       .clearfix{
         li{
           position: relative;
           z-index: 1;
           display: inline-block;
-          margin: 0 5% 0 0;
+          margin: 0 40px 0 0;
           font-size: 12px;
           color: $dark;
-          min-width: 70px;
           .progress-status{
             width: 12px;
             height: 12px;
