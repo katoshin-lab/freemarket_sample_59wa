@@ -28,6 +28,11 @@ RSpec.describe UserDelivery, type: :model do
     end
 
     context 'cannot save' do
+      it "isninvalid without user_id" do
+        test_delivery.user_id = nil
+        subject
+        expect(test_delivery.errors[:user_id]).to include("can't be blank")
+      end
       it "is invalid without last_name" do
         test_delivery.last_name = nil
         subject
@@ -136,16 +141,22 @@ RSpec.describe UserDelivery, type: :model do
         expect(test_delivery.errors[:building_name]).to include("is too long (maximum is 25 characters)")
       end
 
-      it "is invalid with phone_number which is less than 8 characters" do
+      it "is invalid with a phone_number which is less than 8 characters" do
         test_delivery.phone_number = 12345678
         subject
         expect(test_delivery.errors[:phone_number]).to include("is invalid")
       end
 
-      it "is invalid with phone_number which is more than 11 characters" do
+      it "is invalid with a phone_number which is more than 11 characters" do
         test_delivery.phone_number = 12345678901
         subject
         expect(test_delivery.errors[:phone_number]).to include("is invalid")
+      end
+
+      it "is invalid with a phone_number which includes hyphen" do
+        test_delivery.phone_number = "03-1234-5678"
+        subject
+        expect(test_delivery.errors[:phone_number]).not_to match(/\A[0-9]{9,10}\z/)
       end
     end
   end
