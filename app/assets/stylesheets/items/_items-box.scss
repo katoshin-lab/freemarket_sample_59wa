@@ -27,6 +27,10 @@
     height: 220px;
     position: relative;
     display: inline-block;
+    img {
+      object-fit: contain;
+      margin: auto;
+    }
   }
   &__body {
     padding: 16px;
