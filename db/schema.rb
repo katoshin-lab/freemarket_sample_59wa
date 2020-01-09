@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2019_12_26_123644) do
     t.string "first_name", limit: 40, default: "", null: false
     t.string "last_name_kana", limit: 40, default: "", null: false
     t.string "first_name_kana", limit: 40, default: "", null: false
-    t.integer "postal_number", null: false
+    t.string "postal_number", limit: 10, default: "", null: false
     t.integer "prefecture_id", default: 0, null: false
     t.string "city", limit: 50, default: "", null: false
     t.string "block", limit: 50, default: "", null: false
