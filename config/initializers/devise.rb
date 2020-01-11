@@ -20,12 +20,6 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = 'hatao0000000@gmail.com'
 
-  Devise::Models::Confirmable.module_eval do
-    def active_for_authentication?
-      super # コメントアウト && (!confirmation_required? || confirmed? || confirmation_period_valid?)
-    end
-  end
-
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 

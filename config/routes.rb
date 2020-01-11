@@ -20,10 +20,10 @@ Rails.application.routes.draw do
     post 'users/sign_in', to: 'users/sessions#create', as: :user_session
     delete 'users/sign_out', to: 'users/sessions#destroy', as: :destroy_user_session
     get 'users/confirmation/new', to: 'users/confirmations#new', as: :new_user_confirmation
-    post 'users/confiration', to: 'users/confirmations#create'
-    get 'users/confirmation', to: 'users/confirmation#show', as: :user_confirmation
+    post 'users/confirmation', to: 'users/confirmations#create'
+    get 'users/confirmation', to: 'users/confirmations#show', as: :user_confirmation
   end
-  
+
   resources :signups do
     collection do
       get :sms_authentication
