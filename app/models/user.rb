@@ -5,4 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items, foreign_key: "seller_id"
+  has_many :likes
+
+  def already_liked?(item)
+    self.likes.exists?(item_id: item.id)
+  end
 end
