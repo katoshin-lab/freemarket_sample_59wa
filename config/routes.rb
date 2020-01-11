@@ -12,12 +12,17 @@ Rails.application.routes.draw do
     end
   end
   resources :signups, only: [:new]
-
-  devise_for :users, controllers: {
-    registrations: "users/registrations",
-    confirmations: "users/confirmations",
-    sessions:      "users/sessions"
-  }
+  devise_for :users, skip: :all
+  devise_scope :user do
+    get 'users/sign_up', to: 'users/registrations#new', as: :new_user_registration
+    post 'users', to: 'users/registrations#create', as: :user_registration
+    get 'users/sign_in', to: 'users/sessions#new', as: :new_user_session
+    post 'users/sign_in', to: 'users/sessions#create', as: :user_session
+    delete 'users/sign_out', to: 'users/sessions#destroy', as: :destroy_user_session
+    get 'users/confirmation/new', to: 'users/confirmations#new', as: :new_user_confirmation
+    get 'users/confirmation', to: 'users/confirmation#show', as: :user_confirmation
+  end
+  
   resources :signups do
     collection do
       get :sms_authentication
