@@ -25,7 +25,7 @@
     %section.sms__inner
       %h2.sms__inner--title 電話番号の確認
       .sms__form
-        = form_with(model: @user, local: true, url: "sms_post_signups_path", method: :post) do |f|
+        = form_with model: @user, local: true, url: sms_post_signups_path, method: :post do |f|
           .sms__form--field
             = f.label :mobile_phone_number, '携帯電話の番号'
             %br/
@@ -38,7 +38,3 @@
               電話番号の確認が必要な理由
             %i.fas.fa-chevron-right
 = render partial: "devise/shared/shared-footer"
-= form_for @profile, url: sms_authentication_signup_index_path,method: :post do |f|
-  = label :nickname, '携帯電話の番号'
-  = f.text_field :tel, placeholder: '携帯電話の番号を入力'
-  = f.submit 'SMSを送信する'

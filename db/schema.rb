@@ -10,59 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_26_123644) do
-
-  create_table "user_deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "last_name", limit: 40, default: "", null: false
-    t.string "first_name", limit: 40, default: "", null: false
-    t.string "last_name_kana", limit: 40, default: "", null: false
-    t.string "first_name_kana", limit: 40, default: "", null: false
-    t.string "postal_number", limit: 10, default: "", null: false
-    t.integer "prefecture_id", default: 0, null: false
-    t.string "city", limit: 50, default: "", null: false
-    t.string "block", limit: 50, default: "", null: false
-    t.string "building_name", limit: 50
-    t.bigint "phone_number"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_deliveries_on_user_id"
-  end
-
-  create_table "user_payments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "customer_id", null: false
-    t.string "card_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_payments_on_user_id"
-  end
-
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", limit: 40, default: "", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "last_name", limit: 40, default: "", null: false
-    t.string "first_name", limit: 40, default: "", null: false
-    t.string "last_name_kana", limit: 40, default: "", null: false
-    t.string "first_name_kana", limit: 40, default: "", null: false
-    t.bigint "mobile_phone_number", default: 1111111111, null: false
-    t.date "birthday"
-    t.text "profile"
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["name"], name: "index_users_on_name"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
+ActiveRecord::Schema.define(version: 2020_01_07_110500) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 40
@@ -122,7 +70,7 @@ ActiveRecord::Schema.define(version: 2019_12_26_123644) do
     t.string "first_name", limit: 40, default: "", null: false
     t.string "last_name_kana", limit: 40, default: "", null: false
     t.string "first_name_kana", limit: 40, default: "", null: false
-    t.integer "postal_number", null: false
+    t.string "postal_number", limit: 10, default: "", null: false
     t.integer "prefecture_id", default: 0, null: false
     t.string "city", limit: 50, default: "", null: false
     t.string "block", limit: 50, default: "", null: false
@@ -134,16 +82,38 @@ ActiveRecord::Schema.define(version: 2019_12_26_123644) do
     t.index ["user_id"], name: "index_user_deliveries_on_user_id"
   end
 
+  create_table "user_payments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_payments_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", limit: 40, default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "last_name", limit: 40, default: "", null: false
+    t.string "first_name", limit: 40, default: "", null: false
+    t.string "last_name_kana", limit: 40, default: "", null: false
+    t.string "first_name_kana", limit: 40, default: "", null: false
+    t.bigint "mobile_phone_number", default: 1111111111, null: false
+    t.date "birthday"
+    t.text "profile"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

@@ -28,6 +28,7 @@ class SignupsController < ApplicationController
   def sms_check
     @user = User.new
     confirmation_number = params[:confirmation_number]
+    binding.pry
     if confirmation_number.to_i == session[:sms_number]
       redirect_to new_delivery_path
     else
