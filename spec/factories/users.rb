@@ -12,7 +12,7 @@ FactoryBot.define do
     last_name_kana           { ForgeryJa(:name).last_name(to: ForgeryJa::KANA) }
     first_name_kana          { ForgeryJa(:name).first_name(to: ForgeryJa::KANA) }
     mobile_phone_number      { Faker::Number.number(digits: 10) }
-    birthday                 { Faker::Date.in_date_period }
+    birthday                 { "2000-01-01" }
     profile                  { Faker::Lorem.sentence(word_count: 3) }
   end
 end
