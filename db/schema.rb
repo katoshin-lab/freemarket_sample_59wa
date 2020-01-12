@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_01_07_110500) do
     t.integer "price", null: false
     t.bigint "seller_id", null: false
     t.bigint "buyer_id"
-    t.boolean "is_seller_shipping", default: true, null: false
+    t.boolean "is_seller_shipping", null: false
     t.integer "prefecture_id", null: false
     t.integer "shipping_period_id", null: false
     t.integer "shipping_method_id", null: false

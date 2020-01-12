@@ -2,8 +2,24 @@ class ItemsController < ApplicationController
   def index
   end
 
+  def create
+    @item = Item.new(item_params)
+    @categories = Category.where(ancestry: params[:ancestry])
+    @conditions = Condition.all
+    @prefectures = Prefecture.all
+    @shipping_methods = ShippingMethod.all
+    @shipping_periods = ShippingPeriod.all
+    if @item.save
+      redirect_to root_path
+    else
+      render :new, notice: "reload"
+    end
+    
+  end
+
   def new
-    @item = ""
+    @item = Item.new
+    @conditions = Condition.all
     @prefectures = Prefecture.all
     @shipping_methods = ShippingMethod.all
     @shipping_periods = ShippingPeriod.all
@@ -21,5 +37,17 @@ class ItemsController < ApplicationController
     @likes_count = @likes_counts.values_at(params[:id].to_i)[0]
     @prev_item = Item.find(params[:id].to_i - 1) if Item.exists?(id: params[:id].to_i - 1)
     @next_item = Item.find(params[:id].to_i + 1) if Item.exists?(id: params[:id].to_i + 1)
+  end
+
+  private
+  def category
+    if params[:sub_subcategory]
+      return params[:sub_subcategory]
+    else return params[:subcategory]
+    end
+  end
+
+  def item_params
+    params.required(:item).permit(:name, :detail, :condition_id, :is_seller_shipping, :prefecture_id, :shipping_method_id,:shipping_period_id, :price).merge(seller_id: 1, category_id: category, item_status_id: 1)
   end
 end

@@ -1,7 +1,7 @@
 = render partial: "layouts/header"
 
 .sell
-  = form_for @item do |form|
+  = form_for @item, url: items_path do |form|
     .sell__title
       商品の情報を入力
     .sell__content
@@ -53,12 +53,12 @@
             = form.collection_select :category, @categories, :id, :name, prompt: "---"
 
         .sell__label--follow
-          = form.label :condition, "商品の状態"
+          = form.label :condition_id, "商品の状態"
           .sell__required
             必須
         .sell__select_form
           %i.fas.fa-chevron-down
-          = form.select :condition, [["新品、未使用"], ["未使用に近い"], ["目立った傷や汚れなし"], ["やや傷や汚れあり"], ["傷や汚れあり"], ["全体的に状態が悪い"]], prompt: "---"
+          = form.collection_select :condition_id, @conditions, :id, :name, prompt: "---"
         
     .sell__content
       .sell__left_box
@@ -77,28 +77,28 @@
 
         .sell__hidden#method
           .sell__label--follow
-            = form.label :shipping_method, "配送の方法"
+            = form.label :shipping_method_id, "配送の方法"
             .sell__required
               必須
           .sell__select_form
             %i.fas.fa-chevron-down
-            = form.select :shipping_method, {}, prompt: "---"
+            = form.select :shipping_method_id, {}, prompt: "---"
 
         .sell__label--follow
-          = form.label :shipping_origin, "発送元の地域"
+          = form.label :prefecture_id, "発送元の地域"
           .sell__required
             必須
         .sell__select_form
           %i.fas.fa-chevron-down
-          = form.collection_select :shipping_origin, @prefectures, :id, :name, prompt: "---"
+          = form.collection_select :prefecture_id, @prefectures, :id, :name, prompt: "---"
 
         .sell__label--follow
-          = form.label :shipping_period, "発送までの日数"
+          = form.label :shipping_period_id, "発送までの日数"
           .sell__required
             必須
         .sell__select_form
           %i.fas.fa-chevron-down
-          = form.collection_select :shipping_period, @shipping_periods, :id, :period, prompt: "---"
+          = form.collection_select :shipping_period_id, @shipping_periods, :id, :period, prompt: "---"
 
     .sell__content
       .sell__left_box

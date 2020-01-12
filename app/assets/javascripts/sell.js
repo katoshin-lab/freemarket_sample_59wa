@@ -84,7 +84,7 @@ $(function() {
     $('.sell__category').append(selectHTML)
   }
   $('#category_selector').on('change', function() {
-    var category = ($('#category option:selected').val());
+    var category = ($('#item_category option:selected').val());
     var listHTML = '';
     $.ajax({
       type: 'GET',
@@ -107,7 +107,7 @@ $(function() {
   })
   // サブカテゴリー選択部分
   $('#category_field').on('change', '#subcategory_selector', function() {
-    var category = ($('#category option:selected').val());
+    var category = ($('#item_category option:selected').val());
     var subcategory = ($('#subcategory option:selected').val());
     var listHTML = '';
     $.ajax({
@@ -131,8 +131,8 @@ $(function() {
 
 
   // 送料負担切り替えの部分
-  $('#is_seller_shipping').on('change', function() {
-    var seller_shipping = $('#is_seller_shipping option:selected').val()
+  $('#item_is_seller_shipping').on('change', function() {
+    var seller_shipping = $('#item_is_seller_shipping option:selected').val()
     if ( seller_shipping == "" ) {
       $('#method').hide();
     } else if (seller_shipping == "true") {
@@ -148,7 +148,7 @@ $(function() {
         <option value="8">クリックポスト</option>
         <option value="9">ゆうパケット</option>
       `
-      $('#shipping_method').empty().append(HTML);
+      $('#item_shipping_method_id').empty().append(HTML);
       $('#method').show();
     } else {
       var HTML = `
@@ -158,14 +158,14 @@ $(function() {
         <option value="7">ゆうパック</option>
         <option value="3">ゆうメール</option>
       `
-      $('#shipping_method').empty().append(HTML);
+      $('#item_shipping_method_id').empty().append(HTML);
       $('#method').show();
     }
   })
 
   // 手数料、利益の自動計算部分
-  $('#price').on("keyup", function(){
-    var input = $('#price').val();
+  $('#item_price').on("keyup", function(){
+    var input = $('#item_price').val();
     var charge = Math.floor(input * 0.1);
     var gain = (input - charge);
     if (input >= 300 && input <= 9999999) {

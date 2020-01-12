@@ -6,7 +6,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :price, null: false
       t.references :seller, null: false, foreign_key: { to_table: :users }
       t.references :buyer, foreign_key: { to_table: :users }
-      t.boolean :is_seller_shipping, null: false, default: true
+      t.boolean :is_seller_shipping, null: false
       t.integer :prefecture_id, null: false, foreign_key: true
       t.integer :shipping_period_id, null: false, foreign_key: true
       t.integer :shipping_method_id, null: false, foreign_key: true
