@@ -127,7 +127,6 @@ $(function() {
     })
     .done(function(data) {
       $('#item_sub_subcategory_selector').remove();
-      console.log(subcategory);
       if (data.length !== 0) {
         data.forEach(function(sub_subcategory) {
           listHTML += `
