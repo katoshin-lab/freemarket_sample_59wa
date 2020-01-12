@@ -279,4 +279,9 @@
   &__number {
     display: none;
   }
+  div.field_with_errors {
+    input, textarea, select {
+      background-color: #fdd;
+    }
+  }
 }

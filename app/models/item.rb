@@ -7,11 +7,26 @@ class Item < ApplicationRecord
   has_many :likes
   has_many :reports
   belongs_to :brand, optional: true
-  belongs_to :category
+  belongs_to :category, optional: true
+  belongs_to :subcategory, optional: true
+  belongs_to :sub_subcategory, optional: true
   belongs_to_active_hash :condition
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :shipping_period
   belongs_to_active_hash :shipping_method
   belongs_to_active_hash :item_status
+
+
+  validates :name, presence: true
+  validates :detail, presence: true
+  validates :seller, presence: true
+  validates :category_id, presence: true
+  validates :condition_id, presence: true
+  validates :is_seller_shipping, inclusion: { in: [true, false] }
+  validates :prefecture_id, presence: true
+  validates :shipping_period_id, presence: true
+  validates :shipping_method_id, presence: true
+  validates :price, presence: true
+  validates :item_status_id, presence: true
 
 end

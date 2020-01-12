@@ -26,14 +26,14 @@
 
     .sell__content
       .sell__label
-        = form.label :name, "商品名"
+        商品名
         .sell__required
           必須
         .sell__text_field
           = form.text_field :name, placeholder: "商品名（必須、40文字まで）"
 
       .sell__label--follow
-        = form.label :detail, "商品の説明"
+        商品の説明
         .sell__required
           必須
         .sell__text_area
@@ -45,15 +45,21 @@
       .sell__right_box
         .sell__category#category_field
           .sell__label
-            = form.label :category, "カテゴリー"
+            カテゴリー
             .sell__required
               必須
-          .sell__select_form#category_selector
+          .sell__select_form#item_category_selector
             %i.fas.fa-chevron-down
-            = form.collection_select :category, @categories, :id, :name, prompt: "---"
+            = form.collection_select :category_id, @categories, :id, :name, include_blank: "---", selected: @category
+          .sell__select_form#item_subcategory_selector
+            %i.fas.fa-chevron-down
+            = form.collection_select :subcategory, @subcategories, :id, :name, include_blank: "---", selected: @subcategory
+          .sell__select_form#item_sub_subcategory_selector
+            %i.fas.fa-chevron-down
+            = form.collection_select :sub_subcategory, @sub_subcategories, :id, :name, include_blank: "---", selected: @sub_subcategory
 
         .sell__label--follow
-          = form.label :condition_id, "商品の状態"
+          商品の状態
           .sell__required
             必須
         .sell__select_form
@@ -68,7 +74,7 @@
             ?
       .sell__right_box
         .sell__label
-          = form.label :is_seller_shipping, "発送料の負担"
+          発送料の負担
           .sell__required
             必須
         .sell__select_form
@@ -77,7 +83,7 @@
 
         .sell__hidden#method
           .sell__label--follow
-            = form.label :shipping_method_id, "配送の方法"
+            配送の方法
             .sell__required
               必須
           .sell__select_form
@@ -85,7 +91,7 @@
             = form.select :shipping_method_id, {}, prompt: "---"
 
         .sell__label--follow
-          = form.label :prefecture_id, "発送元の地域"
+          発送元の地域
           .sell__required
             必須
         .sell__select_form
@@ -93,7 +99,7 @@
           = form.collection_select :prefecture_id, @prefectures, :id, :name, prompt: "---"
 
         .sell__label--follow
-          = form.label :shipping_period_id, "発送までの日数"
+          発送までの日数
           .sell__required
             必須
         .sell__select_form
