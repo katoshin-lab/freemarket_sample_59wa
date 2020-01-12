@@ -12,13 +12,14 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      render :new, notice: "reload"
+      render :new, notice: "入力してない項目があります"
     end
     
   end
 
   def new
     @item = Item.new
+    @item.images.build
     @conditions = Condition.all
     @prefectures = Prefecture.all
     @shipping_methods = ShippingMethod.all
@@ -48,6 +49,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.required(:item).permit(:name, :detail, :condition_id, :is_seller_shipping, :prefecture_id, :shipping_method_id,:shipping_period_id, :price).merge(seller_id: 1, category_id: category, item_status_id: 1)
+    params.required(:item).permit(:name, :detail, :condition_id, :is_seller_shipping, :prefecture_id, :shipping_method_id,:shipping_period_id, :price, images_attributes: [:image, :id]).merge(seller_id: 1, category_id: category, item_status_id: 1)
   end
 end
