@@ -22,6 +22,9 @@ $(function() {
     $(this).removeClass().addClass("items-tag__left--good");
     $(this).attr("id", "good_btn");
     $('#likes_count').text(Number(likes_count) - 1);
+    if ($('#likes_count').text() === "0") {
+      $('#likes_count').text("");
+    };
   })
 
 })
