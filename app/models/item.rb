@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   belongs_to :seller, class_name: "User"
   belongs_to :buyer, class_name: "User", optional: true
   has_many :images
+  accepts_nested_attributes_for :images
   has_many :likes
   has_many :reports
   belongs_to :brand, optional: true
@@ -15,6 +16,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_method
   belongs_to_active_hash :item_status
 
+
   validates :name, presence: true
   validates :detail, presence: true
   validates :seller, presence: true
@@ -26,4 +28,5 @@ class Item < ApplicationRecord
   validates :shipping_method_id, presence: true
   validates :price, presence: true
   validates :item_status_id, presence: true
+
 end

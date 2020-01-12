@@ -12,13 +12,13 @@
         .sell__text
           最大10枚までアップロードできます
         .sell__image_container#container
-
+      = form.fields_for :images do |m|
         .sell__upload--drop_box#dropbox
           .sell__upload--text
             ドラッグアンドドロップ
             %br
             またはクリックしてファイルをアップロード
-          = form.file_field :image, id: :image1, multiple: true, class: :file_field
+          = m.file_field :image, id: :image1, multiple: true, class: :file_field
         .sell__number#number
           0
         .sell__number#total

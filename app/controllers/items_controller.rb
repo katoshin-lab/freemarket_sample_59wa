@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.images.build
     @conditions = Condition.all
     @prefectures = Prefecture.all
     @shipping_methods = ShippingMethod.all
