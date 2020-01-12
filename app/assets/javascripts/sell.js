@@ -71,6 +71,14 @@ $(function() {
     $('#total').text(total).trigger('create');
   });
 
+  // カテゴリー部分
+  // サブカテゴリーが未選択の場合ははじめに非表示にする
+  if ($('#item_category_id option:selected').val() === "") {
+    $('#item_subcategory_selector').hide();
+  };
+  if ($('#item_subcategory option:selected').val() === "") {
+    $('#item_sub_subcategory_selector').hide();
+  };
   // カテゴリー選択部分
   function build_list(category, HTML) {
     var selectHTML = `
@@ -83,8 +91,8 @@ $(function() {
     </div>`;
     $('.sell__category').append(selectHTML)
   }
-  $('#category_selector').on('change', function() {
-    var category = ($('#item_category option:selected').val());
+  $('#item_category_selector').on('change', function() {
+    var category = ($('#item_category_id option:selected').val());
     var listHTML = '';
     $.ajax({
       type: 'GET',
@@ -93,22 +101,23 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
-      $('#subcategory_selector').remove();
-      $('#sub_subcategory_selector').remove();
+      $('#item_subcategory_selector').remove();
+      $('#item_sub_subcategory_selector').remove();
       if (data.length !== 0) {
         data.forEach(function(subcategory) {
           listHTML += `
           <option value="${subcategory.id}">${subcategory.name}</option>
           `;
         });
-        build_list("subcategory", listHTML);
+        build_list("item_subcategory", listHTML);
+        error_color();
       };
     })
   })
   // サブカテゴリー選択部分
-  $('#category_field').on('change', '#subcategory_selector', function() {
-    var category = ($('#item_category option:selected').val());
-    var subcategory = ($('#subcategory option:selected').val());
+  $('#category_field').on('change', '#item_subcategory_selector', function() {
+    var category = ($('#item_category_id option:selected').val());
+    var subcategory = ($('#item_subcategory option:selected').val());
     var listHTML = '';
     $.ajax({
       type: 'GET',
@@ -117,18 +126,27 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
-      $('#sub_subcategory_selector').remove();
+      $('#item_sub_subcategory_selector').remove();
+      console.log(subcategory);
       if (data.length !== 0) {
         data.forEach(function(sub_subcategory) {
           listHTML += `
           <option value="${sub_subcategory.id}">${sub_subcategory.name}</option>
           `;
         });
-        build_list("sub_subcategory", listHTML);
+        build_list("item_sub_subcategory", listHTML);
+        error_color();
       };
     })
-  })
-
+  });
+  // カテゴリーが正しく入力されていない場合に色が変化するように設定
+  function error_color() {
+    if ($('#item_category_selector').children('.field_with_errors').length) {
+      $('#item_subcategory_selector').addClass("field_with_errors");
+      $('#item_sub_subcategory_selector').addClass("field_with_errors");
+    }
+  };
+  error_color();
 
   // 送料負担切り替えの部分
   $('#item_is_seller_shipping').on('change', function() {
