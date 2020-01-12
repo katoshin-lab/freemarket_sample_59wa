@@ -34,7 +34,8 @@ Things you may want to cover:
 - has_many :user_payments
 - has_many :likes
 - has_many :reports
-- has_many :items
+- has_many :sell_items, class_name: "Item", foreign_key: "seller_id"
+- has_many :buy_items, class_name: "Item", foreign_key: "buyer_id"
 - has_many :dealing_items
 - has_many :bought_items
 
