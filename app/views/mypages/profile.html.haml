@@ -3,19 +3,8 @@
   .header-nav-bar
     %ul
       %li
-        = link_to root_path do
-          %span
-            メルカリ 
-          = icon('fas', 'chevron-right')
-      %li
-        = link_to mypages_path do
-          %span
-            マイページ
-          = icon('fas', 'chevron-right')
-      %li
-        = link_to profile_mypages_path do
-          %span.page
-            プロフィール
+      - breadcrumb :profile
+      = breadcrumbs pretext: "", separator: " &rsaquo; "
   %main.mypage-container
     = render partial: 'mypages/mypage-list'
     = render partial: 'homes/btn-exhibit'

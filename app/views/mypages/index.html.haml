@@ -3,13 +3,7 @@
   .header-nav-bar
     %ul
       %li
-        = link_to root_path do
-          %span
-            メルカリ 
-          %i.fas.fa-chevron-right
-      %li
-        = link_to mypages_path do
-          %span.page
-            マイページ
+      - breadcrumb :mypages
+      = breadcrumbs pretext: "", separator: " &rsaquo; "
   = render partial: 'mypages/mypage-body'
   = render partial: 'homes/footer'

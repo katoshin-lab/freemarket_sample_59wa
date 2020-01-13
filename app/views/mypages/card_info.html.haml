@@ -3,19 +3,8 @@
   .header-nav-bar
     %ul
       %li
-        = link_to root_path do
-          %span
-            メルカリ 
-          = icon('fas', 'chevron-right')
-      %li
-        = link_to mypages_path do
-          %span
-            マイページ
-          = icon('fas', 'chevron-right')
-      %li
-        = link_to root_path do
-          %span.page
-            支払い方法
+      - breadcrumb :card_info
+      = breadcrumbs pretext: "", separator: " &rsaquo; "
   %main.mypage-container
     .add-card
       %h2

@@ -3,19 +3,8 @@
   .header-nav-bar
     %ul
       %li
-        = link_to root_path do
-          %span
-            メルカリ 
-          = icon('fas', 'chevron-right')
-      %li
-        = link_to mypages_path do
-          %span
-            マイページ
-          = icon('fas', 'chevron-right')
-      %li
-        = link_to root_path do
-          %span.page
-            支払い方法
+      - breadcrumb :addcard
+      = breadcrumbs pretext: "", separator: " &rsaquo; "
   %main.mypage-container
     .add-card
       %h2
@@ -26,7 +15,7 @@
         = link_to "#" do
           .add-card__content--btn
             = icon('fas', 'credit-card')
-            クレジットカード追加を追加する
+            クレジットカード情報を追加する
       = link_to "#", class: "add-card__show" do
         支払い方法について
         = icon('fas', 'chevron-right')  
