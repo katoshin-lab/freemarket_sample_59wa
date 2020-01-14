@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many :items
   has_many :dealing_items
   has_many :bought_items
+  has_many :sell_items, class_name: "Item", foreign_key: "seller_id"
+  has_many :buy_items, class_name: "Item", foreign_key: "buyer_id"
+  has_many :likes
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: true, length: { maximum: 255 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
@@ -24,4 +27,7 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   validates :profile, length: { maximum: 1000 }
 
+  def already_liked?(item)
+    self.likes.exists?(item_id: item.id)
+  end
 end
