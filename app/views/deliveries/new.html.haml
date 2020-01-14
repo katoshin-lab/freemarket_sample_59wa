@@ -47,7 +47,7 @@
             = f.label :都道府県
             %span.deliveries__inner--form-content-field-required 必須
             %br/
-            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, class: "inputField", required: true
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, class: "inputField", required: true, include_blank: "----"
           .deliveries__inner--form-content-field
             = f.label :市区町村
             %span.deliveries__inner--form-content-field-required 必須
