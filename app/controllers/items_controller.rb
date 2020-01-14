@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   def create
     item_subcategory
     @item = Item.new(item_params)
+    binding.pry
     @categories = Category.where(ancestry: nil)
     @subcategories = Category.where(ancestry: @category)
     @sub_subcategories = Category.where(ancestry: @category.to_s + "/" + @subcategory.to_s)
@@ -60,6 +61,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.required(:item).permit(:name, :detail, :condition_id, :is_seller_shipping, :prefecture_id, :shipping_method_id,:shipping_period_id, :price).merge(seller_id: 1, item_status_id: 1, category_id: item_category)
+    params.required(:item).permit(:name, :detail, :condition_id, :is_seller_shipping, :prefecture_id, :shipping_method_id,:shipping_period_id, :price, images_attributes: {image: []}).merge(seller_id: 1, item_status_id: 1, category_id: item_category)
   end
 end
