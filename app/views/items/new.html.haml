@@ -1,7 +1,7 @@
 = render partial: "layouts/header"
 
 .sell
-  = form_for @item, url: items_path do |form|
+  = form_with model: @item, url: items_path, local: true do |form|
     .sell__title
       商品の情報を入力
     .sell__content

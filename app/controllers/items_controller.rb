@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
   def create
     item_subcategory
     @item = Item.new(item_params)
-    binding.pry
     @categories = Category.where(ancestry: nil)
     @subcategories = Category.where(ancestry: @category)
     @sub_subcategories = Category.where(ancestry: @category.to_s + "/" + @subcategory.to_s)
