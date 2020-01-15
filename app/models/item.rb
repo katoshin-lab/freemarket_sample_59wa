@@ -26,7 +26,7 @@ class Item < ApplicationRecord
   validates :prefecture_id, presence: true
   validates :shipping_period_id, presence: true
   validates :shipping_method_id, presence: true
-  validates :price, presence: true
+  validates :price, presence: true, format: { with: /\A[0-9]+\z/ }
   validates :item_status_id, presence: true
 
 end
