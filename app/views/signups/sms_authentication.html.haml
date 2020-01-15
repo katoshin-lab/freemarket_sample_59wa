@@ -25,7 +25,7 @@
     %section.sms__inner
       %h2.sms__inner--title 電話番号の確認
       .sms__form
-        = form_with(model: @user, local: true, url: "sms_post_signups_path", method: :post) do |f|
+        = form_with model: @user, local: true, url: sms_post_signups_path, method: :post do |f|
           .sms__form--field
             = f.label :mobile_phone_number, '携帯電話の番号'
             %br/

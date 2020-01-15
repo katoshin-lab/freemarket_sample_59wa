@@ -1,0 +1,17 @@
+.signup
+  = render partial: "devise/shared/signups-header"
+  %main.signup__main
+    %section.signup__inner
+      %h3.signup__inner--title
+        新規会員登録
+      .signup__inner-content
+        .signup__inner-content__form
+          .signup__inner-content__form--btn-mail
+            %i.far.fa-envelope.fa-2x
+            = link_to "メールアドレスで登録する", "sign_up"
+          .signup__inner-content__form--btn-sns-facebook 
+            %i.fab.fa-facebook-f.fa-2x
+            %p Facebookで登録する
+          .signup__inner-content__form--btn-google
+            %p Googleで登録する
+= render partial: "devise/shared/shared-footer"
