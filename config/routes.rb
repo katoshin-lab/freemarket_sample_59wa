@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root 'homes#index'
   resources :buy, only: [:show]
-  resources :items, only: [:index, :create, :new, :show]
+  
+  resources :items, only: [:index, :create, :new, :show] do
+    resources :likes, only: [:create, :destroy]
+  end
   resources :mypages, only: [:index] do 
     collection do
       get :logout

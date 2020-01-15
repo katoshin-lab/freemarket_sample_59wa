@@ -1,7 +1,8 @@
 .common
   %header.common__header
-    = link_to "root-path" do
-      =image_tag("fmarket_logo_red.svg", size: "184x49", class: "commonImg")
+    %h1.common-image
+      = link_to "/" do
+        =image_tag("fmarket_logo_red.svg", size: "184x49")
     %nav.progress-bar
       %ol.clearfix
         %li.active_red
