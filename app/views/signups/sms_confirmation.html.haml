@@ -24,14 +24,14 @@
   %main.single-sms__main
     %section.single-sms__inner
       %h2.single-sms__inner--title 電話番号認証
-      = form_with(model: @user, url: "sms_check_signups_path", local: true, method: :post) do |f|
+      = form_with model: @user, url: sms_check_signups_path, local: true, method: :post do |f|
         .single-sms__inner--form
           .single-sms__inner--form-field
-            = f.label :sms_number, '認証番号'
+            = f.label :confirmation_number, '認証番号'
             %br/
-            = f.text_field :sms_confirmation_number, placeholder: '認証番号を入力', class: "single-inputNumber"
+            = f.text_field :confirmation_number, placeholder: '認証番号を入力', class: "single-inputNumber"
             %p SMSで届いた認証番号を入力してください。
-            = f.submit '認証して完了', class: "single-smsBtn"
+            = f.submit '認証して次へ', class: "single-smsBtn"
       = form_with(model: @user, url: "sms_post_signups_path", local: true, method: :post) do |f|
         .single-sms__inner--form
           .single-sms__inner--form-field
