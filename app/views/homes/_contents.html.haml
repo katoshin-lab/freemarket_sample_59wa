@@ -24,14 +24,7 @@
         %i.icon.fas.fa-chevron-right
     .contents-product__items
       %ul.contents-product__items--list
-        %li.box-list
-          = link_to "items/show" do
-            .box-list__upper
-              = image_tag "test3.jpg"
-              .box-list__upper--price
-                %span ¥3,000
-              .box-list__bottom 
-                %span ああああああああああああああああああああああああああああああああああああああああ
+        = render partial: "homes/item", collection: @items
   .contents-bottom-image
     %p.contents-bottom-image__text
 = render partial: 'homes/btn-exhibit'
