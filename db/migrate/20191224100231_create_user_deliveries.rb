@@ -5,7 +5,7 @@ class CreateUserDeliveries < ActiveRecord::Migration[5.2]
       t.string :first_name,                null: false, default: "", limit: 40
       t.string :last_name_kana,            null: false, default: "", limit: 40
       t.string :first_name_kana,           null: false, default: "", limit: 40
-      t.integer :postal_number,            null: false
+      t.string :postal_number,             null: false, default: "", limit: 10
       t.integer :prefecture_id,            null: false, default: 0
       t.string :city,                      null: false, default: "", limit: 50
       t.string :block,                     null: false, default: "", limit: 50
