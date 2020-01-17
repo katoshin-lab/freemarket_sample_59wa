@@ -4,6 +4,6 @@
     %ul
       %li
       - breadcrumb :mypages
-      = breadcrumbs pretext: "", separator: " &rsaquo; "
+      = render "layouts/breadcrumbs"
   = render partial: 'mypages/mypage-body'
   = render partial: 'homes/footer'

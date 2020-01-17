@@ -4,7 +4,7 @@
     %ul
       %li
       - breadcrumb :profile
-      = breadcrumbs pretext: "", separator: " &rsaquo; "
+      = render "layouts/breadcrumbs"
   %main.mypage-container
     = render partial: 'mypages/mypage-list'
     = render partial: 'homes/btn-exhibit'
