@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'homes#index'
+  root 'items#index'
   resources :buy, only: [:show]
   
   resources :items, only: [:index, :create, :new, :show] do

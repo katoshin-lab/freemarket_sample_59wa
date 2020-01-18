@@ -44,23 +44,12 @@
     margin: 0 auto;
     padding: 16px 0;
     white-space: normal;
-    li {
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      display: inline-block;
-      font-size: 14px;
-      line-height: 1.2;
-     }
-     span {
-       color: #333333;
-     }
-     span.page {
-       font-weight: 600;
-     }
-     i {
-      margin: 0 8px;
-      font-size: 9px;
-      color: #888;
-     }
+    a{
+      margin: 05px;
+    }
+    .current{
+      font-weight: bold;
+      margin: 0 5px;
     }
   }
+}

@@ -3,19 +3,8 @@
   .header-nav-bar
     %ul
       %li
-        = link_to root_path do
-          %span
-            メルカリ 
-          = icon('fas', 'chevron-right')
-      %li
-        = link_to mypages_path do
-          %span
-            マイページ
-          = icon('fas', 'chevron-right')
-      %li
-        = link_to root_path do
-          %span.page
-            本人確認情報
+      - breadcrumb :personal_info
+      = render "layouts/breadcrumbs"
   %main.mypage-container
     .personal-info
       %h2
