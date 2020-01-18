@@ -4,6 +4,13 @@ describe Item do
   describe '#create' do
   subject {test_item.valid?}
   let(:test_item){build(:item)}
+
+   context 'can save' do
+    it "is vaild with a name , a seller_id, detail , a category_id, condition_id, is_seller_shipping, prefecture_id, shipping_period_id, shipping_method_id , price , item_status_id " do
+    expect(test_item).to be_valid
+    end
+   end
+   
    context 'cannot save' do
     it "is invalid without a name" do
       test_item.name = nil
@@ -78,7 +85,7 @@ describe Item do
     end
 
     it "is invalid a price without number" do
-      test_item.price = Faker::Lorem.sentence
+      test_item.price = "aaaaaaaaaaaaaaaa"
       subject
       expect(test_item.errors[:price]).to include("is not included in the list")
     end

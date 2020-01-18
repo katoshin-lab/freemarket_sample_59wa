@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :seller, class_name: "User"
+  belongs_to :seller, class_name: "User", optional: true
   belongs_to :buyer, class_name: "User", optional: true
   has_many :images, inverse_of: :item
   accepts_nested_attributes_for :images
