@@ -1,7 +1,7 @@
 %li.box-list
   = link_to item_path(item.id) do
     .box-list__upper
-      = image_tag item.images[0].image[0].url
+      = image_tag item.images[0].image_urls[0]
       .box-list__upper--price
         %span
           = number_to_currency(item.price, unit: "¥", precision: 0)
