@@ -8,10 +8,10 @@ class SignupsController < ApplicationController
     phone_number = PhonyRails.normalize_number mobile_phone_number, country_code: 'JP'
     sms_number = rand(10000..99999)
     session[:sms_number] = sms_number
-    client = Twilio::REST::Client.new(ENV["TWILLIO_SID"],ENV["TWILLIO_TOKEN"])
+    client = Twilio::REST::Client.new(Rails.application.credentials[:TWILLIO_SID],Rails.application.credentials[:TWILLIO_TOKEN])
     begin
       client.api.account.messages.create(
-        from: ENV["TWILLIO_NUMBER"],
+        from: Rails.application.credentials[:TWILLIO_NUMBER],
         to: phone_number,
         body: "Fmarketの認証番号は#{sms_number}です。"
       )
