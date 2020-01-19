@@ -368,7 +368,6 @@ DEPENDENCIES
   faker
   fog-aws
   font-awesome-sass
-  gretel
   forgery_ja
   gretel
   haml-rails
