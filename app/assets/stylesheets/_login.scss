@@ -57,10 +57,11 @@
       .btn-login{
         display: block;
         background-color: $red;
-        margin: 25px 0 30px 0;
+        margin: 25px 0;
         border: 1px solid $red;
         color: $white;
         line-height: 48px;
+        width: 100%;
       }
       .btn-pass-missing{
         position: absolute;
