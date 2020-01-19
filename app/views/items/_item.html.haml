@@ -1,7 +1,7 @@
 .item-box 
   = link_to item_path(item) do
     .item-box__photo
-      = image_tag item.images.first.image
+      = image_tag item.images[0].image_urls[0]
     .item-box__body 
       %h3.item-box__body--text
         = item.name
