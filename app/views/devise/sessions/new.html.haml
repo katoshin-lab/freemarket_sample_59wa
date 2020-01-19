@@ -12,10 +12,10 @@
         Googleでログイン
     
     .login__panel--form-inner
-      = form_for @user do |f|
+      = form_with model: @user, url: user_session_path, method: :post, local: true do |f|
         = f.email_field :email, placeholder: "メールアドレス", class: "login-input-mail"
         = f.password_field :password, placeholder: "パスワード", class: "login-input-pass"
         .g-recaptcha{"data-sitekey" => "6LdiLckUAAAAAClLFCXyMk4XRGEYfZ_MY156kwnR"}
-        = link_to "ログイン", "http://localhost:3000/users/  ", class: "btn-login"
+        = f.submit "ログイン", class: "btn-login"
         = link_to "パスワードをお忘れの方", "", class: "btn-pass-missing"
 = render partial: "devise/shared/shared-footer"
