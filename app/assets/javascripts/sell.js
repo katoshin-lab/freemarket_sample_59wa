@@ -20,7 +20,7 @@ $(function() {
           </div>
         </div>
       `
-      var buildForm = `<input id="image${number+1}" multiple="multiple" class="file_field" type="file" name="item[images_attributes][${number}][image][]">`;
+      var buildForm = `<input id="image${number+1}" class="file_field" type="file" name="item[images_attributes][${number}][image]">`;
 
       file = e.target.files[0];
       reader = new FileReader();
