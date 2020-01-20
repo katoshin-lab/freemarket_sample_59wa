@@ -18,5 +18,3 @@ CarrierWave.configure do |config|
     config.asset_host = 'https://freemarket-sample-59wa.s3.ap-northeast-1.amazonaws.com/'
   end
 end
-
-CarrierWave::SanitizedFile.sanitize_regexp = /[^[:print:]]/ #ファイル名の文字化け防止
