@@ -5,7 +5,7 @@
       = @item.name
     .items-container__content
       .items-image
-        = image_tag @item.images[0].image_urls[0], class: "items-image__box"
+        = image_tag @item.images.first.image.url, class: "items-image__box"
         = render partial: "image", collection: @item.images
 
       .items-container__info
