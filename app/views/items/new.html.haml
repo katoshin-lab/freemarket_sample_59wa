@@ -1,7 +1,7 @@
 = render partial: "layouts/header"
 
 .sell
-  = form_with model: @item, url: items_path, local: true do |form|
+  = form_with model: @item, url: items_path do |form|
     .sell__title
       商品の情報を入力
     .sell__content
@@ -50,13 +50,13 @@
               必須
           .sell__select_form#item_category_selector
             %i.fas.fa-chevron-down
-            = form.collection_select :category_id, @categories, :id, :name, include_blank: "---", selected: @category
+            = form.collection_select :category_id, @categories, :id, :name, include_blank: "---"
           .sell__select_form#item_subcategory_selector
             %i.fas.fa-chevron-down
-            = form.collection_select :subcategory, @subcategories, :id, :name, include_blank: "---", selected: @subcategory
+            = form.collection_select :subcategory, @subcategories, :id, :name, include_blank: "---"
           .sell__select_form#item_sub_subcategory_selector
             %i.fas.fa-chevron-down
-            = form.collection_select :sub_subcategory, @sub_subcategories, :id, :name, include_blank: "---", selected: @sub_subcategory
+            = form.collection_select :sub_subcategory, @sub_subcategories, :id, :name, include_blank: "---"
 
         .sell__label--follow
           商品の状態
