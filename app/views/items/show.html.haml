@@ -87,21 +87,14 @@
         = @item.detail
     .items-tag
       %ul.items-tag__left
-        -# サインイン機能が実装されてから修正
-            - if user_signed_in? && current_user.likes.exists?(@item)
-              %li.items-tag__left--liked#good_btn_liked
-            - elsif user_signed_in?
-              %li.items-tag__left--good#good_btn
-            - else
-        %li.items-tag__left--good#good_btn
+        %li.items-tag__left--good{id: "#{'good_btn' if user_signed_in?}"+"#{'_liked' if current_user.likes.exists?(item_id: @item.id)}"}
           = icon('far', 'heart')
           %span いいね!
           %span#likes_count
             = @likes_count
         %li.items-tag__left--report
-          = link_to root_path do
-            = icon('far', 'flag')
-            %span 不適切な商品の報告
+          = icon('far', 'flag')
+          %span 不適切な商品の報告
       .items-tag__right
         = link_to root_path do
           = icon('fas', 'lock')
