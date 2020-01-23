@@ -1,0 +1,5 @@
+%li.items-tag__left--good{id: "#{'good_btn' if user_signed_in?}"+"#{'_liked' if user_signed_in? && current_user.likes.exists?(item_id: @item.id)}"}
+  = icon('far', 'heart')
+  %span いいね!
+  %span#likes_count
+    = @likes_count
