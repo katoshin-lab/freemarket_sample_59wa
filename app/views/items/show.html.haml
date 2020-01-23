@@ -87,10 +87,7 @@
         = @item.detail
     .items-tag
       %ul.items-tag__left
-        - if user_signed_in? && current_user.likes.exists?(item_id: @item.id)
-          = link_to item_like_path(@item.id), method: :delete, remote: true do
-            = render partial: "likes"
-        - elsif user_signed_in?
+        - if user_signed_in?
           = link_to item_likes_path(@item.id), method: :post, remote: true do
             = render partial: "likes"
         - else
