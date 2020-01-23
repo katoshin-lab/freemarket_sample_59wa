@@ -120,7 +120,7 @@ describe Item do
       user = build(:user)
       user.save
       item = build(:item, category_id: category.id, seller_id: user.id, images_attributes: [{image: File.new("app/assets/images/sample.jpg")}])
-      item.save!
+      item.save
       expect(item.images.first.image.url).to include("sample.jpg")
     end
 
