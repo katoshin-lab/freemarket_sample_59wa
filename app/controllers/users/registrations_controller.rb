@@ -2,16 +2,25 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   def new
+    if session[:sns_credential?]
+      @user_name = session[:user_name]
+      @user_email = session[:user_email]
+    end
     super
   end
 
   # POST /resource
   def create
     super
+    @user = User.find_by(email: params[:user][:email])
+    @sns_user = SnsCredential.find_by(token: session[:sns_credential_token])
+    if session[:sns_credential?] && session[:sns_credential_token] == @sns_user.token
+      @sns_user.update(user_id: @user.id)
+    end
   end
 
   # GET /resource/edit
@@ -20,9 +29,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+  end
 
   # DELETE /resource
   # def destroy
@@ -46,8 +55,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :password, :birthday, :last_name, :first_name, :last_name_kana, :first_name_kana])
+  end
+
+  # def update_params
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :birthday, :last_name, :first_name, :last_name_kana, :first_name_kana])
   # end
 
   # The path used after sign up.
