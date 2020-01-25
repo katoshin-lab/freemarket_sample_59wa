@@ -37,5 +37,10 @@ class SignupsController < ApplicationController
   end
 
   def complete
+    session[:sns_credential?].clear
+    session[:user_name].clear
+    session[:user_email].clear
+    session[:sns_credential_token].clear
+    session[:sms_number].clear
   end
 end
