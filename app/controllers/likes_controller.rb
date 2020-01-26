@@ -23,6 +23,8 @@ class LikesController < ApplicationController
     end
   end
 
+  private
+
   def item_setting
     @item = Item.find(params[:item_id])
   end
