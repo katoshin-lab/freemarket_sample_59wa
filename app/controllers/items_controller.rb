@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  include ItemHelper
   def index
     @items = Item.includes(:images).order(id: 'DESC').limit(10)
   end
@@ -6,18 +7,12 @@ class ItemsController < ApplicationController
   def create
     item_subcategory
     @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
-    else
-      @item.images.build
-      @categories = Category.where(ancestry: nil)
-      @subcategories = Category.where(ancestry: @category)
-      @sub_subcategories = Category.where(ancestry: @category.to_s + "/" + @subcategory.to_s)
-      @conditions = Condition.all
-      @prefectures = Prefecture.all
-      @shipping_methods = ShippingMethod.all
-      @shipping_periods = ShippingPeriod.all
-      render :new
+    binding.pry
+    if @item.images.present?
+      @item.save!
+      respond_to do |format| 
+        format.js { render ajax_redirect_to(root_path) }
+      end
     end
   end
 

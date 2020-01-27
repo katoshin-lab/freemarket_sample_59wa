@@ -149,9 +149,9 @@
       .sell__attention
         また、出品をもちまして
         %span><
-          = link_to "加盟店規約", root_path, target: "_blank"
+          = link_to "加盟店規約", root_path, target: "_blank" 
         に同意したことになります。
-      = form.submit "出品する", class: "sell__button--submit"
+      = form.submit "出品する", class: "sell__button--submit", id: "scroll_to_top"
       .sell__button--cansel
         = link_to "もどる", root_path
 

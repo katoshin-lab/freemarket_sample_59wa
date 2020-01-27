@@ -28,5 +28,4 @@ class Item < ApplicationRecord
   validates :shipping_method_id, presence: true
   validates :price, presence: true, format: { with: /\A[0-9]+\z/ }, inclusion: {in: 300..9999999 }
   validates :item_status_id, presence: true
-
 end
