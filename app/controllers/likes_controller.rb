@@ -1,14 +1,40 @@
 class LikesController < ApplicationController
 
+  before_action :item_setting
+
   def create
-    current_user.likes.create(item_id: params[:id])
-    respond_to do |format|
-      format.json
+    @like = current_user.likes.new(item_id: params[:item_id])
+    if @like.save
+      return_likes_count
+    else
+      return_error
     end
   end
       
   def destroy
-    current_user.likes.find(params[:id]).destroy
+    if @like = current_user.likes.find_by(item_id: params[:item_id])
+      if @like.destroy
+        return_likes_count
+      else
+        return_error
+      end
+    else
+      return_error
+    end
+  end
+
+  private
+
+  def item_setting
+    @item = Item.find(params[:item_id])
+  end
+
+  def return_likes_count
+    @likes_count = @item.likes.length
+  end
+
+  def return_error
+    @likes_count = "err"
   end
 
 end
