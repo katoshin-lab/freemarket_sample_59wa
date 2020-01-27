@@ -7,11 +7,11 @@ class ItemsController < ApplicationController
   def create
     item_subcategory
     @item = Item.new(item_params)
-    binding.pry
     if @item.images.present?
-      @item.save!
+      item_save
+    else
       respond_to do |format| 
-        format.js { render ajax_redirect_to(root_path) }
+        format.js { render alert_image }
       end
     end
   end
@@ -56,6 +56,18 @@ class ItemsController < ApplicationController
     end
   end
 
+  def item_save
+    if @item.save
+      respond_to do |format| 
+        format.js { render ajax_redirect_to(root_path) }
+      end
+    else
+      respond_to do |format| 
+        format.js { render alert_text }
+      end
+    end    
+  end
+  
   def item_params
     params.required(:item).permit(:name, :detail, :condition_id, :is_seller_shipping, :prefecture_id, :shipping_method_id,:shipping_period_id, :price, images_attributes: [:image]).merge(seller_id: 1, item_status_id: 1, category_id: item_category)
   end
