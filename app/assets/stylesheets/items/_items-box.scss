@@ -45,19 +45,20 @@
       } 
     }
     &--price {
-      display: inline-block;
-      margin: 8px 0 0;
+      float: left;
       font-size: 17px;
       font-weight: 400;
     }
     &--icon {
-      display: inline-block;
-      margin-left: 95px;
+      float: right;
       i {
         font-size: 16px;
         color: #ccc;
       }
     }
+  }
+  &__wrapper {
+    @include clearfix;
   }
 }
 
