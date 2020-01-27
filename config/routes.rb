@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :buy, only: [:show]
   
   resources :items, only: [:index, :create, :new, :show] do
-    resources :likes, only: [:create, :destroy]
+    resource :likes, only: [:create, :destroy]
   end
   resources :mypages, only: [:index] do 
     collection do
