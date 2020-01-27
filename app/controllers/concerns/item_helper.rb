@@ -4,10 +4,16 @@ module ItemHelper
   end
 
   def alert_image
-      { js: "window.alert('画像が入っていません')"}    
+    { js: "$('#scroll_to_top').click(function() {
+      $('body, html').scrollTop(0);
+    });
+     window.alert('画像が入っていません')" }
   end
 
   def alert_text
-    { js: "window.alert('入力に誤っている箇所があります')"}    
-end
+    { js: "$('#scroll_to_top').click(function() {
+      $('body, html').scrollTop(0);
+    });
+     window.alert('画像が入っていません')" }
+  end
 end

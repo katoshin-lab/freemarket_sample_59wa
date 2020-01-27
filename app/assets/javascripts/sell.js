@@ -192,7 +192,4 @@ $(function() {
       $('#gain').empty().append("-");
     }
   })
-  $("#scroll_to_top").click(function() {
-    $('body, html').scrollTop(0);
-  });
 });
