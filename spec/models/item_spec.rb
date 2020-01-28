@@ -5,7 +5,7 @@ describe Item do
   describe '#create' do
   subject {test_item.valid?}
   let(:test_item){build(:item)}
-
+  
    context 'can save' do
     it "is vaild with a name , a seller_id, detail , a category_id, condition_id, is_seller_shipping, prefecture_id, shipping_period_id, shipping_method_id , price , item_status_id " do
     expect(test_item).to be_valid
@@ -133,6 +133,5 @@ describe Item do
       item = Item.new(name: "テスト商品")
       expect(item.name).to eq "テスト商品"
     end
-
   end
-end 
+end
