@@ -25,4 +25,13 @@
     border: 1px solid #ea352d;
     color: #ea352d;
   }
+  &__radio_button {
+    input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    }
+  }
 }

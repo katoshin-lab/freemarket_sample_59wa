@@ -1,0 +1,17 @@
+= render partial: "layouts/header"
+
+.pay
+  .pay__main
+    .pay__inner
+      %h3.pay__inner--title 支払い方法
+      .pay__form
+        .pay__form--field
+          = form_with model: @payment, url: payment_path(@payment.id), id: "card_update" do |f|
+            %label クレジットカード一覧
+
+            = render partial: "card", collection: @cards_info, locals: {f: f}
+
+            = f.submit "支払い方法を選択する", class: "paymentBtn", id: "card_change"
+= hidden_field_tag :lastURL, request.referer
+
+= render partial: "layouts/footer"

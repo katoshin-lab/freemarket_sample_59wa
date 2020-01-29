@@ -36,6 +36,6 @@ Rails.application.routes.draw do
       get :complete
     end
   end
-  resources :deliveries, only: [:new, :create, :update]
-  resources :payments, only: [:new, :create, :update, :destroy]
+  resources :deliveries, only: [:new, :create, :show, :update]
+  resources :payments, only: [:index, :new, :create, :update, :destroy]
 end
