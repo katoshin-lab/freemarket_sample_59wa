@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'items#index'
   resources :buy, only: [:show]
   
-  resources :items, only: [:index, :create, :new, :show] do
+  resources :items, only: [:index, :create, :new, :show, :edit, :update] do
     resource :likes, only: [:create, :destroy]
   end
   resources :mypages, only: [:index] do 

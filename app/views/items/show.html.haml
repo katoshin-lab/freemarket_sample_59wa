@@ -82,6 +82,9 @@
     .items-container__btn
       = link_to buy_path(@item.id) do
         購入画面に進む
+    .items-container__btn
+      = link_to edit_item_path(@item.id) do
+        変更する
     .items-container__text
       %p
         = @item.detail
