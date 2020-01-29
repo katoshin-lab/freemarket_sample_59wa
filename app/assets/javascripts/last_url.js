@@ -2,7 +2,7 @@ $(function() {
   var lastURL = $('#lastURL').val();
   $('#card_change').on('click', function() {
     $('#card_update').on("ajax:success", function(event, xhr, settings) {　
-      window.location.replace(lastURL);
+      window.location.href = lastURL;
     });
     $('#card_update').on("ajax:error", function(event, xhr, settings) {　
       window.alert("エラーが発生しました");
@@ -11,7 +11,7 @@ $(function() {
 
   $('#delivery_change').on('click', function() {
     $('#delivery_update').on("ajax:success", function(event, xhr, settings) {　
-      window.location.replace(lastURL);
+      window.location.href = lastURL;
     });
     $('#delivery_update').on("ajax:error", function(event, xhr, settings) {　
       window.alert("エラーが発生しました");
