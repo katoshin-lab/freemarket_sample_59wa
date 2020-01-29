@@ -32,13 +32,22 @@
       .buy__wrapper
         .buy__label
           支払い方法
-          -# カード登録がない場合------------------------------------------------
-      .buy__text
-        .buy__info
-          = link_to icon('fas', 'plus-circle')+" 登録してください", ""
-          -# カード登録がある場合------------------------------------------------
-      .buy__text
-        -# ------------------------------------------------
+      - if @payments
+        .buy__edit
+          = link_to "変更する", payments_path
+        .buy__text--card_info
+          クレジットカード
+          %br
+          = "************" + @card_info.last4
+          %br
+          有効期限
+          = format("%02d", @card_info.exp_month) + " / " + @card_info.exp_year.to_s.slice(2,3)
+          %br
+          = image_tag (@card_src)
+      - else
+        .buy__text
+          .buy__info
+            = link_to icon('fas', 'plus-circle')+" 登録してください", ""
     .buy__content--border
       .buy__border
     .buy__content
@@ -46,7 +55,7 @@
         .buy__label
           配送先
         .buy__edit
-          = link_to "変更する", ""
+          = link_to "変更する", delivery_path(current_user.id)
       .buy__text
         〒
         = @delivery.postal_number
@@ -59,11 +68,10 @@
       .buy__border
     .buy__content
       = f.hidden_field :price, value: @item.price
-      -# カード登録がない場合------------------------------------------------
-      .buy__submit--invalid
-        購入する
-      -# カード登録がある場合------------------------------------------------
-      = f.submit "購入する", class: "buy__submit"
-      -# ------------------------------------------------
+      - if @payments
+        = f.submit "購入する", class: "buy__submit"
+      - else
+        .buy__submit--invalid
+          購入する
 
 = render partial: "layouts/footer"
