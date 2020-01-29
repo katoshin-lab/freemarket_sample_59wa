@@ -41,6 +41,21 @@ class ItemsController < ApplicationController
     @next_item = Item.find(params[:id].to_i + 1) if Item.exists?(id: params[:id].to_i + 1)
   end
 
+  def edit
+    @item = Item.find(params[:id])  
+    @conditions = Condition.all
+    @prefectures = Prefecture.all
+    @shipping_methods = ShippingMethod.all
+    @shipping_periods = ShippingPeriod.all
+    @categories = Category.where(ancestry: params[:ancestry])
+    @subcategories = []
+    @sub_subcategories = []
+    respond_to do |format|
+      format.html
+      format.json
+    end  
+  end
+
   private
   def item_subcategory
     @category = params.required(:item)[:category_id]
