@@ -29,7 +29,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def callback_for(provider)
     @auth = request.env['omniauth.auth']
-    @user = User.from_omniauth(@auth)
     @sns_user = SnsCredential.find_by(name: @auth.info.name)
     unless @sns_user
       sns_credential = SnsCredential.new(
@@ -39,13 +38,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         email: @auth.info.email,
         token: session[:sns_credential_token]
       )
-      sns_credential.save(validate: false)
+      sns_credential.save!
       @sns_user = SnsCredential.find_by(name: @auth.info.name)
       session[:sns_credential?] = true
       session[:user_name] = @sns_user.name
       session[:user_email] = @sns_user.email
     end
-    if @user.persisted?
+    @user = User.from_omniauth(@auth)
+    if @user.present?
       sign_in_and_redirect @user, event: :authentication
     else
       session["devise.#{provider}_data"] = request.env["omniauth.auth"].except("extra")
