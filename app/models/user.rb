@@ -15,7 +15,6 @@ class User < ApplicationRecord
   has_many :bought_items
   has_many :sell_items, class_name: "Item", foreign_key: "seller_id"
   has_many :buy_items, class_name: "Item", foreign_key: "buyer_id"
-  has_many :likes
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: true, length: { maximum: 255 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }

@@ -1,3 +1,7 @@
+require 'carrierwave/storage/abstract'
+require 'carrierwave/storage/file'
+require 'carrierwave/storage/fog'
+
 CarrierWave.configure do |config|
   if Rails.env.test? || Rails.env.development?
     config.storage = :file
@@ -11,8 +15,6 @@ CarrierWave.configure do |config|
       region:                'ap-northeast-1'
     }
     config.fog_directory  = 'freemarket-sample-59wa'
-    config.asset_host = 'https://s3.ap-northeast-1.amazonaws.com/freemarket-sample-59wa'
+    config.asset_host = 'https://freemarket-sample-59wa.s3.ap-northeast-1.amazonaws.com'
   end
 end
-
-CarrierWave::SanitizedFile.sanitize_regexp = /[^[:print:]]/ #ファイル名の文字化け防止

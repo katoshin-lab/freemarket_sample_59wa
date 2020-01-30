@@ -48,8 +48,8 @@ men_regware = men.children.create(name: "レッグウェア")
 men_underware = men.children.create(name: "アンダーウェア")
 men_etc = men.children.create(name: "その他")
 
-baby_girl = baby.children.create(name: "ベビー服(女の子用)~95cm")
-baby_boy = baby.children.create(name: "ベビー服(男の子用)~95cm")
+baby_girl_small = baby.children.create(name: "ベビー服(女の子用)~95cm")
+baby_boy_small = baby.children.create(name: "ベビー服(男の子用)~95cm")
 baby_babies = baby.children.create(name: "ベビー服(男女兼用)~95cm")
 baby_girl = baby.children.create(name: "ベビー服(女の子用)100cm~")
 baby_boy = baby.children.create(name: "ベビー服(男の子用)100cm~")
@@ -551,7 +551,7 @@ men_etc.children.create([
   {name: "すべて"}
 ])
 
-baby_girl.children.create([
+baby_girl_small.children.create([
   {name: "トップス"},
   {name: "アウター"},
   {name: "パンツ"},
@@ -564,7 +564,7 @@ baby_girl.children.create([
   {name: "ロンパース"},
   {name: "その他"}
 ])
-baby_boy.children.create([
+baby_boy_small.children.create([
   {name: "トップス"},
   {name: "アウター"},
   {name: "パンツ"},

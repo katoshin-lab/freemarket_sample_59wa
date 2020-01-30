@@ -1,6 +1,6 @@
 $(function() {
   const form = $("#charge_form");
-  Payjp.setPublicKey('pk_test_b0dae6d2e5f40ba9322cbbd4');
+  Payjp.setPublicKey("pk_test_b0dae6d2e5f40ba9322cbbd4");
   form.on('submit', (e) => {
     e.preventDefault();
     const card = {

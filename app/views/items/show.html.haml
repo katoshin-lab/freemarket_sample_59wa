@@ -5,7 +5,7 @@
       = @item.name
     .items-container__content
       .items-image
-        = image_tag @item.images[0].image, class: "items-image__box"
+        = image_tag @item.images.first.image.url, class: "items-image__box"
         = render partial: "image", collection: @item.images
 
       .items-container__info
@@ -87,21 +87,11 @@
         = @item.detail
     .items-tag
       %ul.items-tag__left
-        -# サインイン機能が実装されてから修正
-            - if user_signed_in? && current_user.likes.exists?(@item)
-              %li.items-tag__left--liked#good_btn_liked
-            - elsif user_signed_in?
-              %li.items-tag__left--good#good_btn
-            - else
-        %li.items-tag__left--good#good_btn
-          = icon('far', 'heart')
-          %span いいね!
-          %span#likes_count
-            = @likes_count
+        #likes
+          = render partial: "likes", locals: {item: @item}
         %li.items-tag__left--report
-          = link_to root_path do
-            = icon('far', 'flag')
-            %span 不適切な商品の報告
+          = icon('far', 'flag')
+          %span 不適切な商品の報告
       .items-tag__right
         = link_to root_path do
           = icon('fas', 'lock')
