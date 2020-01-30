@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one :user_address
   has_one :user_identification
   has_one :user_delivery
+  has_one :sns_credential
   has_many :user_payments
   has_many :likes
   has_many :reports
@@ -33,6 +34,10 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     sns_credential = SnsCredential.where(provider: auth.provider, uid: auth.uid).first
     user = User.where(id: sns_credential.user_id).first
-    return user
+    if user
+      return user
+    else
+      return false
+    end
   end
 end
