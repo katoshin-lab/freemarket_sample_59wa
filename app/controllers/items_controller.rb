@@ -45,9 +45,11 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.seller_id == current_user.id
       @item.destroy
+      flash[:notice] = '商品が削除されました'
       redirect_to mypages_path
     else
-      redirect to item_path(@item)
+      flash.now[:alert] = '商品の削除に失敗しました'
+      render :show
     end
   end
 
