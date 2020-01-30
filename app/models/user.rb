@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   has_one :user_address
   has_one :user_identification
@@ -26,4 +26,13 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   validates :profile, length: { maximum: 1000 }
 
+  def already_liked?(item)
+    self.likes.exists?(item_id: item.id)
+  end
+
+  def self.from_omniauth(auth)
+    sns_credential = SnsCredential.where(provider: auth.provider, uid: auth.uid).first
+    user = User.where(id: sns_credential.user_id).first
+    return user
+  end
 end

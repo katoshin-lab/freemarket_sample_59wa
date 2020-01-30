@@ -30,6 +30,9 @@
         background: #385185;
         color: $white;
         line-height: 48px;
+        a {
+          color: white;
+        }
       }
       &--btn-google{
         position: relative;
@@ -38,6 +41,9 @@
         line-height: 48px;
         background: #fff url("https://img.icons8.com/color/48/000000/google-logo.png") no-repeat 8px;
         background-size: 25px;
+        a {
+          color: #333
+        }
       }
       i{
         position: absolute;

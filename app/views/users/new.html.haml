@@ -11,7 +11,7 @@
             = link_to "メールアドレスで登録する", "sign_up"
           .signup__inner-content__form--btn-sns-facebook 
             %i.fab.fa-facebook-f.fa-2x
-            %p Facebookで登録する
+            = link_to "Facebookで登録する", user_facebook_omniauth_authorize_path, method: :post
           .signup__inner-content__form--btn-google
-            %p Googleで登録する
+            = link_to "Googleで登録する", user_google_oauth2_omniauth_authorize_path, method: :post
 = render partial: "devise/shared/shared-footer"
