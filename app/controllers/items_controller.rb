@@ -41,6 +41,16 @@ class ItemsController < ApplicationController
     @next_item = Item.find(params[:id].to_i + 1) if Item.exists?(id: params[:id].to_i + 1)
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.seller_id == current_user.id
+      @item.destroy
+      redirect_to mypages_path
+    else
+      redirect to item_path(@item)
+    end
+  end
+
   private
   def item_subcategory
     @category = params.required(:item)[:category_id]
