@@ -1,12 +1,14 @@
 = render partial: "layouts/header"
 
 .buy
-  = form_with model: @item, url: buy_path do |f|
+  = form_with model: @item, url: buy_path(@item), id: "buy_form", local: true do |f|
     .buy__title
       購入内容の確認
     .buy__border
 
     .buy__content
+      .buy__errors
+        = @errors
       .buy__image
         = image_tag (@item.images.first.image.url)
       .buy__detail
@@ -32,7 +34,7 @@
       .buy__wrapper
         .buy__label
           支払い方法
-      - if @payments
+      - if @payment
         .buy__edit
           = link_to "変更する", payments_path
         .buy__text--card_info
@@ -67,9 +69,9 @@
     .buy__content--border
       .buy__border
     .buy__content
-      = f.hidden_field :price, value: @item.price
-      - if @payments
-        = f.submit "購入する", class: "buy__submit"
+      - if @payment
+        = f.hidden_field :id, value: @item.id
+        = f.submit "購入する", class: "buy__submit", id: "buy_btn"
       - else
         .buy__submit--invalid
           購入する
