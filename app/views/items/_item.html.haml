@@ -2,6 +2,7 @@
   = link_to item_path(item) do
     .item-box__photo
       = image_tag item.images.first.image.url
+      = image_tag "sold.png", class: "sold" if item.item_status_id == 4
     .item-box__body 
       %h3.item-box__body--text
         = item.name
