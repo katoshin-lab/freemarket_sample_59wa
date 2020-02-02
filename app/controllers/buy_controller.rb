@@ -17,19 +17,20 @@ class BuyController < ApplicationController
     get_card_info
     if @item.item_status_id == 3
       @errors = "出品停止中の商品です"
-      render :show
-      return
+      return_to_show
     end
     if @item.item_status_id == 4
       @errors = "販売済みの商品です"
-      render :show
-      return
+      return_to_show
     end
     require 'payjp'
     @payment = UserPayment.where(user_id: current_user.id).first
     if @payment.present?
       customer = @payment.customer_id
       card = @payment.card_id
+    else
+      @errors = "支払い情報が登録されていません"
+      return_to_show
     end
     payjp_setting
     if charge = Payjp::Charge.create(
@@ -41,11 +42,24 @@ class BuyController < ApplicationController
     )
       @dealing = Dealing.new(dealing_params)
       @dealing.charge = charge[:id]
-      @dealing.save
+      else
+        @errors = "カード決済においてエラーが発生しました"
+        return_to_show
     end
-  end
+    if @dealing.save
+      @item.update(item_status_id: 4)
+    else
+      @errors = "エラーが発生しました"
+      return_to_show
+    end
+end
 
   private
+
+  def return_to_show
+    render :show
+    return
+  end
 
   def item_id
     params.required(:item)[:id]
