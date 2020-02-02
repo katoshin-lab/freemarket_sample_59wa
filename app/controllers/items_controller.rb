@@ -41,6 +41,17 @@ class ItemsController < ApplicationController
     @next_item = Item.find(params[:id].to_i + 1) if Item.exists?(id: params[:id].to_i + 1)
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.seller_id == current_user.id && @item.destroy
+      flash[:notice] = '商品が削除されました'
+      redirect_to mypages_path
+    else
+      flash.now[:alert] = '商品の削除に失敗しました'
+      render :show
+    end
+  end
+
   private
   def item_subcategory
     @category = params.required(:item)[:category_id]

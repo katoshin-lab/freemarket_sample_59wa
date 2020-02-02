@@ -109,6 +109,7 @@
         相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
       = f.text_area :text, class: "items-form__text"
       = f.label "コメント機能は未実装です", class: 'items-form__btn'
+      = link_to "この商品を削除する", item_path(@item.id), method: :delete, data: { confirm: '本当に削除しますか？一度削除すると二度と元には戻せません。'}, class: 'items-form__btn'
   %ul.items-prev
     - if @prev_item
       %li.items-prev__left
