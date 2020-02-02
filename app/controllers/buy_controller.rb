@@ -9,8 +9,8 @@ class BuyController < ApplicationController
     get_card_info
   end
 
-  def update
-    @item = Item.find(params[:id])
+  def create
+    @item = Item.find(item_id)
     require 'payjp'
     @payment = UserPayment.where(user_id: current_user.id).first
     @delivery = current_user.user_delivery
@@ -39,8 +39,34 @@ class BuyController < ApplicationController
       currency: 'jpy',
       description: 'freemarket_sample_59wa payment'
     )
-      @item.update(item_status_id: 4)
+      @dealing = Dealing.new(dealing_params)
+      @dealing.charge = charge[:id]
+      @dealing.save
     end
+  end
+
+  private
+
+  def item_id
+    params.required(:item)[:id]
+  end
+
+  def dealing_params
+    {
+      buyer_id: current_user.id,
+      item_id: item_id,
+      last_name: @delivery.last_name,
+      first_name: @delivery.first_name,
+      last_name_kana: @delivery.last_name_kana,
+      first_name_kana: @delivery.first_name_kana,
+      postal_number: @delivery.postal_number,
+      prefecture_id: @delivery.prefecture_id,
+      city: @delivery.city,
+      block: @delivery.block,
+      building_name: @delivery.building_name,
+      phone_number: @delivery.phone_number,
+      dealing_status_id: 1
+    }
   end
 
 end
