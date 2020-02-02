@@ -1,5 +1,4 @@
 $(function() {
-
   // 画像のアップロード部分（10枚まで）
   $('#dropbox').on('change', $('.file_field'), function(e) {
     var number = Number($('#number').text());
@@ -192,5 +191,5 @@ $(function() {
       $('#charge').empty().append("-");
       $('#gain').empty().append("-");
     }
-  }) 
-})
+  })
+});

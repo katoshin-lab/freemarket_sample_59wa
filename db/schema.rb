@@ -86,6 +86,17 @@ ActiveRecord::Schema.define(version: 2020_02_02_042512) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.integer "user_id"
+    t.string "name"
+    t.string "email"
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "last_name", limit: 40, default: "", null: false
     t.string "first_name", limit: 40, default: "", null: false
