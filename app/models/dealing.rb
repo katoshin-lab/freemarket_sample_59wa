@@ -17,6 +17,6 @@ class Dealing < ApplicationRecord
   validates :prefecture_id, presence: true
   validates :city, presence: true, length: { maximum: 25 }
   validates :block, presence: true, length: { maximum: 25 }
-  validates :building_name, length: { maximum: 25 }, allow_blank: true
-  validates :phone_number, format: { with: /\A[0-9]{9,10}\z/ }, allow_blank: true
+  validates :building_name, length: { maximum: 25 }, presence: true
+  validates :phone_number, format: { with: /\A[0-9]{9,10}\z/ }, presence: true
 end

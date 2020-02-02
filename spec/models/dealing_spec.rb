@@ -101,6 +101,17 @@ describe Dealing do
         expect(test_dealing.errors[:block]).to include("can't be blank") 
       end
 
+      it "is invalid without building_name" do
+        test_dealing.building_name = nil
+        subject
+        expect(test_dealing.errors[:building_name]).to include("can't be blank") 
+      end
+
+      it "is invalid without phone_number" do
+        test_dealing.phone_number = nil
+        subject
+        expect(test_dealing.errors[:phone_number]).to include("can't be blank") 
+      end
     end
 
   end

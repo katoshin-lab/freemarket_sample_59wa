@@ -23,8 +23,6 @@ class DeliveriesController < ApplicationController
     else
       render json: {'message': 'error'}, status: 422
     end
-
-
   end
 
   protected

@@ -1,4 +1,5 @@
 class BuyController < ApplicationController
+  require 'payjp'
   include PaymentsHelper
   include ItemHelper
 
@@ -11,7 +12,6 @@ class BuyController < ApplicationController
 
   def create
     @item = Item.find(item_id)
-    require 'payjp'
     @payment = UserPayment.where(user_id: current_user.id).first
     @delivery = current_user.user_delivery
     get_card_info
@@ -23,7 +23,6 @@ class BuyController < ApplicationController
       @errors = "販売済みの商品です"
       return_to_show
     end
-    require 'payjp'
     @payment = UserPayment.where(user_id: current_user.id).first
     if @payment.present?
       customer = @payment.customer_id
