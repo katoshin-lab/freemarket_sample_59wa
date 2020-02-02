@@ -48,6 +48,11 @@ class ItemsController < ApplicationController
       redirect_to mypages_path
     else
       flash.now[:alert] = '商品の削除に失敗しました'
+      @seller_items = @item.seller.sell_items.where.not(id: @item.id).includes(:images).order(id: "DESC").limit(6)
+      @likes_counts = Like.group(:item_id).count
+      @likes_count = @likes_counts.values_at(params[:id].to_i)[0]
+      @prev_item = Item.find(params[:id].to_i - 1) if Item.exists?(id: params[:id].to_i - 1)
+      @next_item = Item.find(params[:id].to_i + 1) if Item.exists?(id: params[:id].to_i + 1)
       render :show
     end
   end
@@ -80,6 +85,6 @@ class ItemsController < ApplicationController
   end
   
   def item_params
-    params.required(:item).permit(:name, :detail, :condition_id, :is_seller_shipping, :prefecture_id, :shipping_method_id,:shipping_period_id, :price, images_attributes: [:image]).merge(seller_id: 1, item_status_id: 1, category_id: item_category)
+    params.required(:item).permit(:name, :detail, :condition_id, :is_seller_shipping, :prefecture_id, :shipping_method_id,:shipping_period_id, :price, images_attributes: [:image]).merge(seller_id: current_user.id, item_status_id: 1, category_id: item_category)
   end
 end

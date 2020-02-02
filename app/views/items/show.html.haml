@@ -139,7 +139,7 @@
       %h2
         = @item.seller.name + "さんのその他の出品"
     .items-list__content
-      = render @seller_items
+      = render partial: "item", collection: @seller_items
 
   .items-bottom
     %ul.items-bottom__tag
