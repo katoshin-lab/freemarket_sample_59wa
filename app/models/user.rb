@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_many :user_payments
   has_many :likes
   has_many :reports
-  has_many :items
   has_many :dealing_items
   has_many :bought_items
   has_many :sell_items, class_name: "Item", foreign_key: "seller_id"
