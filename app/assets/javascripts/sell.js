@@ -33,10 +33,8 @@ $(function() {
         box_width -= 126;
         $('#dropbox').css('width', box_width+'px');
       }; 
-
       reader.onload = (function(file) {
         return function(e) {
-
           $(image_number).prepend($('<img>').attr({
             src: e.target.result,
             title: "image" + number,
@@ -49,6 +47,13 @@ $(function() {
       $('#number').text(number);
       $('#total').text(total);
     };
+    //商品の編集時に画像を表示
+    $.ajax({
+      type: 'GET',
+      url: '/items',
+      data: FormData,
+      dataType: 'json'
+    })
   });
   // 画像の削除機能部分
   $('#container').click('.sell__image_btn--delete', function() {
@@ -179,7 +184,7 @@ $(function() {
     }
   })
 
-  // 手数料、利益の自動計算部分
+  // 手数料、利益の自動計算部分  
   $('#item_price').on("keyup", function(){
     var input = $('#item_price').val();
     var charge = Math.floor(input * 0.1);
@@ -192,4 +197,16 @@ $(function() {
       $('#gain').empty().append("-");
     }
   })
+  //初期値がある場合
+  $('#item_price')
+    var input = $('#item_price').val();
+    var charge = Math.floor(input * 0.1);
+    var gain = (input - charge);
+    if (input >= 300 && input <= 9999999) {
+      $('#charge').empty().append("¥" + charge.toLocaleString());
+      $('#gain').empty().append("¥" + gain.toLocaleString());
+    } else {
+      $('#charge').empty().append("-");
+      $('#gain').empty().append("-");
+    }
 });

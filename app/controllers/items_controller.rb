@@ -42,14 +42,15 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])  
+    @item = Item.find(params[:id])
+    item_images = @item.images
     @conditions = Condition.all
     @prefectures = Prefecture.all
     @shipping_methods = ShippingMethod.all
     @shipping_periods = ShippingPeriod.all
     @categories = Category.where(ancestry: params[:ancestry])
-    @subcategories = []
-    @sub_subcategories = []
+    @subcategories = Category.where(ancestry: @categories)
+    @sub_subcategories = Category.where(ancestry: @categories)
     respond_to do |format|
       format.html
       format.json
