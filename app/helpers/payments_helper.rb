@@ -23,7 +23,7 @@ module PaymentsHelper
   end
 
   def payjp_setting
-    Payjp.api_key = Rails.application.credentials[:PAYJP_PRIVATE_KEY]
+    Payjp.api_key = Rails.application.credentials.payments[:PAYJP_PRIVATE_KEY]
   end
 
 end
