@@ -134,4 +134,24 @@ describe Item do
       expect(item.name).to eq "テスト商品"
     end
   end
+
+  describe "#destroy" do
+    it "itemが削除されること" do
+      @user = create(:user)
+      @category = create(:category)
+      @item = create(:item, id: 1, seller_id: @user.id, category_id: @category.id) 
+      expect(Item.where(id: 1).count).to eq 1
+      @item.destroy
+      expect(Item.where(id: 1).count).to eq 0  
+    end
+
+    it "itemを削除すると、itemに紐づくimageが削除されること" do
+      @user = create(:user)
+      @category = create(:category)
+      @item = create(:item, id: 1, seller_id: @user.id, category_id: @category.id, images_attributes: [{image: File.new("app/assets/images/sample.jpg")}]) 
+      expect(Image.all.count).to eq 1
+      @item.destroy
+      expect(Image.all.count).to eq 0  
+    end
+  end
 end
