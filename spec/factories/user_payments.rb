@@ -1,5 +1,4 @@
 require 'faker'
-require 'forgery_ja'
 
 FactoryBot.define do
   factory :user_payment do

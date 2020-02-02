@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  include ItemHelper
   def index
     @items = Item.includes(:images).order(id: 'DESC').limit(10)
   end
@@ -6,18 +7,12 @@ class ItemsController < ApplicationController
   def create
     item_subcategory
     @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
+    if @item.images.present?
+      item_save
     else
-      @item.images.build
-      @categories = Category.where(ancestry: nil)
-      @subcategories = Category.where(ancestry: @category)
-      @sub_subcategories = Category.where(ancestry: @category.to_s + "/" + @subcategory.to_s)
-      @conditions = Condition.all
-      @prefectures = Prefecture.all
-      @shipping_methods = ShippingMethod.all
-      @shipping_periods = ShippingPeriod.all
-      render :new
+      respond_to do |format| 
+        format.js { render alert_image }
+      end
     end
   end
 
@@ -61,6 +56,18 @@ class ItemsController < ApplicationController
     end
   end
 
+  def item_save
+    if @item.save
+      respond_to do |format| 
+        format.js { render ajax_redirect_to(root_path) }
+      end
+    else
+      respond_to do |format| 
+        format.js { render alert_text }
+      end
+    end    
+  end
+  
   def item_params
     params.required(:item).permit(:name, :detail, :condition_id, :is_seller_shipping, :prefecture_id, :shipping_method_id,:shipping_period_id, :price, images_attributes: [:image]).merge(seller_id: 1, item_status_id: 1, category_id: item_category)
   end

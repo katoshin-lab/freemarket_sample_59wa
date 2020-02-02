@@ -8,10 +8,10 @@ class SignupsController < ApplicationController
     phone_number = PhonyRails.normalize_number mobile_phone_number, country_code: 'JP'
     sms_number = rand(10000..99999)
     session[:sms_number] = sms_number
-    client = Twilio::REST::Client.new(Rails.application.credentials[:TWILLIO_SID],Rails.application.credentials[:TWILLIO_TOKEN])
+    client = Twilio::REST::Client.new(Rails.application.credentials.sms_auth[:TWILLIO_SID],Rails.application.credentials.sms_auth[:TWILLIO_TOKEN])
     begin
       client.api.account.messages.create(
-        from: Rails.application.credentials[:TWILLIO_NUMBER],
+        from: Rails.application.credentials.sms_auth[:TWILLIO_NUMBER],
         to: phone_number,
         body: "Fmarketの認証番号は#{sms_number}です。"
       )
@@ -36,5 +36,10 @@ class SignupsController < ApplicationController
   end
 
   def complete
+    session.delete(:sns_credential?)
+    session.delete(:user_name)
+    session.delete(:user_email)
+    session.delete(:sns_credential_token)
+    session.delete(:sms_number)
   end
 end
