@@ -13,6 +13,13 @@
     margin: auto;
     vertical-align: middle;
     object-fit: contain;
+    &--sold {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 300px;
+      height: 300px;
+    }
   }
   &__boxes {
     @include image-box();

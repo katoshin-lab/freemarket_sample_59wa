@@ -34,6 +34,7 @@
     img {
       width: 80px;
       height: 80px;
+      object-fit: contain;
     }
   }
   &__detail {
@@ -113,6 +114,15 @@
   &__text {
     text-align: left;
     margin-top: 8px;
+    line-height: 1.5;
+    &--card_info {
+      @extend .buy__text;
+      img {
+        height: 30px;
+        width: 40px;
+        object-fit: contain;
+      }
+        }
   }
   &__info {
     margin-top: 8px;
@@ -134,9 +144,17 @@
     line-height: 48px;
     text-align: center;
     margin-bottom: 10px;
+    cursor: pointer;
     &--invalid {
       @extend .buy__submit;
+      cursor: auto;
       background-color: $dark;
     }
+  }
+  &__errors{
+    color: $red;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 30px;
   }
 }

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'items#index'
-  resources :buy, only: [:show]
+  resources :buy, only: [:create, :show]
   
   resources :items, only: [:index, :create, :new, :show] do
     resource :likes, only: [:create, :destroy]
@@ -37,6 +37,6 @@ Rails.application.routes.draw do
       get :complete
     end
   end
-  resources :deliveries, only: [:new, :create, :update]
-  resources :payments, only: [:new, :create, :update, :destroy]
+  resources :deliveries, only: [:new, :create, :show, :update]
+  resources :payments, only: [:index, :new, :create, :update, :destroy]
 end

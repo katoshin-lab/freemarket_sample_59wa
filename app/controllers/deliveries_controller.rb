@@ -12,7 +12,17 @@ class DeliveriesController < ApplicationController
     end
   end
 
+  def show
+    @user_delivery = current_user.user_delivery
+  end
+
   def update
+    @user_delivery = UserDelivery.find_by(user_id: params[:id])
+    if @user_delivery.update(user_delivery_params)
+      render json: {}, status: 200
+    else
+      render json: {'message': 'error'}, status: 422
+    end
   end
 
   protected
