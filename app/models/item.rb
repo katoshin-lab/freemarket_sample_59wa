@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   belongs_to :buyer, class_name: "User", optional: true
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :reports
   belongs_to :brand, optional: true
   belongs_to :category, optional: true
