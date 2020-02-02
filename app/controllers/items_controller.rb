@@ -48,6 +48,11 @@ class ItemsController < ApplicationController
       redirect_to mypages_path
     else
       flash.now[:alert] = '商品の削除に失敗しました'
+      @seller_items = @item.seller.sell_items.where.not(id: @item.id).includes(:images).order(id: "DESC").limit(6)
+      @likes_counts = Like.group(:item_id).count
+      @likes_count = @likes_counts.values_at(params[:id].to_i)[0]
+      @prev_item = Item.find(params[:id].to_i - 1) if Item.exists?(id: params[:id].to_i - 1)
+      @next_item = Item.find(params[:id].to_i + 1) if Item.exists?(id: params[:id].to_i + 1)
       render :show
     end
   end
