@@ -11,19 +11,27 @@
           必須
         .sell__text
           最大10枚までアップロードできます
-      = form.fields_for :images do |m|
-        .sell__image_container#container
-        .sell__upload--drop_box#dropbox
-          .sell__upload--text
-            ドラッグアンドドロップ
-            %br
-            またはクリックしてファイルをアップロード
+      .sell__image_container#container
+        - @images.each_with_index do |image,i|
+          - i += 1
+          .sell__image_box
+            .sell__image{id: "upload_image#{i}"}
+              = image_tag image.image.url, {class: "sell__image"}
+            .sell__image_btn--edit{id: "#{i}_edit"}
+              編集
+            .sell__image_btn--edit{id: i}
+              削除
+      .sell__upload--drop_box#dropbox
+        .sell__upload--text
+          ドラッグアンドドロップ
+          %br
+          またはクリックしてファイルをアップロード
+        = form.fields_for :images do |m|
           = m.file_field :image, id: :image1, class: :file_field
         .sell__number#number
-          0
+          = @images.length
         .sell__number#total
-          0
-
+          = @images.length
     .sell__content
       .sell__label
         商品名

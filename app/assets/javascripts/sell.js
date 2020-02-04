@@ -1,5 +1,16 @@
 $(function() {
-  // 画像のアップロード部分（10枚まで）
+  //編集時画像の表示
+  var total = Number($('#total').text());
+  if (total === 5){
+    $('#dropbox').css('width', 620);
+  } else if (total === 10) {
+    $('#dropbox').hide();
+  } else {
+    var box_width = $('#dropbox').css('width').replace('px', '');
+    box_width -= 126 * total;
+    $('#dropbox').css('width', box_width+'px');
+  };
+    // 画像のアップロード部分（10枚まで)
   $('#dropbox').on('change', $('.file_field'), function(e) {
     var number = Number($('#number').text());
     var total = Number($('#total').text());
@@ -47,13 +58,6 @@ $(function() {
       $('#number').text(number);
       $('#total').text(total);
     };
-    //商品の編集時に画像を表示
-    $.ajax({
-      type: 'GET',
-      url: '/items',
-      data: FormData,
-      dataType: 'json'
-    })
   });
   // 画像の削除機能部分
   $('#container').click('.sell__image_btn--delete', function() {

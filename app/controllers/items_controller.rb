@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    item_images = @item.images
+    @images = @item.images
     @conditions = Condition.all
     @prefectures = Prefecture.all
     @shipping_methods = ShippingMethod.all
