@@ -13,6 +13,7 @@ class BuyController < ApplicationController
 
   def create
     @item = Item.find(item_id)
+    redirect_to mypages_path if @item.seller_id == current_user.id
     @payment = UserPayment.where(user_id: current_user.id).first
     @delivery = current_user.user_delivery
     get_card_info
