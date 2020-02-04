@@ -5,6 +5,7 @@ class BuyController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    redirect_to mypages_path if @item.seller_id == current_user.id
     @delivery = current_user.user_delivery
     @payment = UserPayment.where(user_id: current_user.id).first
     get_card_info
