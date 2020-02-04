@@ -80,7 +80,10 @@
           送料込み
         - else
           着払い
-    - if @item.seller_id == current_user.id
+    - if is_sold?
+      .items-container__btn
+        販売済みの商品です
+    - elsif is_seller?
       = link_to "#", class: 'items-container__btn--edit' do
         商品の編集
       .items-container__text--center
@@ -88,11 +91,8 @@
       = link_to item_path(@item.id), method: :delete, data: { confirm: '本当に削除しますか？一度削除すると二度と元には戻せません。'}, class: 'items-form__btn' do
         この商品を削除する
     - elsif @item.item_status_id == 3
-      .items-container__btn--edit
+      .items-container__btn
         出品停止中の商品です
-    - elsif @item.item_status_id == 4
-      .items-container__btn--edit
-        販売済みの商品です
     - else
       .items-container__btn
         = link_to buy_path(@item.id) do

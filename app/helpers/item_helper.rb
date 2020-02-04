@@ -1,4 +1,15 @@
 module ItemHelper
+  def is_seller?
+    @item.seller_id == current_user.id
+  end
+  def without_seller
+    redirect_to mypages_path if is_seller?
+  end
+
+  def is_sold?
+    @item.item_status_id == 4 || @item.dealing.present?
+  end
+
   def ajax_redirect_to(url)
     { js: "window.location.replace('#{url}');" }
   end

@@ -5,7 +5,7 @@ class BuyController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    redirect_to mypages_path if @item.seller_id == current_user.id
+    without_seller
     @delivery = current_user.user_delivery
     @payment = UserPayment.where(user_id: current_user.id).first
     get_card_info
@@ -13,7 +13,7 @@ class BuyController < ApplicationController
 
   def create
     @item = Item.find(item_id)
-    redirect_to mypages_path if @item.seller_id == current_user.id
+    without_seller
     @payment = UserPayment.where(user_id: current_user.id).first
     @delivery = current_user.user_delivery
     get_card_info
@@ -25,7 +25,6 @@ class BuyController < ApplicationController
       @errors = "販売済みの商品です"
       return_to_show
     end
-    @payment = UserPayment.where(user_id: current_user.id).first
     if @payment.present?
       customer = @payment.customer_id
       card = @payment.card_id
