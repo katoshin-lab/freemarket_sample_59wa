@@ -1,4 +1,5 @@
 class SignupsController < ApplicationController
+  before_action :redirect_to_root
   def sms_authentication
   end
 
@@ -36,6 +37,9 @@ class SignupsController < ApplicationController
   end
 
   def complete
+  def redirect_to_root
+    redirect_to root_path unless session[:user_registration?]
+  end
     session.delete(:sns_credential?)
     session.delete(:user_name)
     session.delete(:user_email)

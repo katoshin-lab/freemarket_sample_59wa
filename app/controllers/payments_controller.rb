@@ -2,6 +2,7 @@ class PaymentsController < ApplicationController
   require 'payjp'
   include PaymentsHelper
   include ApplicationHelper
+  before_action :redirect_to_root, only: [:new]
   before_action :redirect_to_login
 
   def index
@@ -53,5 +54,9 @@ class PaymentsController < ApplicationController
 
   def card_update_params
     params.require(:user_payment).permit(:card_id)
+  end
+
+  def redirect_to_root
+    redirect_to root_path unless session[:user_registration?]
   end
 end
