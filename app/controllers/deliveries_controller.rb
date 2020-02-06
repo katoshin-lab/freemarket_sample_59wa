@@ -1,4 +1,6 @@
 class DeliveriesController < ApplicationController
+  include ApplicationHelper
+  before_action :redirect_to_login, only: [:show, :update]
   def new
     @user_delivery = UserDelivery.new
   end

@@ -1,6 +1,8 @@
 class PaymentsController < ApplicationController
   require 'payjp'
   include PaymentsHelper
+  include ApplicationHelper
+  before_action :redirect_to_login
 
   def index
     @payment = UserPayment.where(user_id: current_user.id).first

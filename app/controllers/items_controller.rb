@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   include ItemHelper
+  include ApplicationHelper
+  before_action :redirect_to_login, except: [:index, :show]
   def index
     @items = Item.includes(:images).order(id: 'DESC').limit(10)
   end

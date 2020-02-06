@@ -1,7 +1,9 @@
 class BuyController < ApplicationController
   require 'payjp'
+  include ApplicationHelper
   include PaymentsHelper
   include ItemHelper
+  before_action :redirect_to_login
 
   def show
     @item = Item.find(params[:id])
