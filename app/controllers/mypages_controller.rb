@@ -1,6 +1,7 @@
 class MypagesController < ApplicationController
   include ApplicationHelper
   before_action :redirect_to_login
+
   def index
   end
 
@@ -11,11 +12,9 @@ class MypagesController < ApplicationController
   end
 
   def addcard
-    
   end
 
   def card_info
-    
   end
 
   def personal_info

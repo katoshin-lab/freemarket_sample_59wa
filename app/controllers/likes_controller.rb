@@ -1,5 +1,4 @@
 class LikesController < ApplicationController
-
   include ApplicationHelper
   before_action :item_setting
   before_action :redirect_to_login
@@ -38,5 +37,4 @@ class LikesController < ApplicationController
   def return_error
     @likes_count = "err"
   end
-
 end
