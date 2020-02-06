@@ -1,5 +1,8 @@
 class SignupsController < ApplicationController
+  include ApplicationHelper
   before_action :redirect_to_root
+  before_action :time_out_redirect, except: [:time_out]
+
   def sms_authentication
   end
 
@@ -37,13 +40,30 @@ class SignupsController < ApplicationController
   end
 
   def complete
+    session_delete
+  end
+
+  def time_out
+    session_delete
+  end
+
+  private
+
   def redirect_to_root
     redirect_to root_path unless session[:user_registration?]
   end
+
+  def time_out_redirect
+    redirect_to action: 'time_out' if passed_time > 3600
+  end
+
+  def session_delete
     session.delete(:sns_credential?)
     session.delete(:user_name)
     session.delete(:user_email)
     session.delete(:sns_credential_token)
     session.delete(:sms_number)
+    session.delete(:user_registration?)
+    session.delete(:time)
   end
 end

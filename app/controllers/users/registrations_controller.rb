@@ -1,15 +1,20 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  include ApplicationHelper
   before_action :configure_sign_up_params, only: [:create]
   before_action :redirect_to_root, only: [:create]
+  before_action :time_out, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   def new
+    session[:user_registration?] = true
     if session[:sns_credential?]
       @user_name = session[:user_name]
       @user_email = session[:user_email]
+    else
+      set_time
     end
     super
   end
@@ -57,6 +62,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def redirect_to_root
     redirect_to root_path unless session[:user_registration?]
+  end
+
+  def time_out
+    redirect_to time_out_signups_path if passed_time > 3600
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
