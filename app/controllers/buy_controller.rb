@@ -1,10 +1,15 @@
 class BuyController < ApplicationController
+  before_action :authenticate_user!
+
   require 'payjp'
   include PaymentsHelper
   include ItemHelper
 
   def show
     @item = Item.find(params[:id])
+    if is_sold?
+      redirect_to root_path
+    end
     without_seller
     @delivery = current_user.user_delivery
     @payment = UserPayment.where(user_id: current_user.id).first
@@ -21,7 +26,7 @@ class BuyController < ApplicationController
       @errors = "出品停止中の商品です"
       return_to_show
     end
-    if @item.item_status_id == 4
+    if is_sold?
       @errors = "販売済みの商品です"
       return_to_show
     end

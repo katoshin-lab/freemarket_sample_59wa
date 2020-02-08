@@ -1,6 +1,6 @@
 module ItemHelper
   def is_seller?
-    @item.seller_id == current_user.id
+    user_signed_in? && @item.seller_id == current_user.id
   end
   def without_seller
     redirect_to mypages_path if is_seller?
