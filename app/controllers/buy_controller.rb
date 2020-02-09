@@ -11,7 +11,6 @@ class BuyController < ApplicationController
   def show
     @item = Item.find(params[:id])
     redirect_to root_path if is_sold?
-    end
     without_seller
     @delivery = current_user.user_delivery
     @payment = UserPayment.where(user_id: current_user.id).first
@@ -49,9 +48,9 @@ class BuyController < ApplicationController
     )
       @dealing = Dealing.new(dealing_params)
       @dealing.charge = charge[:id]
-      else
-        @errors = "カード決済においてエラーが発生しました"
-        return_to_show
+    else
+      @errors = "カード決済においてエラーが発生しました"
+      return_to_show
     end
     if @dealing.save
       @item.update(item_status_id: 4)
