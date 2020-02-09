@@ -9,7 +9,7 @@
     .items-container__content
       .items-image
         = image_tag "sold.png", class: "items-image__box--sold" if @item.item_status_id == 4
-        = image_tag @item.images.first.image.url, class: "items-image__box"
+        = image_tag @item.images.first.image.url, class: "items-image__box" if @item.images.present?
         = render partial: "image", collection: @item.images
 
       .items-container__info
@@ -85,12 +85,13 @@
           着払い
  
     .items-container__btn
-      = link_to edit_item_path(@item.id) do
-        変更する
       - if @item.item_status_id == 3
         出品停止中の商品です
       - elsif @item.item_status_id == 4
         販売済みの商品です
+      - elsif @item.seller_id == current_user.id
+        = link_to edit_item_path(@item.id) do
+          変更する
       - else
         = link_to buy_path(@item.id) do
           購入画面に進む
