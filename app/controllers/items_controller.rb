@@ -73,6 +73,9 @@ class ItemsController < ApplicationController
       respond_to do |format| 
         format.js { render alert_image }
       end
+    end
+  end
+
   def destroy
     @item = Item.find(params[:id])
     if @item.seller_id == current_user.id && @item.destroy
