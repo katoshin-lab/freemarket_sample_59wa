@@ -2,13 +2,15 @@ class BuyController < ApplicationController
   before_action :authenticate_user!
 
   require 'payjp'
+  include ApplicationHelper
   include PaymentsHelper
   include ItemHelper
+  before_action :redirect_to_login
+  before_action :set_user_info
 
   def show
     @item = Item.find(params[:id])
-    if is_sold?
-      redirect_to root_path
+    redirect_to root_path if is_sold?
     end
     without_seller
     @delivery = current_user.user_delivery
@@ -57,7 +59,7 @@ class BuyController < ApplicationController
       @errors = "エラーが発生しました"
       return_to_show
     end
-end
+  end
 
   private
 
@@ -88,4 +90,8 @@ end
     }
   end
 
+  def set_user_info
+    @delivery = UserDelivery.where(user_id: current_user.id).first
+    @payment = UserPayment.where(user_id: current_user.id).first
+  end
 end

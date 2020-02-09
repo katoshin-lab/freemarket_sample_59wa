@@ -1,6 +1,7 @@
 = render partial: "layouts/header"
 
 .buy
+  
   = form_with model: @item, url: buy_index_path, method: :post, id: "buy_form", local: true do |f|
     .buy__title
       購入内容の確認

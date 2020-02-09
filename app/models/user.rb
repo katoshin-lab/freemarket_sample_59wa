@@ -4,12 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
-  has_one :user_address
-  has_one :user_identification
-  has_one :user_delivery
-  has_one :sns_credential
-  has_many :user_payments
-  has_many :likes
+  has_one :user_address, dependent: :destroy
+  has_one :user_delivery, dependent: :destroy
+  has_one :sns_credential, dependent: :destroy
+  has_many :user_payments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :reports
   has_many :dealing_items
   has_many :bought_items
