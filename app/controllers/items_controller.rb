@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
+  include ApplicationHelper
   include ItemHelper
   before_action :set_item, only: [:edit, :update, :show, :destroy]
+  before_action :redirect_to_login, except: [:index, :show]
+
 
   def index
     @items = Item.includes(:images).order(id: 'DESC').limit(10)
@@ -82,7 +85,7 @@ class ItemsController < ApplicationController
       respond_to do |format| 
         format.js { render alert_text }
       end
-    end    
+    end
   end
   
   def item_params

@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  include ApplicationHelper
   require 'securerandom'
+  require 'time'
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
 
@@ -49,6 +51,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user, event: :authentication
     else
       session["devise.#{provider}_data"] = request.env["omniauth.auth"].except("extra")
+      set_time
       redirect_to new_user_registration_path
     end
   end
@@ -61,7 +64,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   protected
 
   def after_sign_in_path_for(resource)
-    root_path
+    stored_location_for(resource)
   end
 
   # The path used when OmniAuth fails
