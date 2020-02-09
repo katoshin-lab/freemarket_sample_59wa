@@ -24,7 +24,6 @@ class DeliveriesController < ApplicationController
 
   def update
     return unless your_delivery?
-    binding.pry
     setting_delivery
     if @user_delivery.update(user_delivery_params)
       render json: {}, status: 200
