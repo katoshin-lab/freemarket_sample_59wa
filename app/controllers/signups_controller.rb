@@ -49,10 +49,6 @@ class SignupsController < ApplicationController
 
   private
 
-  def redirect_to_root
-    redirect_to root_path unless session[:user_registration?]
-  end
-
   def time_out_redirect
     redirect_to action: 'time_out' if passed_time > 3600
   end

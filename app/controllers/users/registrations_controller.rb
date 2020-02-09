@@ -60,10 +60,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :birthday, :last_name, :first_name, :last_name_kana, :first_name_kana])
   end
 
-  def redirect_to_root
-    redirect_to root_path unless session[:user_registration?]
-  end
-
   def time_out
     redirect_to time_out_signups_path if passed_time > 3600
   end

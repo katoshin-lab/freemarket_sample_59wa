@@ -31,10 +31,6 @@ class DeliveriesController < ApplicationController
 
   protected
 
-  def redirect_to_root
-    redirect_to root_path unless session[:user_registration?]
-  end
-
   def user_delivery_params
     params.require(:user_delivery).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_number, :prefecture_id, :city, :block, :building_name, :phone_number).merge(user_id: current_user.id)
   end

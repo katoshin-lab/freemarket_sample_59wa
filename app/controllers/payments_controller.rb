@@ -55,8 +55,4 @@ class PaymentsController < ApplicationController
   def card_update_params
     params.require(:user_payment).permit(:card_id)
   end
-
-  def redirect_to_root
-    redirect_to root_path unless session[:user_registration?]
-  end
 end
