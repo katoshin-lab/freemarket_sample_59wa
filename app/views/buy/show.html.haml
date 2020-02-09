@@ -49,16 +49,16 @@
       - else
         .buy__text
           .buy__info
-            = link_to icon('fas', 'plus-circle')+" 登録してください", ""
+            = link_to icon('fas', 'plus-circle')+" 登録してください", new_payment_path
     .buy__content--border
       .buy__border
     .buy__content
       .buy__wrapper
         .buy__label
           配送先
+      - if @delivery
         .buy__edit
           = link_to "変更する", delivery_path(current_user.id)
-      - if @delivery
         .buy__text
           〒
           = @delivery.postal_number
@@ -67,10 +67,14 @@
           = @delivery.city
           = @delivery.block
           = @delivery.building_name
+      - else
+        .buy__text
+          .buy__info
+            = link_to icon('fas', 'plus-circle')+" 登録してください", delivery_path(current_user.id)
     .buy__content--border
       .buy__border
     .buy__content
-      - if @payment
+      - if @payment && @delivery
         = f.hidden_field :id, value: @item.id
         = f.submit "購入する", class: "buy__submit", id: "buy_btn"
       - else
