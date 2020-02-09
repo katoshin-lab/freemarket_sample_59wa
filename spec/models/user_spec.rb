@@ -114,6 +114,18 @@ RSpec.describe User, type: :model do
         expect(test_user.errors[:first_name_kana]).to include("is too long (maximum is 20 characters)")
       end
 
+      it "is invalid with a first_name_kana which is not written by katakana" do
+        test_user.first_name_kana = "あいうえおかきくけこさしすせそたちつてと"
+        subject
+        expect(test_user.errors[:first_name_kana]).to include("全角カタカナのみで入力して下さい")
+      end
+
+      it "is invalid with a last_name_kana which is not written by katakana" do
+        test_user.last_name_kana = "あいうえおかきくけこさしすせそたちつてと"
+        subject
+        expect(test_user.errors[:last_name_kana]).to include("全角カタカナのみで入力して下さい")
+      end
+
       it "is invalid with a mobile phone number which is less than 9 digits" do
         test_user.mobile_phone_number = 123456789
         test_user.valid?

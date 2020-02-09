@@ -105,6 +105,18 @@ RSpec.describe UserDelivery, type: :model do
         expect(test_delivery.errors[:first_name_kana]).to include("is too long (maximum is 20 characters)")
       end
 
+      it "is invalid with a first_name_kana which is not written by katakana" do
+        test_delivery.first_name_kana = "あいうえおかきくけこさしすせそたちつてと"
+        subject
+        expect(test_delivery.errors[:first_name_kana]).to include("全角カタカナのみで入力して下さい")
+      end
+
+      it "is invalid with a last_name_kana which is not written by katakana" do
+        test_delivery.last_name_kana = "あいうえおかきくけこさしすせそたちつてと"
+        subject
+        expect(test_delivery.errors[:last_name_kana]).to include("全角カタカナのみで入力して下さい")
+      end
+
       it "is invalid with a postal_number which is less than 6 characters" do
         test_delivery.postal_number = "123456"
         subject
