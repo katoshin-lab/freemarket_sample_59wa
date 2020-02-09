@@ -58,14 +58,15 @@
           配送先
         .buy__edit
           = link_to "変更する", delivery_path(current_user.id)
-      .buy__text
-        〒
-        = @delivery.postal_number
-        %br
-        = @delivery.prefecture.name
-        = @delivery.city
-        = @delivery.block
-        = @delivery.building_name
+      - if @delivery
+        .buy__text
+          〒
+          = @delivery.postal_number
+          %br
+          = @delivery.prefecture.name
+          = @delivery.city
+          = @delivery.block
+          = @delivery.building_name
     .buy__content--border
       .buy__border
     .buy__content

@@ -1,4 +1,8 @@
 class DeliveriesController < ApplicationController
+  include ApplicationHelper
+  before_action :redirect_to_root, only: [:new, :create]
+  before_action :redirect_to_login, only: [:show, :update]
+
   def new
     @user_delivery = UserDelivery.new
   end
@@ -13,11 +17,12 @@ class DeliveriesController < ApplicationController
   end
 
   def show
-    @user_delivery = current_user.user_delivery
+    setting_delivery
+    @phone_number = "0"+@user_delivery.phone_number.to_s if @user_delivery
   end
 
   def update
-    @user_delivery = UserDelivery.find_by(user_id: params[:id])
+    setting_delivery
     if @user_delivery.update(user_delivery_params)
       render json: {}, status: 200
     else
@@ -26,6 +31,14 @@ class DeliveriesController < ApplicationController
   end
 
   protected
+
+  def setting_delivery
+    @user_delivery = UserDelivery.where(user_id: params[:id]).first_or_initialize
+  end
+
+  def your_delivery?
+    redirect_to root_path unless params[:id] == current_user.id
+  end
 
   def user_delivery_params
     params.require(:user_delivery).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_number, :prefecture_id, :city, :block, :building_name, :phone_number).merge(user_id: current_user.id)
