@@ -18,21 +18,28 @@
       width: 100%;
       height: 188px;
       object-fit: contain;
-   }
-   &--price {
-    position: absolute;
-    padding: (5px 10px 5px 10px);
-    bottom: 70px;
-    font-size: 17px;
-    background: rgba(0,0,0,.4);
-    border-radius: 0 14px 14px 0;
-    z-index: 2;
-    color: #fff;
-    span {
-      padding: (10px 5px 5px 5px);
-      align-items: center;
+      &.sold {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 188px;
+        height: 188px;
+        }
+      }
+    &--price {
+      position: absolute;
+      padding: (5px 10px 5px 10px);
+      bottom: 70px;
+      font-size: 17px;
+      background: rgba(0,0,0,.4);
+      border-radius: 0 14px 14px 0;
+      z-index: 2;
+      color: #fff;
+      span {
+        padding: (10px 5px 5px 5px);
+        align-items: center;
+      }
     }
-   }
   }
   &__bottom {
     font-size: 14px;

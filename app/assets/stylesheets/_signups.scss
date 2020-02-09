@@ -23,11 +23,17 @@
           &--btn-mail{
             @include signbtn;
             background-color: $red;
+            a {
+              color: white
+            }
           }
           &--btn-sns-facebook{
             @include signbtn;
             margin: 16px 0 0;
             background: #385185;
+            a {
+              color: white
+            }
           }
           &--btn-google{
             @include signbtn;
@@ -35,15 +41,14 @@
             background-size: 25px;
             margin: 16px 0 0;
             border: #979797 solid 1px;
-            color: #333;
+            a {
+              color: #333;
+            }
           }
           i{
             position: absolute;
             top: 10px;
             left: 15px;
-          }
-          a {
-            color: white
           }
         }
       }

@@ -1,12 +1,24 @@
 class PaymentsController < ApplicationController
   require 'payjp'
+  include PaymentsHelper
+  include ApplicationHelper
+  before_action :redirect_to_root, only: [:new]
+  before_action :redirect_to_login
+
+  def index
+    @payment = UserPayment.where(user_id: current_user.id).first
+    if @payment.present?
+      payjp_setting
+      @customer = Payjp::Customer.retrieve(@payment.customer_id)
+      @cards_info = @customer.cards.all
+    end
+  end
 
   def new
   end
   
   def create
-    Payjp.api_key = Rails.application.credentials[:PAYJP_PRIVATE_KEY]
-                    # ENV["PAYJP_PRIVATE_KEY"]
+    payjp_setting
     if params['payjp_token'].blank?
       redirect_to action: 'new'
     else
@@ -26,8 +38,21 @@ class PaymentsController < ApplicationController
   end
 
   def update
+    payjp_setting
+    @payment = UserPayment.find(params[:id])
+    if @payment.update(card_update_params)
+      render json: {}, status: 200
+    else
+      render json: {'message': 'error'}, status: 422
+    end
   end
 
   def destroy
+  end
+
+  private
+
+  def card_update_params
+    params.require(:user_payment).permit(:card_id)
   end
 end

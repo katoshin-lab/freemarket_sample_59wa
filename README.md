@@ -65,7 +65,7 @@ Things you may want to cover:
 |city|string|null: false, limit: 50|
 |block|string|null: false, limit: 50|
 |building_name|string|limit: 50|
-|phone|integer|limit: 5|
+|phone_number|integer|limit: 5|
 |user|references|null: false, foreign_key: true|
 ### Associations
 - belongs_to :user
@@ -88,7 +88,6 @@ Things you may want to cover:
 |condition_id|integer|null: false|
 |price|integer|null: false|
 |seller|references|null: false, foreign_key: {to_table: users}|
-|buyer|references|null: false, foreign_key: {to_table: users}|
 |is_seller_shipping|boolean|null: false, default: true|
 |prefecture_id|integer|null: false|
 |shipping_period_id|integer|null: false|
@@ -97,13 +96,15 @@ Things you may want to cover:
 |category|references|null: false, foreign_key: true|
 |item_status_id|integer|null: false|
 ### Associations
-- belongs_to :user
+- belongs_to :seller, class_name: "User", optional: true
 - has_many :images
+- accepts_nested_attributes_for :images
 - has_many :likes
 - has_many :reports
-- belongs_to :brand
-- belongs_to :category
-- has_many :dealing_comments
+- belongs_to :brand, optional: true
+- belongs_to :category, optional: true
+- belongs_to :subcategory, optional: true
+- belongs_to :sub_subcategory, optional: true
 - belongs_to_active_hash :condition
 - belongs_to_active_hash :prefecture
 - belongs_to_active_hash :shipping_period
@@ -152,6 +153,32 @@ belongs_to :item
 ### Associations
 - has_many :items
 - has_ancestry
+
+## dealings table
+|Column|Type|Options|
+|------|----|-------|
+|buyer|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
+|charge|string|null: false|
+|dealing_status_id|integer|null: false|
+|last_name|string|null: false, limit: 40|
+|first_name|string|null: false, limit: 40|
+|last_name_kana|string|null: false, limit: 40|
+|first_name_kana|string|null: false, limit: 40|
+|postal_number|integer|null: false|
+|prefecture_id|integer|null: false, default: 0|
+|city|string|null: false, limit: 50|
+|block|string|null: false, limit: 50|
+|building_name|string|limit: 50|
+|phone_number|integer|limit: 5|
+### Associations
+- belongs_to :buyer, class_name: "User", optional: true
+- belongs_to :item
+- belongs_to_active_hash :dealing_status_id
+- belongs_to_active_hash :prefecture_id
+
+
+---
 
 * Database initialization
 

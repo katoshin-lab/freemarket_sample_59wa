@@ -30,6 +30,13 @@
     img {
       object-fit: contain;
       margin: auto;
+      &.sold {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 220px;
+        height: 220px;
+      }
     }
   }
   &__body {

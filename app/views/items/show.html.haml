@@ -1,10 +1,14 @@
 .wrapper
-  = render partial: 'homes/header'
+  - if user_signed_in?
+    = render partial: 'homes/header-login'
+  - else
+    = render partial: 'homes/header'
   .items-container
     %h1
       = @item.name
     .items-container__content
       .items-image
+        = image_tag "sold.png", class: "items-image__box--sold" if @item.item_status_id == 4
         = image_tag @item.images.first.image.url, class: "items-image__box"
         = render partial: "image", collection: @item.images
 
@@ -79,12 +83,17 @@
           送料込み
         - else
           着払い
-    .items-container__btn
-      = link_to buy_path(@item.id) do
-        購入画面に進む
+ 
     .items-container__btn
       = link_to edit_item_path(@item.id) do
         変更する
+      - if @item.item_status_id == 3
+        出品停止中の商品です
+      - elsif @item.item_status_id == 4
+        販売済みの商品です
+      - else
+        = link_to buy_path(@item.id) do
+          購入画面に進む
     .items-container__text
       %p
         = @item.detail
@@ -106,6 +115,7 @@
         相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
       = f.text_area :text, class: "items-form__text"
       = f.label "コメント機能は未実装です", class: 'items-form__btn'
+      = link_to "この商品を削除する", item_path(@item.id), method: :delete, data: { confirm: '本当に削除しますか？一度削除すると二度と元には戻せません。'}, class: 'items-form__btn'
   %ul.items-prev
     - if @prev_item
       %li.items-prev__left
@@ -135,7 +145,7 @@
       %h2
         = @item.seller.name + "さんのその他の出品"
     .items-list__content
-      = render @seller_items
+      = render partial: "item", collection: @seller_items
 
   .items-bottom
     %ul.items-bottom__tag
