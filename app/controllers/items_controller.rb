@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
   include ItemHelper
+  include ApplicationHelper
+  before_action :redirect_to_login, except: [:index, :show]
+
   def index
     @items = Item.includes(:images).order(id: 'DESC').limit(10)
   end
@@ -41,6 +44,7 @@ class ItemsController < ApplicationController
     @next_item = Item.find(params[:id].to_i + 1) if Item.exists?(id: params[:id].to_i + 1)
   end
 
+
   def edit
     @item = Item.find(params[:id])
     @images = @item.images
@@ -70,6 +74,19 @@ class ItemsController < ApplicationController
       respond_to do |format| 
         format.js { render alert_image }
       end
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.seller_id == current_user.id && @item.destroy
+      flash[:notice] = '商品が削除されました'
+      redirect_to mypages_path
+    else
+      flash.now[:alert] = '商品の削除に失敗しました'
+      @seller_items = @item.seller.sell_items.where.not(id: @item.id).includes(:images).order(id: "DESC").limit(6)
+      @likes_counts = Like.group(:item_id).count
+      @likes_count = @likes_counts.values_at(params[:id].to_i)[0]
+      @prev_item = Item.find(params[:id].to_i - 1) if Item.exists?(id: params[:id].to_i - 1)
+      @next_item = Item.find(params[:id].to_i + 1) if Item.exists?(id: params[:id].to_i + 1)
+      render :show
     end
   end
 
@@ -104,7 +121,7 @@ class ItemsController < ApplicationController
       respond_to do |format| 
         format.js { render alert_text }
       end
-    end    
+    end
   end
 
   def item_update

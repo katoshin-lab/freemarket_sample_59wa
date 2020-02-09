@@ -1,0 +1,22 @@
+.card-info
+  - case card.brand
+  - when "Visa"
+    = image_tag "visa.svg"
+  - when "JCB"
+    = image_tag "jcb.svg"
+  - when "MasterCard"
+    = image_tag "master-card.svg"
+  - when "American Express"
+    = image_tag "american_express.svg"
+  - when "Diners Club"
+    = image_tag "dinersclub.svg"
+  - when "Discover"
+    = image_tag "discover.svg"
+  .card-info__number
+    = "************" + card.last4
+  %br
+  .card-info__date
+    有効期限
+    = format("%02d", card.exp_month) + " / " + card.exp_year.to_s.slice(2,3)
+  .card-info__radio_button
+    = f.radio_button :card_id, card.id, checked:(@payment.card_id == card.id)

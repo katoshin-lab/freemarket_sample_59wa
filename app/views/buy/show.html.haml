@@ -1,54 +1,80 @@
 = render partial: "layouts/header"
 
 .buy
-  .buy__title
-    購入内容の確認
-  .buy__border
+  
+  = form_with model: @item, url: buy_index_path, method: :post, id: "buy_form", local: true do |f|
+    .buy__title
+      購入内容の確認
+    .buy__border
 
-  .buy__content
-    .buy__image
-      = image_tag ("test3.jpg")
-    .buy__detail
-      .buy__item_name
-        テスト商品　パーカー　グレー色
-      .buy__price
-        ¥2,000（税込）送料込み
-  .buy__border
+    .buy__content
+      .buy__errors
+        = @errors
+      .buy__image
+        = image_tag (@item.images.first.image.url)
+      .buy__detail
+        .buy__item_name
+          = @item.name
+        .buy__price
+          = number_to_currency(@item.price, unit: "¥", precision: 0)
+          （税込）送料込み
+    .buy__border
 
-  .buy__content
-    .buy__wrapper
-      .buy__label--big
-        支払い金額
-      .buy__amount
-        ¥2,000
-    .buy__point_check--invalid
-      = check_box_tag :point
-      = label_tag :point, "ポイントを使用(所持ポイント: P0)"
-  .buy__content--border
-    .buy__border
-  .buy__content
-    .buy__wrapper
-      .buy__label
-        支払い方法
-    .buy__text
-      .buy__info
-        = link_to icon('fas', 'plus-circle')+" 登録してください", ""
-  .buy__content--border
-    .buy__border
-  .buy__content
-    .buy__wrapper
-      .buy__label
-        配送先
-      .buy__edit
-        = link_to "変更する", ""
-    .buy__text
-      郵便番号573-0018
-      %br
-      大阪府枚方市桜ヶ丘1-1
-  .buy__content--border
-    .buy__border
-  .buy__content
-    .buy__submit--invalid
-      購入する
+    .buy__content
+      .buy__wrapper
+        .buy__label--big
+          支払い金額
+        .buy__amount
+          = number_to_currency(@item.price, unit: "¥", precision: 0)
+      .buy__point_check--invalid
+        = check_box_tag :point
+        = label_tag :point, "ポイントを使用(所持ポイント: P0)"
+    .buy__content--border
+      .buy__border
+    .buy__content
+      .buy__wrapper
+        .buy__label
+          支払い方法
+      - if @payment
+        .buy__edit
+          = link_to "変更する", payments_path
+        .buy__text--card_info
+          クレジットカード
+          %br
+          = "************" + @card_info.last4
+          %br
+          有効期限
+          = format("%02d", @card_info.exp_month) + " / " + @card_info.exp_year.to_s.slice(2,3)
+          %br
+          = image_tag (@card_src)
+      - else
+        .buy__text
+          .buy__info
+            = link_to icon('fas', 'plus-circle')+" 登録してください", ""
+    .buy__content--border
+      .buy__border
+    .buy__content
+      .buy__wrapper
+        .buy__label
+          配送先
+        .buy__edit
+          = link_to "変更する", delivery_path(current_user.id)
+      .buy__text
+        〒
+        = @delivery.postal_number
+        %br
+        = @delivery.prefecture.name
+        = @delivery.city
+        = @delivery.block
+        = @delivery.building_name
+    .buy__content--border
+      .buy__border
+    .buy__content
+      - if @payment
+        = f.hidden_field :id, value: @item.id
+        = f.submit "購入する", class: "buy__submit", id: "buy_btn"
+      - else
+        .buy__submit--invalid
+          購入する
 
 = render partial: "layouts/footer"

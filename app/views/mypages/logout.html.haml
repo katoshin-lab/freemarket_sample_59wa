@@ -10,7 +10,7 @@
     = render partial: 'homes/btn-exhibit'
     .user-logout
       .user-logout__button
-        = link_to destroy_user_session_path do
+        = link_to destroy_user_session_path, method: :delete do
           .btn-logout
             ログアウト
   = render partial: 'homes/footer'
