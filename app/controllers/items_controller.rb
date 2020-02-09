@@ -44,6 +44,38 @@ class ItemsController < ApplicationController
     @next_item = Item.find(params[:id].to_i + 1) if Item.exists?(id: params[:id].to_i + 1)
   end
 
+
+  def edit
+    @item = Item.find(params[:id])
+    @images = @item.images
+    @conditions = Condition.all
+    @prefectures = Prefecture.all
+    @shipping_methods = ShippingMethod.all
+    @shipping_periods = ShippingPeriod.all
+    @categories = Category.where(ancestry: params[:ancestry])
+    @subcategories = Category.where(ancestry: @categories)
+    @sub_subcategories = Category.where(ancestry: @categories)
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
+  def update
+    item_update_subcategory
+    @item = Item.find(params[:id])
+    if @item.images.present?
+      item_update
+      item_images.each do |n|
+        @item.images[n.to_i].destroy
+      end
+    else
+      respond_to do |format| 
+        format.js { render alert_image }
+      end
+    end
+  end
+
   def destroy
     @item = Item.find(params[:id])
     if @item.seller_id == current_user.id && @item.destroy
@@ -61,11 +93,18 @@ class ItemsController < ApplicationController
   end
 
   private
+  def item_update_subcategory
+    @category = params.required(:item)[:category_id]
+    @subcategory = params[:item][:item_subcategory]
+    @sub_subcategory = params[:item][:item_sub_subcategory]
+  end
+
   def item_subcategory
     @category = params.required(:item)[:category_id]
     @subcategory = params[:item_subcategory]
     @sub_subcategory = params[:item_sub_subcategory]
   end
+
 
   def item_category
     if @sub_subcategory.present?
@@ -86,7 +125,23 @@ class ItemsController < ApplicationController
       end
     end
   end
-  
+
+  def item_update
+    if @item.update(item_params)
+      respond_to do |format| 
+        format.js { render ajax_redirect_to(root_path) }
+      end
+    else
+      respond_to do |format| 
+        format.js { render alert_text }
+      end
+    end 
+  end
+
+  def item_images
+    params.required(:item)[:delete_images].split
+  end
+
   def item_params
     params.required(:item).permit(:name, :detail, :condition_id, :is_seller_shipping, :prefecture_id, :shipping_method_id,:shipping_period_id, :price, images_attributes: [:image]).merge(seller_id: current_user.id, item_status_id: 1, category_id: item_category)
   end

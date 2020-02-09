@@ -9,7 +9,7 @@
     .items-container__content
       .items-image
         = image_tag "sold.png", class: "items-image__box--sold" if @item.item_status_id == 4
-        = image_tag @item.images.first.image.url, class: "items-image__box"
+        = image_tag @item.images.first.image.url, class: "items-image__box" if @item.images.present?
         = render partial: "image", collection: @item.images
 
       .items-container__info
@@ -87,7 +87,7 @@
       .items-container__btn
         販売済みの商品です
     - elsif is_seller?
-      = link_to "#", class: 'items-container__btn--edit' do
+      = link_to edit_item_path(@item.id), class: 'items-container__btn--edit' do
         商品の編集
       .items-container__text--center
         or
