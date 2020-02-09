@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
   include ItemHelper
+  before_action :set_item, only: [:show, :destroy]
+  before_action :set_destroy, only: [:destroy]
+
   def index
     @items = Item.includes(:images).order(id: 'DESC').limit(10)
   end
@@ -33,7 +36,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @seller_items = @item.seller.sell_items.where.not(id: @item.id).includes(:images).order(id: "DESC").limit(6)
     @likes_counts = Like.group(:item_id).count
     @likes_count = @likes_counts.values_at(params[:id].to_i)[0]
@@ -42,7 +44,6 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
     if @item.seller_id == current_user.id && @item.destroy
       flash[:notice] = '商品が削除されました'
       redirect_to mypages_path
@@ -55,6 +56,16 @@ class ItemsController < ApplicationController
       @next_item = Item.find(params[:id].to_i + 1) if Item.exists?(id: params[:id].to_i + 1)
       render :show
     end
+  end
+
+  def set_destroy
+    unless user_signed_in? && @item.seller_id == current_user.id
+      redirect_to item_path(@item.id)
+    end
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
   private
