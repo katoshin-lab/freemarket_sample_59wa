@@ -3,7 +3,7 @@
   .login__panel
     .login__panel--no-content
       %p アカウントをお持ちでない方はこちら
-      = link_to "新規会員登録", "http://localhost:3000/users/sign_up", class: "blue"
+      = link_to "新規会員登録", new_user_path, class: "blue"
     .login__panel--form
       - resource_class.omniauth_providers.each_with_index do |provider, i|
         - if i == 0
