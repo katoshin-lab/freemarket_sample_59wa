@@ -3,9 +3,6 @@ Rails.application.routes.draw do
   resources :buy, only: [:show]
   
   resources :items, only: [:index, :create, :new, :show, :edit, :update] do
-    member do
-      get :delete_images
-    end
     resource :likes, only: [:create, :destroy]
   end
   resources :mypages, only: [:index] do 
