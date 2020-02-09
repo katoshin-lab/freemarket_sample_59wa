@@ -1,7 +1,7 @@
 = render partial: "layouts/header"
 
 .sell
-  = form_with model: @item, url: items_path do |form|
+  = form_with model: @item, url: item_path, remote: true,  method: :patch do |form|
     .sell__title
       商品の情報を入力
     .sell__content
@@ -12,26 +12,27 @@
         .sell__text
           最大10枚までアップロードできます
       .sell__image_container#container
-        - @images.each_with_index do |image,i|
-          - i += 1
+        - @images.each_with_index do |image, i|
           .sell__image_box
             .sell__image{id: "upload_image#{i}"}
               = image_tag image.image.url, {class: "sell__image"}
             .sell__image_btn--edit{id: "#{i}_edit"}
               編集
-            .sell__image_btn--edit{id: i}
+            .sell__image_btn--edit.current_image{id: i}
               削除
       .sell__upload--drop_box#dropbox
         .sell__upload--text
           ドラッグアンドドロップ
           %br
           またはクリックしてファイルをアップロード
-        = form.fields_for :images do |m|
-          = m.file_field :image, id: :image1, class: :file_field
-        .sell__number#number
-          = @images.length
-        .sell__number#total
-          = @images.length
+        - @images.each_with_index do |image, i|
+          = form.fields_for :images, image do |m|
+            = m.file_field :image, id: "image#{i+2}", class: :file_field
+    .sell__number#number
+      = @images.length
+    .sell__number#total
+      = @images.length
+    = form.hidden_field :delete_images, id: :delete_images
     .sell__content
       .sell__label
         商品名
@@ -61,10 +62,10 @@
             = form.collection_select :category_id, @categories, :id, :name, selected: @item.category.parent.parent.id
           .sell__select_form#item_subcategory_selector
             %i.fas.fa-chevron-down
-            = form.collection_select :subcategory, @subcategories, :id, :name, selected: @item.category.parent.id
+            = form.collection_select :item_subcategory, @subcategories, :id, :name, selected: @item.category.parent.id
           .sell__select_form#item_sub_subcategory_selector
             %i.fas.fa-chevron-down
-            = form.collection_select :sub_subcategory, @sub_subcategories, :id, :name, selected: @item.category.id
+            = form.collection_select :item_sub_subcategory, @sub_subcategories, :id, :name, selected: @item.category.id
 
         .sell__label--follow
           商品の状態
@@ -159,7 +160,7 @@
         %span><
           = link_to "加盟店規約", root_path, target: "_blank" 
         に同意したことになります。
-      = form.submit "変更する", class: "sell__button--submit", id: "scroll_to_top"
+      = form.submit "変更する", class: "sell__button--submit", id: "submit-btn"
       .sell__button--cansel
         = link_to "もどる", root_path
 

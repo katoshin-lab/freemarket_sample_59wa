@@ -3,6 +3,14 @@ $(function() {
   var total = Number($('#total').text());
   if (total === 5){
     $('#dropbox').css('width', 620);
+  } else if (total == 6 ) {
+    $('#dropbox').css('width', 494);
+  } else if (total == 7 ) {
+    $('#dropbox').css('width', 368); 
+  } else if (total == 8 ) {
+    $('#dropbox').css('width', 244); 
+  } else if (total == 9) {
+    $('#dropbox').css('width', 122); 
   } else if (total === 10) {
     $('#dropbox').hide();
   } else {
@@ -61,8 +69,13 @@ $(function() {
   });
   // 画像の削除機能部分
   $('#container').click('.sell__image_btn--delete', function() {
+
     var total = Number($('#total').text());
     var click = $(event.target);
+    //既存の画像を削除するリストを作成
+    var delete_image_id = click.attr('id');
+    var current_delete_image_id = $('#delete_images').val();
+    $('#delete_images').val(current_delete_image_id + delete_image_id + " ")
     var click_image_id = "#image" + click.attr('id');
     if (total === 10) {
       $('#dropbox').show();
@@ -78,6 +91,18 @@ $(function() {
     total--;
     $('#total').text(total).trigger('create');
   });
+
+  //不要な要素の削除
+  $('#item_images_attributes_0_id').remove();
+  $('#item_images_attributes_1_id').remove();
+  $('#item_images_attributes_2_id').remove();
+  $('#item_images_attributes_3_id').remove();
+  $('#item_images_attributes_4_id').remove();
+  $('#item_images_attributes_5_id').remove();
+  $('#item_images_attributes_6_id').remove();
+  $('#item_images_attributes_7_id').remove();
+  $('#item_images_attributes_8_id').remove();
+  $('#item_images_attributes_9_id').remove();
 
   // カテゴリー部分
   // サブカテゴリーが未選択の場合ははじめに非表示にする
@@ -212,5 +237,5 @@ $(function() {
     } else {
       $('#charge').empty().append("-");
       $('#gain').empty().append("-");
-    }
+   }
 });
