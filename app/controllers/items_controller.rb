@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   include ItemHelper
-  before_action :set_item, only: [:show, :destroy]
-  before_action :set_destroy, only: [:destroy]
+  before_action :set_item, only: [:edit, :update, :show, :destroy]
 
   def index
     @items = Item.includes(:images).order(id: 'DESC').limit(10)
@@ -44,7 +43,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.seller_id == current_user.id && @item.destroy
+    return redirect_to item_path(@item.id) unless user_signed_in? && @item.seller_id == current_user.id
+    if @item.destroy
       flash[:notice] = '商品が削除されました'
       redirect_to mypages_path
     else
@@ -56,16 +56,6 @@ class ItemsController < ApplicationController
       @next_item = Item.find(params[:id].to_i + 1) if Item.exists?(id: params[:id].to_i + 1)
       render :show
     end
-  end
-
-  def set_destroy
-    unless user_signed_in? && @item.seller_id == current_user.id
-      redirect_to item_path(@item.id)
-    end
-  end
-
-  def set_item
-    @item = Item.find(params[:id])
   end
 
   private
@@ -97,5 +87,9 @@ class ItemsController < ApplicationController
   
   def item_params
     params.required(:item).permit(:name, :detail, :condition_id, :is_seller_shipping, :prefecture_id, :shipping_method_id,:shipping_period_id, :price, images_attributes: [:image]).merge(seller_id: current_user.id, item_status_id: 1, category_id: item_category)
+  end
+  
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
