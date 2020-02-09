@@ -17,11 +17,14 @@ class DeliveriesController < ApplicationController
   end
 
   def show
+    redirect_to root_path unless your_delivery?
     setting_delivery
     @phone_number = "0"+@user_delivery.phone_number.to_s if @user_delivery
   end
 
   def update
+    return unless your_delivery?
+    binding.pry
     setting_delivery
     if @user_delivery.update(user_delivery_params)
       render json: {}, status: 200
@@ -33,11 +36,11 @@ class DeliveriesController < ApplicationController
   protected
 
   def setting_delivery
-    @user_delivery = UserDelivery.where(user_id: params[:id]).first_or_initialize
+    @user_delivery = UserDelivery.where(user_id: current_user.id).first_or_initialize
   end
 
   def your_delivery?
-    redirect_to root_path unless params[:id] == current_user.id
+    (params[:id]).to_i == current_user.id
   end
 
   def user_delivery_params
