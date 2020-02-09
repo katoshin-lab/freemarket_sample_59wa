@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     get 'users/confirmation/new', to: 'users/confirmations#new', as: :new_user_confirmation
     post 'users/confirmation', to: 'users/confirmations#create'
     get 'users/confirmation', to: 'users/confirmations#show', as: :user_confirmation
-    end
+  end
 
   resources :signups do
     collection do
@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       get :sms_confirmation
       post :sms_check
       get :complete
+      get :time_out
     end
   end
   resources :deliveries, only: [:new, :create, :show, :update]

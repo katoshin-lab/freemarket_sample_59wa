@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
-
+  include ApplicationHelper
   before_action :item_setting
+  before_action :redirect_to_login
 
   def create
     @like = current_user.likes.new(item_id: params[:item_id])
@@ -36,5 +37,4 @@ class LikesController < ApplicationController
   def return_error
     @likes_count = "err"
   end
-
 end

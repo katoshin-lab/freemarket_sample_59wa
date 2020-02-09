@@ -1,19 +1,18 @@
 class BuyController < ApplicationController
   require 'payjp'
+  include ApplicationHelper
   include PaymentsHelper
   include ItemHelper
+  before_action :redirect_to_login
+  before_action :set_user_info
 
   def show
     @item = Item.find(params[:id])
-    @delivery = current_user.user_delivery
-    @payment = UserPayment.where(user_id: current_user.id).first
     get_card_info
   end
 
   def create
     @item = Item.find(item_id)
-    @payment = UserPayment.where(user_id: current_user.id).first
-    @delivery = current_user.user_delivery
     get_card_info
     if @item.item_status_id == 3
       @errors = "出品停止中の商品です"
@@ -51,7 +50,7 @@ class BuyController < ApplicationController
       @errors = "エラーが発生しました"
       return_to_show
     end
-end
+  end
 
   private
 
@@ -82,4 +81,8 @@ end
     }
   end
 
+  def set_user_info
+    @delivery = UserDelivery.where(user_id: current_user.id).first
+    @payment = UserPayment.where(user_id: current_user.id).first
+  end
 end
