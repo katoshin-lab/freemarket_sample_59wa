@@ -65,7 +65,6 @@ class ItemsController < ApplicationController
       item_images.each do |n|
         @item.images[n.to_i].destroy
       end
-      binding.pry
     else
       respond_to do |format| 
         format.js { render alert_image }
