@@ -46,12 +46,12 @@
                   = @item.category.name
           %tr
             %th ブランド
-            %td 
+            %td
               = link_to root_path do
                 = @item.brand.name if @item.brand
           %tr
             %th 商品の状態
-            %td  
+            %td
               = @item.condition.name
           %tr
             %th 配送料の負担
@@ -62,33 +62,42 @@
                 着払い（購入者負担）
           %tr
             %th 配送の方法
-            %td  
+            %td
               = @item.shipping_method.name
           %tr
             %th 配送元地域
-            %td  
+            %td
               = link_to root_path do
                 = @item.prefecture.name
           %tr
             %th 配送の目安
-            %td  
+            %td
               = @item.shipping_period.period
     .items-container__price
       %span.items-container__price--text
         = number_to_currency(@item.price, unit: "¥", precision: 0)
-      %span.items-container__price--tax      
+      %span.items-container__price--tax
         (税込)
-      %span.items-container__price--fee      
+      %span.items-container__price--fee
         - if @item.is_seller_shipping
           送料込み
         - else
           着払い
-    .items-container__btn
-      - if @item.item_status_id == 3
-        出品停止中の商品です
-      - elsif @item.item_status_id == 4
+    - if is_sold?
+      .items-container__btn
         販売済みの商品です
-      - else
+    - elsif is_seller?
+      = link_to "#", class: 'items-container__btn--edit' do
+        商品の編集
+      .items-container__text--center
+        or
+      = link_to item_path(@item.id), method: :delete, data: { confirm: '本当に削除しますか？一度削除すると二度と元には戻せません。'}, class: 'items-form__btn' do
+        この商品を削除する
+    - elsif @item.item_status_id == 3
+      .items-container__btn
+        出品停止中の商品です
+    - else
+      .items-container__btn
         = link_to buy_path(@item.id) do
           購入画面に進む
     .items-container__text
@@ -112,7 +121,6 @@
         相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
       = f.text_area :text, class: "items-form__text"
       = f.label "コメント機能は未実装です", class: 'items-form__btn'
-      = link_to "この商品を削除する", item_path(@item.id), method: :delete, data: { confirm: '本当に削除しますか？一度削除すると二度と元には戻せません。'}, class: 'items-form__btn'
   %ul.items-prev
     - if @prev_item
       %li.items-prev__left

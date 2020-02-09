@@ -10,6 +10,7 @@ class Item < ApplicationRecord
   belongs_to :category, optional: true
   belongs_to :subcategory, optional: true
   belongs_to :sub_subcategory, optional: true
+  has_one :dealing
   belongs_to_active_hash :condition
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :shipping_period

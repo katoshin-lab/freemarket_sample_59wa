@@ -23,12 +23,6 @@ describe Dealing do
         expect(test_dealing.errors[:buyer_id]).to include("can't be blank") 
       end
 
-      it "is invalid with non-existent user" do
-        buyer.destroy
-        subject
-        expect(test_dealing.errors[:buyer]).to include("must exist") 
-      end
-
       it "is invalid without item_id" do
         test_dealing.item_id = nil
         subject
