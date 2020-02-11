@@ -1,6 +1,7 @@
 class MypagesController < ApplicationController
   include ApplicationHelper
   before_action :redirect_to_login
+  before_action :set_categories
 
   def index
   end

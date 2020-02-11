@@ -3,11 +3,10 @@ class ItemsController < ApplicationController
   include ItemHelper
   before_action :set_item, only: [:edit, :update, :show, :destroy]
   before_action :redirect_to_login, except: [:index, :show]
-
+  before_action :set_categories, only: [:index, :show]
 
   def index
     @items = Item.includes(:images).order(id: 'DESC').limit(10)
-    @categories = Category.where(ancestry: nil)
   end
 
   def create
@@ -54,9 +53,9 @@ class ItemsController < ApplicationController
     @prefectures = Prefecture.all
     @shipping_methods = ShippingMethod.all
     @shipping_periods = ShippingPeriod.all
-    @categories = Category.where(ancestry: params[:ancestry])
-    @subcategories = Category.where(ancestry: @categories)
-    @sub_subcategories = Category.where(ancestry: @categories)
+    @categories = Category.where(ancestry: nil)
+    @subcategories = Category.where(ancestry: @item.category.parent.ancestry)
+    @sub_subcategories = Category.where(ancestry: @item.category.ancestry)
     respond_to do |format|
       format.html
       format.json

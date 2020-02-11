@@ -23,4 +23,9 @@ module ApplicationHelper
     pass_time = time - session[:time]
     return pass_time
   end
+  
+  def set_categories
+    @categories = Category.where(ancestry: nil)
+  end
+
 end
