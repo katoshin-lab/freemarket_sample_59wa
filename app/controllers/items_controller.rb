@@ -64,7 +64,6 @@ class ItemsController < ApplicationController
   def update
     item_update_subcategory
     @item = Item.find(params[:id])
-    binding.pry
     if register_images[0] == item_images.length 
       respond_to do |format| 
         format.js { render alert_image }
