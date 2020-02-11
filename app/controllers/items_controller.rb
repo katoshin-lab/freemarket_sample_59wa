@@ -1,7 +1,9 @@
 class ItemsController < ApplicationController
-  include ItemHelper
   include ApplicationHelper
+  include ItemHelper
+  before_action :set_item, only: [:edit, :update, :show, :destroy]
   before_action :redirect_to_login, except: [:index, :show]
+
 
   def index
     @items = Item.includes(:images).order(id: 'DESC').limit(10)
@@ -36,7 +38,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @seller_items = @item.seller.sell_items.where.not(id: @item.id).includes(:images).order(id: "DESC").limit(6)
     @likes_counts = Like.group(:item_id).count
     @likes_count = @likes_counts.values_at(params[:id].to_i)[0]
@@ -77,8 +78,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
-    if @item.seller_id == current_user.id && @item.destroy
+    return redirect_to item_path(@item.id) unless user_signed_in? && @item.seller_id == current_user.id
+    if @item.destroy
       flash[:notice] = '商品が削除されました'
       redirect_to mypages_path
     else
@@ -166,4 +167,9 @@ class ItemsController < ApplicationController
     params.required(:item).permit(:name, :detail, :condition_id, :is_seller_shipping, :prefecture_id, :shipping_method_id,:shipping_period_id, :price, images_attributes: [:image]).merge(seller_id: current_user.id, item_status_id: 1, category_id: item_category)
   end
 
+  
+  def set_item
+    @item = Item.find(params[:id])
+  end
 end
+
