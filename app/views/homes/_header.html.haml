@@ -8,18 +8,18 @@
           %i.fas.fa-search
   .header__bottom
     %ul.header__bottom--left
-      .header-category
+      .header-category#category
         = link_to "#" ,class: "btn-sm" do
           %i.fas.fa-list-ul
           %span
             カテゴリーから探す
+        .header-category__hidden
+          = render partial: "homes/header-category", collection: @categories, as: "category"
       .header-category
         = link_to "#" ,class: "btn-sm" do
           %i.fas.fa-tags
           %span
             ブランドから探す
-      .header-category__hidden
-        = render partial: "homes/header-category", collection: @categories, as: "category"
     .header__bottom--right
       - if user_signed_in?
         %ul.header-list
