@@ -1,7 +1,4 @@
 .wrapper
-  - if user_signed_in?
-    = render partial: 'homes/header-login'
-  - else
-    = render partial: 'homes/header'
+  = render partial: 'homes/header'
   = render partial: 'homes/contents'
   = render partial: 'homes/footer'

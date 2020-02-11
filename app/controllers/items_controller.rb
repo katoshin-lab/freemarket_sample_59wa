@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:images).order(id: 'DESC').limit(10)
+    @categories = Category.where(ancestry: nil)
   end
 
   def create

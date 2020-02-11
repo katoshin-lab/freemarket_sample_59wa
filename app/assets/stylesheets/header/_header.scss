@@ -31,17 +31,19 @@
     display: flex;
     justify-content: space-between;
     &--left {
-      i {
-        cursor: pointer;
-        font-size: 1.1rem;
-        color: $red;
-      }
+      position: relative;
       .btn-sm { 
         padding: (10px 10px);
-        font-size: 13px;
-        font-weight: bold;
-        &:hover {
-          color: $accent;
+        span {
+          font-size: 14px;
+          font-weight: bold;
+          &:hover {
+            color: $accent;
+          }
+        }
+        i {
+          color: $red;
+          margin-right: 5px;
         }
       }
     }

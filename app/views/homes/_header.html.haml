@@ -8,10 +8,37 @@
           %i.fas.fa-search
   .header__bottom
     %ul.header__bottom--left
-      %i.fas.fa-list-ul
-      = link_to "カテゴリーから探す", "#" ,class: "btn-sm"
-      %i.fas.fa-tags
-      = link_to "ブランドから探す", "#" ,class: "btn-sm"
+      .header-category
+        = link_to "#" ,class: "btn-sm" do
+          %i.fas.fa-list-ul
+          %span
+            カテゴリーから探す
+      .header-category
+        = link_to "#" ,class: "btn-sm" do
+          %i.fas.fa-tags
+          %span
+            ブランドから探す
+      .header-category__hidden
+        = render partial: "homes/header-category", collection: @categories, as: "category"
     .header__bottom--right
-      = link_to "新規会員登録", new_user_path , class: "btn btn-login"
-      = link_to "ログイン", new_user_session_path, class: "btn btn-default"
+      - if user_signed_in?
+        %ul.header-list
+          %li.header-list__box
+            = link_to mypages_path , class: "header-list__box--text" do
+              %i.far.fa-heart
+              %p いいね! 一覧
+          %li.header-list__box
+            = link_to mypages_path , class: "header-list__box--text" do
+              %i.far.fa-bell
+              %p お知らせ
+          %li.header-list__box
+            = link_to mypages_path , class: "header-list__box--text" do
+              %i.fas.fa-check
+              %p やることリスト
+          %li.header-list__box
+            = link_to mypages_path , class: "header-list__box--text" do
+              %i.fas.fa-user-alt
+              %p マイページ
+      - else
+        = link_to "新規会員登録", new_user_path , class: "btn btn-login"
+        = link_to "ログイン", new_user_session_path, class: "btn btn-default"
