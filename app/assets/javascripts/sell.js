@@ -22,6 +22,7 @@ $(function() {
   $('#dropbox').on('change', $('.file_field'), function(e) {
     var number = Number($('#number').text());
     var total = Number($('#total').text());
+    var register_images =  $('#register_images').val();
     if (total < 10) {
       number += 1;
       total += 1;
@@ -65,11 +66,11 @@ $(function() {
       $('#dropbox').append(buildForm).trigger('create');
       $('#number').text(number);
       $('#total').text(total);
+      $('#register_images').val(number);
     };
   });
   // 画像の削除機能部分
   $('#container').click('.sell__image_btn--delete', function() {
-
     var total = Number($('#total').text());
     var click = $(event.target);
     //既存の画像を削除するリストを作成

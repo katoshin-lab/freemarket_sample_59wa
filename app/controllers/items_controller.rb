@@ -64,14 +64,15 @@ class ItemsController < ApplicationController
   def update
     item_update_subcategory
     @item = Item.find(params[:id])
-    if @item.images.present?
-      item_update
-      item_images.each do |n|
-        @item.images[n.to_i].destroy
-      end
-    else
+    binding.pry
+    if register_images[0] == item_images.length 
       respond_to do |format| 
         format.js { render alert_image }
+      end
+    else
+      item_update
+      destroy_images.each do |n|
+        @item.images[n].destroy
       end
     end
   end
@@ -138,11 +139,32 @@ class ItemsController < ApplicationController
     end 
   end
 
+  def destroy_images
+    register_ids = []
+    @item = Item.find(params[:id])
+    @item.images.each_with_index do |image, ids|
+      register_ids << ids
+    end
+    destroy_ids = register_ids & item_images
+    return destroy_ids
+  end
+
   def item_images
-    params.required(:item)[:delete_images].split
+    params.required(:item)[:delete_images].split.map(&:to_i)
+  end
+
+  def register_images
+    register_ids = params.required(:item)[:register_images].split.map(&:to_i)
+    if register_ids[0] == nil
+      register_ids = 1
+    else
+      return register_ids
+    end
+    return register_ids
   end
 
   def item_params
     params.required(:item).permit(:name, :detail, :condition_id, :is_seller_shipping, :prefecture_id, :shipping_method_id,:shipping_period_id, :price, images_attributes: [:image]).merge(seller_id: current_user.id, item_status_id: 1, category_id: item_category)
   end
+
 end
