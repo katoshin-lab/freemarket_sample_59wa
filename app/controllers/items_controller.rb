@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   include ApplicationHelper
   include ItemHelper
-  before_action :set_item, only: [:edit, :update, :show, :destroy]
+  before_action :set_item, only: [:edit, :update, :show, :destroy, :destroy_images]
   before_action :redirect_to_login, except: [:index, :show]
 
 
@@ -47,7 +47,6 @@ class ItemsController < ApplicationController
 
 
   def edit
-    @item = Item.find(params[:id])
     @images = @item.images
     @conditions = Condition.all
     @prefectures = Prefecture.all
@@ -141,7 +140,6 @@ class ItemsController < ApplicationController
 
   def destroy_images
     register_ids = []
-    @item = Item.find(params[:id])
     @item.images.each_with_index do |image, ids|
       register_ids << ids
     end
