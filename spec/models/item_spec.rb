@@ -112,6 +112,75 @@ describe Item do
     end
   end
 
+  describe '#update' do
+    it "商品名が更新される" do
+      item = Item.new(name: "test")
+      item.update(name: "hoge")
+      expect(item.name).to eq "hoge"
+    end
+
+    it "商品の説明がが更新される" do
+      item = Item.new(detail: "テストの商品です")
+      item.update(detail: "変更後の商品です")
+      expect(item.detail).to eq "変更後の商品です"
+    end
+
+    it "価格が更新される" do
+      item = Item.new(price: 1000)
+      item.update(price: 5000)
+      expect(item.price).to eq 5000
+    end
+
+    it "商品の説明がが更新される" do
+      item = Item.new(detail: "テストの商品です")
+      item.update(detail: "変更後の商品です")
+      expect(item.detail).to eq "変更後の商品です"
+    end
+
+    it "発送料の負担が更新される" do
+      item = Item.new(is_seller_shipping: true)
+      item.update(is_seller_shipping: false)
+      expect(item.is_seller_shipping).to eq false
+    end
+
+    it "発送元の地域が更新される" do
+      item = Item.new(prefecture_id: 1)
+      item.update(prefecture_id: 2)
+      expect(item.prefecture_id).to eq 2
+    end
+
+    it "発送までの日数が更新される" do
+      item = Item.new(shipping_period_id: 1)
+      item.update(shipping_period_id: 2)
+      expect(item.shipping_period_id).to eq 2
+    end
+
+    it "配送の方法が更新される" do
+      item = Item.new(shipping_period_id: 1)
+      item.update(shipping_period_id: 2)
+      expect(item.shipping_period_id).to eq 2
+    end
+
+    it "配送の方法が更新される" do
+      item = Item.new(shipping_method_id: 1)
+      item.update(shipping_method_id: 2)
+      expect(item.shipping_method_id).to eq 2
+    end
+
+    it "カテゴリーが更新される" do
+      item = Item.new(category_id: 1)
+      item.update(category_id: 2)
+      expect(item.category_id).to eq 2
+    end
+
+    it "商品の状態が更新される" do
+      item = Item.new(item_status_id: 1)
+      item.update(item_status_id: 2)
+      expect(item.item_status_id).to eq 2
+    end
+
+  end
+
   describe '#index' do
 
     it "商品画像が正常に呼び出される" do
