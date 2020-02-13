@@ -153,11 +153,7 @@ class ItemsController < ApplicationController
 
   def register_images
     register_ids = params.required(:item)[:register_images].split.map(&:to_i)
-    if register_ids[0] == nil
-      register_ids = 1
-    else
-      return register_ids
-    end
+    register_ids = 1 if register_ids[0] == nil
     return register_ids
   end
 
@@ -170,4 +166,3 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 end
-
