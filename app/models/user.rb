@@ -40,7 +40,8 @@ class User < ApplicationRecord
   end
 
   def self.validation?(params)
-    user_attr = {name: params[:name], email: params[:email], password: params[:password], last_name: params[:last_name], last_name_kana: params[:last_name_kana], first_name: params[:first_name], first_name_kana: params[:first_name_kana]}
+    birthday = params["birthday(1i)"] + "-" + params["birthday(2i)"] + "-" + params["birthday(3i)"]
+    user_attr = {name: params[:name], email: params[:email], password: params[:password], last_name: params[:last_name], last_name_kana: params[:last_name_kana], first_name: params[:first_name], first_name_kana: params[:first_name_kana], birthday: birthday}
     user = User.new(user_attr)
     return user.valid?
   end

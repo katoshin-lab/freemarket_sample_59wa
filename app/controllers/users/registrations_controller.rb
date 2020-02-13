@@ -21,9 +21,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    if User.validation?(params[:user])
+    if User.validation?(params)
       super
-      @user = User.find_by(email: params[:user][:email])
+      @user = User.find_by(email: params[:email])
       @sns_user = SnsCredential.find_by(token: session[:sns_credential_token])
       elsif session[:sns_credential?] && session[:sns_credential_token] == @sns_user.token
         @sns_user.update(user_id: @user.id)
