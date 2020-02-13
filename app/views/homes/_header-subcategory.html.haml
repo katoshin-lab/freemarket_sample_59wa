@@ -1,0 +1,7 @@
+.header-category__label--subcategory
+  = link_to "#" do
+    .header-category__box--subcategory{id: "#{subcategory.id}"}
+      = subcategory.name
+  .header-category__hidden--subcategory{id: "top_category_#{subcategory.id}_list"}
+    = render partial: "homes/header-sub_subcategory", collection: subcategory.children, as: "sub_subcategory"
+

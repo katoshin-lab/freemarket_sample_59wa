@@ -26,6 +26,16 @@ module ApplicationHelper
   
   def set_categories
     @categories = Category.where(ancestry: nil)
+    @subcategories = []
+    @categories.each do |category|
+      @subcategories << category.children
+    end
+    @sub_subcategories = []
+    @subcategories.each do |categories|
+      categories.each do |category|
+        @sub_subcategories << category.children.limit(20)
+      end
+    end
   end
 
 end
