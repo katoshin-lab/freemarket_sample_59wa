@@ -18,7 +18,6 @@
   line-height: 1.5;
   box-sizing: border-box;
 }
-//終了
 
 //新規会員登録画面
 @mixin signbtn{
@@ -30,7 +29,6 @@
   line-height: 50px;
   text-align: center;
 }
-//終了
 
 //ログイン画面
 @mixin form{
@@ -42,7 +40,6 @@
   border: 1px solid #ccc;
   font-size: 16px;
 }
-//終了
 
 //会員情報入力画面
 @mixin btn($color: $white, $background: $red) {
@@ -87,4 +84,238 @@
   font-size: 16px;
   box-sizing: border-box;
 }
-//終了
+
+//
+
+@mixin border($accent) {
+  border: 1px solid $accent;
+}
+
+@mixin  border-gray {
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@mixin  red-btn {
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: white;
+}
+
+@mixin focused {
+  &:focus {
+    outline: 0;
+    border-color: $focused;
+  }
+}
+@mixin form_default {
+  width: 100%;
+  font-weight: normal;
+  margin-top: 8px;
+  padding: 10px 16px 8px;
+  border: solid 1px $darkgray;
+  border-radius: 4px;
+  background-color: white;
+  line-height: 1.5;
+  box-sizing: border-box;
+  @include focused;
+}
+
+@mixin btn-default {
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;  
+  cursor: pointer;
+  text-align: center;
+}
+
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin underline {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@mixin link-color {
+  display: block;
+  color: $accent;
+}
+
+//表情アイコン部分
+
+@mixin  icon-good {
+  display: inline-block;
+  i {
+    font-size: 16px;
+    color: #ef5185;
+  }
+}
+
+@mixin icon-bad {
+    display: inline-block;
+    margin: 8px 0 0 16px;
+  i {
+    font-size: 16px;
+    color: #6ab5d8;
+  }
+}
+
+@mixin icon-normal {
+    display: inline-block;
+    margin: 8px 0 0 16px;
+  i {
+    font-size: 16px;
+    color: #fba933;
+  }
+}
+
+//アイテムテーブルのcssの設定
+
+@mixin item-table {
+  table {
+    width: 100%;
+  }
+  tr {
+    border: 1px solid #f5f5f5;
+  }
+  th {
+    padding: 8px;
+    width: 39%;
+    text-align: left;
+    font-weight: 400;
+    background: #fafafa;
+  }
+  td {
+    padding: 10px;
+    width: 61%;
+  }
+}
+
+
+//画像の幅調整
+
+@mixin image-box { 
+  img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: bottom;
+  }
+}
+
+//snsアイコン
+
+@mixin sns-icon {
+    display: inline-block;
+    margin: 0 8px 8px 0;
+    vertical-align: middle;
+    text-align: center;
+}
+
+@mixin sns-icon-size {
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  line-height: 44px;
+  font-size: 2.3em;
+  color: #fff;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+//hover部分
+
+@mixin text-hover {
+  &:hover {
+    opacity: 0.5;
+    text-decoration: underline;
+  }  
+}
+
+//透過
+
+@mixin opacity {
+  background: linear-gradient(90deg,hsla(0,0%,100%,0),#fff 72%);
+  bottom: 0;
+  content: "";
+  height: 50%;
+  position: absolute;
+  right: 0;
+  width: 50%;
+}
+
+
+@mixin content {
+  float: right;
+  width: 700px;
+  background: white;  
+}
+
+@mixin font-title {
+  text-align: center;
+  font-size: 24px;
+  padding: 8px 24px;
+  border-bottom: 1px solid $lightgray;
+}
+
+@mixin show {
+  display: block;
+  text-align: right;
+  color: $accent;  
+}
+
+@mixin form-note {
+  color: white;
+  font-size: 12px;
+  border-radius: 2px;
+  margin-left: 8px;
+  padding: 2px 4px;
+}
+
+@mixin input-form {
+  .input-default {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 8px 0 0;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+  }
+}
+
+@mixin select-form {
+  .select-form {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+  }
+}
