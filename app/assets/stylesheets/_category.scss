@@ -1,0 +1,9 @@
+.category {
+  background-color: $gray;
+  width: 1020px;
+  &__index {
+    @extend .category;
+    width: 700px;
+  }
+  
+}

@@ -1,0 +1,15 @@
+.wrapper
+  = render partial: 'homes/header'
+  -# - breadcrumb "category_#{params[:id]}"
+  -# = render "layouts/breadcrumbs"
+
+  .contents-product
+    .contents-product__title
+      %h5
+        = @category.name + "の商品一覧"
+    .contents-product__items
+      %ul.contents-product__items--list
+        = render partial: "homes/item", collection: @items
+  .contents-bottom-image
+    %p.contents-bottom-image__text
+= render partial: 'homes/btn-exhibit'
