@@ -72,7 +72,7 @@ class ItemsController < ApplicationController
       ActiveRecord::Base.transaction do
         item_update
         destroy_images.each do |n|
-          @item.images[n].destroy
+          @item.images[n].destroy!
         end
       end
     end
