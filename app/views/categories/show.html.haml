@@ -1,9 +1,6 @@
 = render partial: 'homes/header'
-.header-nav-bar
-  %ul
-    %li
-      - breadcrumb :category, @category
-      = render "layouts/breadcrumbs"
+- breadcrumb :category, @category
+= render "layouts/breadcrumbs"
 
 .contents-product
   .contents-product__title
