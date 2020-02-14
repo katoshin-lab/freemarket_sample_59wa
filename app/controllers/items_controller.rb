@@ -69,9 +69,11 @@ class ItemsController < ApplicationController
         format.js { render alert_image }
       end
     else
-      item_update
-      destroy_images.each do |n|
-        @item.images[n].destroy
+      ActiveRecord::Base.transaction do
+        item_update
+        destroy_images.each do |n|
+          @item.images[n].destroy
+        end
       end
     end
   end
