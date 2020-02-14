@@ -1,0 +1,10 @@
+.category__subcategory--title
+  = subcategory.name
+.category__sub_subcategories
+  .category__sub_subcategory
+    = link_to category_path(subcategory.id) do
+      すべて
+  - subcategory.children.each do |sub_subcategory|
+    .category__sub_subcategory
+      = link_to category_path(sub_subcategory.id) do
+        = sub_subcategory.name

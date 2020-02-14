@@ -1,0 +1,13 @@
+= render partial: 'homes/header'
+-# - breadcrumb :category_index
+-# = render "layouts/breadcrumbs"
+
+.category__index
+
+  .category__title
+    カテゴリー一覧
+  = render @categories
+
+  = render partial: "categories", collection: @categories, as: :category
+
+= render partial: 'homes/footer'
