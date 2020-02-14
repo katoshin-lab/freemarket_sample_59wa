@@ -16,5 +16,8 @@ class CategoriesController < ApplicationController
         @items << item
       end
     end
+    Item.where(category_id: @category.id).each do |item|
+      @items << item
+    end
   end
 end
