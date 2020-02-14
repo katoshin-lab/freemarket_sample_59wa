@@ -1,5 +1,5 @@
 .category__categories
-  .category__categories_header{id: category.id, name: category.id}
+  .category__categories_header{id: "category_"+category.id.to_s, name: category.id}
     = category.name
   .category__categories_body
     .category__subcategory--link
