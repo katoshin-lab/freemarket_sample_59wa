@@ -24,6 +24,12 @@
     border-radius: 4px;
     background-color: white;
     display: inline-block;
+    &:hover {
+      @extend .category__root_btn;
+      color: $white;
+      background-color: $red;
+      font-weight: bold;
+    }
   }
 
   &__categories {
