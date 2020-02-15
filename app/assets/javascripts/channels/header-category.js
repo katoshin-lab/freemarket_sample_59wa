@@ -11,7 +11,7 @@ $(function() {
     var target = "#top_category_"+target_id+"_list";
     $(target).show();
   }, function() {
-    var target_id = $(event.target).attr('id');
+    var target_id = $(event.target).closest('.header-category__label').find('.header-category__box').attr('id');
     var target = "#top_category_"+target_id+"_list";
     $(target).hide();
   });
@@ -20,7 +20,7 @@ $(function() {
     var target = "#top_category_"+target_id+"_list";
     $(target).show();
   }, function() {
-    var target_id = $(event.target).attr('id');
+    var target_id = $(event.target).closest('.header-category__label--subcategory').find('.header-category__box--subcategory').attr('id');
     var target = "#top_category_"+target_id+"_list";
     $(target).hide();
   });

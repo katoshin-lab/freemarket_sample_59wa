@@ -31,5 +31,8 @@
       font-size: 13px;
       padding: 5px 10px;
     }
+    &--sub_subcategory {
+      @extend .header-category__box--subcategory;
+    }
   }
 }
