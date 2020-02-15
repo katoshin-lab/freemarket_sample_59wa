@@ -17,7 +17,7 @@ $(function() {
     var box_width = $('#dropbox').css('width').replace('px', '');
     box_width -= 126 * total;
     $('#dropbox').css('width', box_width+'px');
-  };
+  };  
     // 画像のアップロード部分（10枚まで)
   $('#dropbox').on('change', $('.file_field'), function(e) {
     var number = Number($('#number').text());
@@ -68,6 +68,12 @@ $(function() {
       $('#total').text(total);
       $('#register_images').val(number);
     };
+  });
+  $('#container').click('.sell__image_btn--edit', function() {
+    var total = Number($('#total').text());
+    if (total === 10) {
+      $('#dropbox').css('width', 116); 
+    }
   });
   // 画像の削除機能部分
   $('#container').click('.sell__image_btn--delete', function() {
