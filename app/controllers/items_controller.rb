@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
 
 
   def edit
-    return redirect_to root_path unless @item.seller_id == current_user.id
+   ## return redirect_to logout_mypages_path unless @item.seller_id == current_user.id
     @images = @item.images
     @conditions = Condition.all
     @prefectures = Prefecture.all
