@@ -13,12 +13,12 @@
       @extend .header-category__hidden;
       top: 0;
       left: 220px;
-      height: 533px;
+      min-height: 533px;
     }
     &--sub_subcategory {
       @extend .header-category__hidden;
       left: 440px;
-      height: 533px;
+      min-height: 533px;
     }
   }
   &__box {
