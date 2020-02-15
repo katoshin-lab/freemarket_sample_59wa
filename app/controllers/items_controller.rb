@@ -47,6 +47,7 @@ class ItemsController < ApplicationController
 
 
   def edit
+    return redirect_to root_path unless @item.seller_id == current_user.id
     @images = @item.images
     @conditions = Condition.all
     @prefectures = Prefecture.all
@@ -131,7 +132,7 @@ class ItemsController < ApplicationController
   def item_update
     unless user_signed_in? && @item.seller_id == current_user.id
       return respond_to do |format| 
-        format.js { render ajax_redirect_to(root_path) }
+        format.js { render ajax_redirect_to(logout_mypages_path) }
       end
     end
     if @item.update(item_params)
