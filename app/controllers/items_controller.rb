@@ -129,6 +129,11 @@ class ItemsController < ApplicationController
   end
 
   def item_update
+    unless user_signed_in? && @item.seller_id == current_user.id
+      return respond_to do |format| 
+        format.js { render ajax_redirect_to(root_path) }
+      end
+    end
     if @item.update(item_params)
       respond_to do |format| 
         format.js { render ajax_redirect_to(root_path) }
