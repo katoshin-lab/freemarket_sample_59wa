@@ -63,8 +63,9 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item_update_subcategory
+    item_subcategory
     @item = Item.find(params[:id])
+    binding.pry
     if register_images[0] == item_images.length || item_images.length == @item.images.length
       respond_to do |format|
         format.js { render alert_image }
@@ -96,18 +97,11 @@ class ItemsController < ApplicationController
   end
 
   private
-  def item_update_subcategory
+  def item_subcategory
     @category = params.required(:item)[:category_id]
     @subcategory = params[:item][:item_subcategory]
     @sub_subcategory = params[:item][:item_sub_subcategory]
   end
-
-  def item_subcategory
-    @category = params.required(:item)[:category_id]
-    @subcategory = params[:item_subcategory]
-    @sub_subcategory = params[:item_sub_subcategory]
-  end
-
 
   def item_category
     if @sub_subcategory.present?

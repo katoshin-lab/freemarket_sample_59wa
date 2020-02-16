@@ -125,7 +125,7 @@ $(function() {
     var selectHTML = `
     <div class="sell__select_form" id="${category}_selector">
       <i class="fas fa-chevron-down"></i>
-      <select id="${category}" name="${category}">
+      <select id="${category}" name="item[${category}]">
         <option value>---</option>
         ${HTML}
       </select>
@@ -158,8 +158,10 @@ $(function() {
   // サブカテゴリー選択部分
   $('#category_field').on('change', '#item_subcategory_selector', function() {
     var category = ($('#item_category_id option:selected').val());
-    var subcategory = ($('#item_subcategory option:selected').val());
+    var subcategory = ($('#item_item_subcategory option:selected').val());
     var listHTML = '';
+    console.log(category);
+    console.log(subcategory);
     $.ajax({
       type: 'GET',
       url: '/items/new',
