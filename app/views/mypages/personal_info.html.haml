@@ -1,10 +1,7 @@
 .wrapper
-  = render partial: 'homes/header-login'
-  .header-nav-bar
-    %ul
-      %li
-      - breadcrumb :personal_info
-      = render "layouts/breadcrumbs"
+  = render partial: 'homes/header'
+  - breadcrumb :personal_info
+  = render "layouts/breadcrumbs"
   %main.mypage-container
     .personal-info
       %h2

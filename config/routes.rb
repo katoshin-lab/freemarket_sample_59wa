@@ -40,4 +40,5 @@ Rails.application.routes.draw do
   end
   resources :deliveries, only: [:new, :create, :show, :update]
   resources :payments, only: [:index, :new, :create, :update, :destroy]
+  resources :categories, only: [:index, :show]
 end

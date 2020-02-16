@@ -11,10 +11,14 @@
     %h4
       人気のカテゴリー
     %ul.contents-category__box
-      %li レディース
-      %li メンズ
-      %li 家電・スマホ・カメラ
-      %li おもちゃ・ホビー・グッズ 
+      = link_to category_path(1) do
+        %li レディース
+      = link_to category_path(2) do
+        %li メンズ
+      = link_to category_path(8) do
+        %li 家電・スマホ・カメラ
+      = link_to category_path(6) do
+        %li おもちゃ・ホビー・グッズ 
   .contents-product
     .contents-product__title
       %h5 全商品一覧
