@@ -146,6 +146,18 @@ Things you may want to cover:
 - belongs_to_active_hash :dealing_status_id
 - belongs_to_active_hash :prefecture_id
 
+## sns_credentials table
+|Column|Type|Options|
+|------|----|-------|
+|provider|string||
+|uid|string||
+|user_id|integer||
+|name|string||
+|email|string||
+|token|string||
+### Association
+- belongs_to :user, optional: true
+
 ---
 
 * Database initialization
