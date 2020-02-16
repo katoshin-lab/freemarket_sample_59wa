@@ -125,7 +125,7 @@ $(function() {
     var selectHTML = `
     <div class="sell__select_form" id="${category}_selector">
       <i class="fas fa-chevron-down"></i>
-      <select id="${category}" name="item[${category}]">
+      <select id="item_${category}" name="item[${category}]">
         <option value>---</option>
         ${HTML}
       </select>
