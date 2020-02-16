@@ -42,7 +42,7 @@ Rails.application.configure do
     :authentication => :plain,
     :user_name => "hatao0000000@gmail.com",
     :password => "cxgkujucjxdnwzty"
-}
+  }
 
   config.action_mailer.perform_caching = false
 

@@ -15,6 +15,16 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
   config.action_mailer.default_url_options = { host: '13.113.37.180' }
 
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :authentication => :plain,
+    :user_name => "hatao0000000@gmail.com",
+    :password => "cxgkujucjxdnwzty"
+  }
+
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
   config.require_master_key = true
