@@ -1,10 +1,7 @@
 .wrapper
-  = render partial: 'homes/header-login'
-  .header-nav-bar
-    %ul
-      %li
-      - breadcrumb :addcard
-      = render "layouts/breadcrumbs"
+  = render partial: 'homes/header'
+  - breadcrumb :addcard
+  = render "layouts/breadcrumbs"
   %main.mypage-container
     .add-card
       %h2

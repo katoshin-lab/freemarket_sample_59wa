@@ -1,8 +1,5 @@
 .wrapper
-  - if user_signed_in?
-    = render partial: 'homes/header-login'
-  - else
-    = render partial: 'homes/header'
+  = render partial: 'homes/header'
   .items-container
     %h1
       = @item.name

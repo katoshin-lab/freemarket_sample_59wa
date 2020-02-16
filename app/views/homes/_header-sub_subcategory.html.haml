@@ -1,0 +1,4 @@
+.header-category__label--sub_subcategory
+  = link_to category_path(sub_subcategory.id) do
+    .header-category__box--sub_subcategory{id: "#{sub_subcategory.id}"}
+      = sub_subcategory.name

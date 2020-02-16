@@ -3,15 +3,16 @@ $(function() {
   var total = Number($('#total').text());
   if (total === 5){
     $('#dropbox').css('width', 620);
-  } else if (total == 6 ) {
+  } else if (total % 5 == 1 ) {
     $('#dropbox').css('width', 494);
-  } else if (total == 7 ) {
+  } else if (total % 5 == 2 ) {
     $('#dropbox').css('width', 368); 
-  } else if (total == 8 ) {
+  } else if (total % 5 == 3 ) {
     $('#dropbox').css('width', 244); 
-  } else if (total == 9) {
+  } else if (total % 5 == 4) {
     $('#dropbox').css('width', 122); 
   } else if (total === 10) {
+    $('#dropbox').css('width', 122); 
     $('#dropbox').hide();
   } else {
     var box_width = $('#dropbox').css('width').replace('px', '');
