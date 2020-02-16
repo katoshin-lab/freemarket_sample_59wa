@@ -183,12 +183,9 @@ describe Item do
   describe '#index' do
 
     it "商品画像が正常に呼び出される" do
-      category = build(:category)
-      category.save
-      user = build(:user)
-      user.save
-      item = build(:item, category_id: category.id, seller_id: user.id, images_attributes: [{image: File.new("app/assets/images/sample.jpg")}])
-      item.save
+      category = create(:category)
+      user = create(:user)
+      item = create(:item, category_id: category.id, seller_id: user.id, images_attributes: [{image: File.new("app/assets/images/sample.jpg")}])
       expect(item.images.first.image.url).to include("sample.jpg")
     end
 
