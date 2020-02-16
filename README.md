@@ -1,15 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* General
+- You can buy and sell items between users on this site.
 
-Things you may want to cover:
+* Detail
+## User
+- User log-in with your email address, google account and facebook account.
+- When registrating, users are confirmed with sms messages and their email address.
+
+## Item
+- Users can registrate items with several images.
+- Users can post a "like" with another user's item.
+- Users use payment service with their credit card.
 
 * Ruby version
-
-* System dependencies
-
-* Configuration
+- 2.5.1
 
 * Database creation
 - Volume of each column should be as small as possible.
@@ -221,5 +226,5 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
+- Build on AWS(EC2 & S3)
 * ...
