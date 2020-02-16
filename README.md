@@ -39,20 +39,6 @@ Things you may want to cover:
 - has_many :dealing_items
 - has_many :bought_items
 
-## user_addresses table
-|Column|Type|Options|
-|------|----|-------|
-|postal_number|integer|null: false|
-|prefecture|references|null: false, foreign_key: true, default: 47|
-|city|string|null: false, limit: 50|
-|block|string|null: false, limit: 50|
-|building_name|string|limit: 50|
-|phone|integer|limit: 5|
-|user|references|null: false, foreign_key: true|
-### Associations
-- belongs_to_active_hash :prefecture
-- belongs_to :user
-
 ## user_deliveries table
 |Column|Type|Options|
 |------|----|-------|
@@ -61,7 +47,7 @@ Things you may want to cover:
 |last_name_kana|string|null: false, limit: 40|
 |first_name_kana|string|null: false, limit: 40|
 |postal_number|integer|null: false|
-|prefecture|references|null: false, foreign_key: true, default: 47|
+|prefecture|references|null: false, foreign_key: true, default: 0|
 |city|string|null: false, limit: 50|
 |block|string|null: false, limit: 50|
 |building_name|string|limit: 50|
@@ -111,16 +97,6 @@ Things you may want to cover:
 - belongs_to_active_hash :shipping_method
 - belongs_to_active_hash :item_status
 
-## dealing_comments table
-|Column|Type|Options|
-|------|----|-------|
-|buyer|references|null: false, foreign_key: {to_table: user}|
-|item|references|null: false, foreign_key: true|
-|text|text|null: false|
-### Associations
-- belongs_to :user
-- belongs_to :item
-
 ## likes table
 |Column|Type|Options|
 |------|----|-------|
@@ -136,14 +112,7 @@ Things you may want to cover:
 |image|string|null: false|
 |item|references|null: false, foreign_key: true|
 ### Association
-belongs_to :item
-
-## brands table
-|Column|Type|Options|
-|------|----|-------|
-|name|string|limit: 40|
-### Association
-- has_many :items
+- belongs_to :item, optional: true
 
 ## categories table
 |Column|Type|Options|
@@ -177,10 +146,63 @@ belongs_to :item
 - belongs_to_active_hash :dealing_status_id
 - belongs_to_active_hash :prefecture_id
 
-
 ---
 
 * Database initialization
+
+* Gem list
+## all
+- rails
+- mysql2
+- puma
+- sass-rails
+- uglifier
+- jquery-rails
+- jbuilder
+- bootsnap
+- font-awesome-sass
+- carrierwave
+- mini_magick
+- devise
+- haml-rails
+- erb2haml
+- font-awesome-sass
+- fog-aws
+- active_hash
+- ancestry
+- gretel
+- twilio-ruby
+- phony_rails
+- dotenv-rails
+- payjp
+- omniauth
+- omniauth-google-oauth2
+- omniauth-facebook
+- omniauth-rails_csrf_protection
+
+## development, test
+- byebug
+- capistrano
+- capistrano-rbenv
+- capistrano-bundler
+- capistrano-rails
+- capistrano3-unicorn
+- pry-rails
+- rspec-rails
+- rails-controller-testing
+- factory_bot_rails
+- faker
+- forgery_ja
+
+## development
+- web-console
+- listen
+- spring
+- spring-watcher-listen
+- spring-commands-rspec
+
+## production
+- unicorn
 
 * How to run the test suite
 
