@@ -65,8 +65,8 @@ class ItemsController < ApplicationController
   def update
     item_subcategory
     @item = Item.find(params[:id])
-    binding.pry
     if register_images[0] == item_images.length || item_images.length == @item.images.length
+
       respond_to do |format|
         format.js { render alert_image }
       end
@@ -154,7 +154,7 @@ class ItemsController < ApplicationController
   end
 
   def register_images
-    register_ids = params.required(:item)[:register_images].split.map(&:to_i)
+    params.required(:item)[:register_images].split.map(&:to_i)
   end
 
   def item_params
