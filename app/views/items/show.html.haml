@@ -14,7 +14,7 @@
           %tr
             %th 出品者
             %td 
-              = link_to root_path do
+              = link_to "#" do
                 = @item.seller.name
               .items-container__info--icon-good
                 = icon('fas', 'grin')
@@ -159,5 +159,5 @@
             フリーマーケット
         = icon('fas', 'chevron-right')  
       %li
-        テスト商品
+        = @item.name
   = render partial: 'homes/footer'
