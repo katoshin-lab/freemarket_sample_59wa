@@ -31,14 +31,14 @@
           %tr
             %th カテゴリー
             %td 
-              = link_to root_path do
+              = link_to category_path(@item.category.root) do
                 = @item.category.root.name
               - if @item.category.root != @item.category.parent && @item.category.parent
-                = link_to root_path do
+                = link_to category_path(@item.category.parent) do
                   = icon('fas', 'chevron-right')
                   = @item.category.parent.name
               - if @item.category.root != @item.category
-                = link_to root_path do
+                = link_to category_path(@item.category) do
                   = icon('fas', 'chevron-right')
                   = @item.category.name
           %tr
@@ -118,8 +118,6 @@
         相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
       = f.text_area :text, class: "items-form__text"
       = f.label "コメント機能は未実装です", class: 'items-form__btn'
-    - if user_signed_in? && @item.seller_id == current_user.id
-      = link_to "この商品を削除する", item_path(@item.id), method: :delete, data: { confirm: '本当に削除しますか？一度削除すると二度と元には戻せません。'}, class: 'items-form__btn'
   %ul.items-prev
     - if @prev_item
       %li.items-prev__left
@@ -151,13 +149,6 @@
     .items-list__content
       = render partial: "item", collection: @seller_items
 
-  .items-bottom
-    %ul.items-bottom__tag
-      %li
-        = link_to "#" do
-          %span
-            フリーマーケット
-        = icon('fas', 'chevron-right')  
-      %li
-        = @item.name
+  - breadcrumb :item, @item
+  = render "layouts/breadcrumbs"
   = render partial: 'homes/footer'

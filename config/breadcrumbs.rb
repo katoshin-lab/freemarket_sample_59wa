@@ -43,6 +43,7 @@ end
 
 crumb :categories do
   link "カテゴリー一覧", categories_path
+  parent :root
 end
 
 crumb :category do |category|
@@ -52,4 +53,9 @@ crumb :category do |category|
   else
     parent :categories
   end
+end
+
+crumb :item do |item|
+  link item.name, item
+  parent :root
 end
