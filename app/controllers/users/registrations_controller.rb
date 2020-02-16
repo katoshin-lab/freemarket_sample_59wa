@@ -21,14 +21,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    if User.validation?(params[:user])
-      super
-      @user = User.find_by(email: params[:user][:email])
-      @sns_user = SnsCredential.find_by(token: session[:sns_credential_token])
-      elsif session[:sns_credential?] && session[:sns_credential_token] == @sns_user.token
-        @sns_user.update(user_id: @user.id)
-    else
-      render :new
+    begin
+      if User.validation?(params[:user])
+        @user = User.new(user_params)
+        @user.save
+        if session[:sns_credential?]
+          @sns_user = SnsCredential.find_by(token: session[:sns_credential_token])
+          @sns_user.update(user_id: @user.id) if session[:sns_credential_token] == @sns_user.token
+        end
+      else
+        redirect_to action: 'new'
+      end
+    rescue
+      redirect_to action: 'new'
     end
   end
 
@@ -65,6 +70,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def time_out
     redirect_to time_out_signups_path if passed_time > 3600
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :birthday, :last_name, :first_name, :last_name_kana, :first_name_kana)
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

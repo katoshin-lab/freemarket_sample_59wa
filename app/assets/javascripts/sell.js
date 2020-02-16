@@ -14,11 +14,16 @@ $(function() {
   } else if (total === 10) {
     $('#dropbox').css('width', 122); 
     $('#dropbox').hide();
-  };
+  } else {
+    var box_width = $('#dropbox').css('width').replace('px', '');
+    box_width -= 126 * total;
+    $('#dropbox').css('width', box_width+'px');
+  };  
     // 画像のアップロード部分（10枚まで)
   $('#dropbox').on('change', $('.file_field'), function(e) {
     var number = Number($('#number').text());
     var total = Number($('#total').text());
+    var register_images =  $('#register_images').val();
     if (total < 10) {
       number += 1;
       total += 1;
@@ -62,11 +67,17 @@ $(function() {
       $('#dropbox').append(buildForm).trigger('create');
       $('#number').text(number);
       $('#total').text(total);
+      $('#register_images').val(number);
     };
+  });
+  $('#container').click('.sell__image_btn--edit', function() {
+    var total = Number($('#total').text());
+    if (total === 10) {
+      $('#dropbox').css('width', 116); 
+    }
   });
   // 画像の削除機能部分
   $('#container').click('.sell__image_btn--delete', function() {
-
     var total = Number($('#total').text());
     var click = $(event.target);
     //既存の画像を削除するリストを作成

@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   include ApplicationHelper
   include ItemHelper
-  before_action :set_item, only: [:edit, :update, :show, :destroy]
+  before_action :set_item, only: [:edit, :update, :show, :destroy, :destroy_images]
   before_action :redirect_to_login, except: [:index, :show]
   before_action :set_categories, only: [:index, :show]
 
@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
 
 
   def edit
-    @item = Item.find(params[:id])
+    return redirect_to logout_mypages_path unless @item.seller_id == current_user.id
     @images = @item.images
     @conditions = Condition.all
     @prefectures = Prefecture.all
@@ -65,14 +65,16 @@ class ItemsController < ApplicationController
   def update
     item_update_subcategory
     @item = Item.find(params[:id])
-    if @item.images.present?
-      item_update
-      item_images.each do |n|
-        @item.images[n.to_i].destroy
+    if register_images[0] == item_images.length || item_images.length == @item.images.length
+      respond_to do |format|
+        format.js { render alert_image }
       end
     else
-      respond_to do |format| 
-        format.js { render alert_image }
+      ActiveRecord::Base.transaction do
+        item_update
+        destroy_images.each do |n|
+          @item.images[n].destroy!
+        end
       end
     end
   end
@@ -128,6 +130,11 @@ class ItemsController < ApplicationController
   end
 
   def item_update
+    unless user_signed_in? && @item.seller_id == current_user.id
+      return respond_to do |format| 
+        format.js { render ajax_redirect_to(logout_mypages_path) }
+      end
+    end
     if @item.update(item_params)
       respond_to do |format| 
         format.js { render ajax_redirect_to(root_path) }
@@ -139,13 +146,27 @@ class ItemsController < ApplicationController
     end 
   end
 
+  def destroy_images
+    register_ids = []
+    @item.images.each_with_index do |image, ids|
+      register_ids << ids
+    end
+    destroy_ids = register_ids & item_images
+    return destroy_ids
+  end
+
   def item_images
-    params.required(:item)[:delete_images].split
+    params.required(:item)[:delete_images].split.map(&:to_i)
+  end
+
+  def register_images
+    register_ids = params.required(:item)[:register_images].split.map(&:to_i)
   end
 
   def item_params
     params.required(:item).permit(:name, :detail, :condition_id, :is_seller_shipping, :prefecture_id, :shipping_method_id,:shipping_period_id, :price, images_attributes: [:image]).merge(seller_id: current_user.id, item_status_id: 1, category_id: item_category)
   end
+
   
   def set_item
     @item = Item.find(params[:id])
