@@ -63,6 +63,7 @@ class ItemsController < ApplicationController
   end
 
   def update
+    return redirect_to logout_mypages_path unless @item.seller_id == current_user.id
     item_update_subcategory
     @item = Item.find(params[:id])
     if register_images[0] == item_images.length || (item_images.length == @item.images.length && register_images == [])

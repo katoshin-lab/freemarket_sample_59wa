@@ -10,7 +10,7 @@ class BuyController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    redirect_to root_path if is_sold?
+    return redirect_to root_path if is_sold?
     without_seller
     @delivery = current_user.user_delivery
     @payment = UserPayment.where(user_id: current_user.id).first
