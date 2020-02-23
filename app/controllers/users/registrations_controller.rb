@@ -30,10 +30,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
           @sns_user.update(user_id: @user.id) if session[:sns_credential_token] == @sns_user.token
         end
       else
-        redirect_to action: 'new'
+        render action: 'new'
       end
     rescue
-      redirect_to action: 'new'
+      render action: 'new'
     end
   end
 
