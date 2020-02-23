@@ -1,20 +1,27 @@
 # README
 
-* General
+## General
 - You can buy and sell items between users on this site.
 
-* Detail
-## User
+---
+
+## Detail
+
+### User
 - User log-in with your email address, google account and facebook account.
 - When registrating, users are confirmed with sms messages and their email address.
 
-## Item
+### Item
 - Users can registrate items with several images.
 - Users can post a "like" with another user's item.
 - Users use payment service with their credit card.
 
+---
+
 * Ruby version
 - 2.5.1
+
+---
 
 * Database creation
 - Volume of each column should be as small as possible.
@@ -165,10 +172,8 @@
 
 ---
 
-* Database initialization
-
-* Gem list
-## all
+## Gem list
+### all
 - rails
 - mysql2
 - puma
@@ -197,7 +202,7 @@
 - omniauth-facebook
 - omniauth-rails_csrf_protection
 
-## development, test
+### development, test
 - byebug
 - capistrano
 - capistrano-rbenv
@@ -211,20 +216,17 @@
 - faker
 - forgery_ja
 
-## development
+### development
 - web-console
 - listen
 - spring
 - spring-watcher-listen
 - spring-commands-rspec
 
-## production
+### production
 - unicorn
 
-* How to run the test suite
+---
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+## Deployment instructions
 - Build on AWS(EC2 & S3)
-* ...
